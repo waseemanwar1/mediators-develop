@@ -1,0 +1,57 @@
+<div class="row">
+  <div class="col-xl-8">
+    <%= render Admin::Forms::SimpleFormComponent.new(
+              title: title,
+              resource: resource,
+              alerts: flash[:errors],
+              fields: [
+                  Admin::Forms::Fields::SelectComponent.new(
+                    :admin_user_id,
+                    label: t('admin.page.documents.form.admin_user_id.label'),
+                    values: AdminUser.all.map{ |u| [u.username, u.id] },
+                    include_blank: true,
+                    placeholder: t('admin.page.documents.form.admin_user_id.placeholder')
+                  ),
+                  Admin::Forms::Fields::SelectComponent.new(
+                    :case_id,
+                    label: t('admin.page.documents.form.case_id.label'),
+                    values: Case.all.pluck(:name, :id),
+                    include_blank: true,
+                    placeholder: t('admin.page.documents.form.case_id.placeholder')
+                  ),
+                  Admin::Forms::Fields::TextComponent.new(
+                    :file_name,
+                    label: t('admin.page.documents.form.file_name.label'),
+                    placeholder: t('admin.page.documents.form.file_name.placeholder')
+                  ),
+                  Admin::Forms::Fields::AutosizeAreaComponent.new(
+                    :description,
+                    label: t('admin.page.documents.form.description.label'),
+                    placeholder: t('admin.page.documents.form.description.placeholder')
+                  ),
+                  Admin::Forms::Fields::DatepickerComponent.new(
+                    :date,
+                    label: t('admin.page.documents.form.date.label'),
+                    placeholder: t('admin.page.documents.form.date.placeholder')
+                  ),
+                  Admin::Forms::Fields::TextComponent.new(
+                    :author,
+                    label: t('admin.page.documents.form.author.label'),
+                    placeholder: t('admin.page.documents.form.author.placeholder')
+                  ),
+                  Admin::Forms::Fields::FileComponent.new(
+                    :file,
+                    label: t('admin.page.documents.form.file.label'),
+                    placeholder: t('admin.page.documents.form.file.placeholder')
+                  ),
+              ],
+              actions: [
+                Admin::Forms::Actions::ReturnButtonComponent.new(url: admin_documents_path),
+                Admin::Forms::Actions::CancelButtonComponent.new,
+                Admin::Forms::Actions::SaveButtonComponent.new
+              ]) %>
+  </div>
+  <div class="col-4">
+
+  </div>
+</div>

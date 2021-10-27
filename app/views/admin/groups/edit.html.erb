@@ -1,0 +1,15 @@
+<%= render Admin::Pages::AdminPageComponent.new(
+          breadcrumbs: Admin::Pages::Breadcrumbs::BreadcrumbComponent.new(
+            links: [
+              Admin::Pages::Breadcrumbs::Links::LinkComponent.new(
+                url: admin_permissions_path,
+                text: t('admin.component.breadcrumbs.permissions')),
+              Admin::Pages::Breadcrumbs::Links::LinkComponent.new(
+                url: admin_groups_path,
+                text: t('admin.component.breadcrumbs.groups'))
+            ]
+          )) do %>
+
+  <%= render 'form', title: t('admin.page.groups.edit.title') %>
+
+<% end %>

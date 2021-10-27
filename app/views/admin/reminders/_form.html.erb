@@ -1,0 +1,75 @@
+<div class="row">
+  <div class="col-xl-8">
+    <%= render Admin::Forms::SimpleFormComponent.new(
+              title: title,
+              resource: resource,
+              alerts: flash[:errors],
+              fields: [
+                  Admin::Forms::Fields::SelectComponent.new(
+                    :admin_user_id,
+                    label: t('admin.page.reminders.form.admin_user_id.label'),
+                    values: AdminUser.all.map{ |u| [u.username, u.id] },
+                    include_blank: true,
+                    placeholder: t('admin.page.reminders.form.admin_user_id.placeholder')
+                  ),
+                  Admin::Forms::Fields::SelectComponent.new(
+                    :case_id,
+                    label: t('admin.page.reminders.form.case_id.label'),
+                    values: Case.all.pluck(:name, :id),
+                    include_blank: true,
+                    placeholder: t('admin.page.reminders.form.case_id.placeholder')
+                  ),
+                  Admin::Forms::Fields::SelectComponent.new(
+                    :party_id,
+                    label: t('admin.page.reminders.form.party_id.label'),
+                    values: Party.all.map{ |u| [u.to_s, u.id] },
+                    include_blank: true,
+                    placeholder: t('admin.page.reminders.form.party_id.placeholder')
+                  ),
+                  Admin::Forms::Fields::TextComponent.new(
+                    :name,
+                    label: t('admin.page.reminders.form.name.label'),
+                    placeholder: t('admin.page.reminders.form.name.placeholder')
+                  ),
+                  Admin::Forms::Fields::AutosizeAreaComponent.new(
+                    :description,
+                    label: t('admin.page.reminders.form.description.label'),
+                    placeholder: t('admin.page.reminders.form.description.placeholder')
+                  ),
+                  Admin::Forms::Fields::SelectComponent.new(
+                    :priority,
+                    label: t('admin.page.reminders.form.priority.label'),
+                    values: Reminder.priorities.keys,
+                    include_blank: true,
+                    placeholder: t('admin.page.reminders.form.priority.placeholder')
+                  ),
+                  Admin::Forms::Fields::DatepickerComponent.new(
+                    :due_date,
+                    label: t('admin.page.reminders.form.due_date.label'),
+                    placeholder: t('admin.page.reminders.form.due_date.placeholder')
+                  ),
+                  Admin::Forms::Fields::SelectComponent.new(
+                    :contact_id,
+                    label: t('admin.page.reminders.form.contact_id.label'),
+                    values: Contact.all.map{ |u| [u.to_s, u.id] },
+                    include_blank: true,
+                    placeholder: t('admin.page.reminders.form.contact_id.placeholder')
+                  ),
+                  Admin::Forms::Fields::SelectComponent.new(
+                    :status,
+                    label: t('admin.page.reminders.form.status.label'),
+                    values: Reminder.statuses.keys,
+                    include_blank: true,
+                    placeholder: t('admin.page.reminders.form.status.placeholder')
+                  ),
+              ],
+              actions: [
+                Admin::Forms::Actions::ReturnButtonComponent.new(url: admin_reminders_path),
+                Admin::Forms::Actions::CancelButtonComponent.new,
+                Admin::Forms::Actions::SaveButtonComponent.new
+              ]) %>
+  </div>
+  <div class="col-4">
+
+  </div>
+</div>

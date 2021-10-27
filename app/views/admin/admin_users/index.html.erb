@@ -1,0 +1,18 @@
+<%= render Admin::Pages::AdminPageComponent.new(
+            breadcrumbs: Admin::Pages::Breadcrumbs::BreadcrumbComponent.new(
+              current: Group.find(params[:group]).name.pluralize
+            ),
+            actions: [
+              Admin::Pages::Subheaders::Actions::CreateButtonComponent.new(url: new_admin_admin_user_path(group: params[:group]))
+            ]) do %>
+
+  <%= render Admin::Catalogs::CatalogComponent.new(
+              url: search_admin_admin_users_path(group: params[:group]),
+              toolbar: Admin::Toolbars::ToolbarComponent.new(query: Admin::Toolbars::Tools::QueryComponent.new),
+              container: Admin::Tables::SimpleTableComponent.new( headers: [
+                  [:username, "Username", :sortable],
+                ]
+              ),
+              pagination: Admin::Paginations::PaginationComponent.new) %>
+
+<% end %>

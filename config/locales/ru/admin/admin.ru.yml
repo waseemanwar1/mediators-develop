@@ -1,0 +1,22 @@
+ru:
+  admin:
+    locale: Русский
+
+    aside:
+      items:
+        # Aside items start
+        home: Домашняя
+        users: Users
+        tables: Tables
+        cases: Cases
+        parties: Parties
+        sessions: Sessions
+        messages: Messages
+        documents: Documents
+        reminders: Reminders
+        contacts: Contacts
+        invoices: Invoices
+        issues: Issues
+        agreements: Agreements
+        agreement_templates: Agreement Templates
+        # Aside items end

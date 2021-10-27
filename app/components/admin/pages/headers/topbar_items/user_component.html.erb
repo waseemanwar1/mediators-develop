@@ -1,0 +1,41 @@
+<!--begin: User Bar -->
+<div class="kt-header__topbar-item kt-header__topbar-item--user">
+  <div class="kt-header__topbar-wrapper" data-toggle="dropdown" data-offset="0px,0px">
+    <div class="kt-header__topbar-user kt-rounded-">
+      <span class="kt-header__topbar-welcome kt-hidden-mobile"></span>
+      <span class="kt-header__topbar-username kt-hidden-mobile"><%= title %></span>
+      <% if avatar.attached? %>
+        <%= image_tag avatar, class: 'kt-rounded-' %>
+      <% else %>
+        <%= image_tag asset_pack_path("media/images/admin/default.jpg"), class: 'kt-rounded-' %>
+      <% end %>
+    </div>
+  </div>
+  <div class="dropdown-menu dropdown-menu-fit dropdown-menu-right dropdown-menu-anim dropdown-menu-top-unround dropdown-menu-sm">
+    <div class="kt-user-card kt-margin-b-40 kt-margin-b-30-tablet-and-mobile" style="background-image: url(<%= asset_pack_path("media/images/admin/head_bg_sm.jpg") %>)">
+      <div class="kt-user-card__wrapper">
+        <div class="kt-user-card__pic">
+          <% if avatar.attached? %>
+            <%= image_tag avatar, class: 'kt-rounded-' %>
+          <% else %>
+            <%= image_tag asset_pack_path("media/images/admin/default.jpg"), class: 'kt-rounded-' %>
+          <% end %>
+				</div>
+        <div class="kt-user-card__details">
+          <div class="kt-user-card__name"><%= title %></div>
+          <div class="kt-user-card__position"><%= groups %></div>
+        </div>
+      </div>
+    </div>
+    <ul class="kt-nav kt-margin-b-10">
+      <% items.each do |item| %>
+        <%= render item %>
+      <% end %>
+      <li class="kt-nav__separator kt-nav__separator--fit"></li>
+      <% actions.each do |action| %>
+        <%= render action %>
+      <% end %>
+    </ul>
+  </div>
+</div>
+<!--end: User Bar -->

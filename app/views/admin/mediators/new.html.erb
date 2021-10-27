@@ -1,0 +1,12 @@
+<%= render Admin::Pages::AdminPageComponent.new(
+          breadcrumbs: Admin::Pages::Breadcrumbs::BreadcrumbComponent.new(
+            links: [
+              Admin::Pages::Breadcrumbs::Links::LinkComponent.new(
+                url: admin_mediators_path,
+                text: t('admin.component.breadcrumbs.mediators'))
+            ]
+          )) do %>
+
+  <%= render 'form', title: t('admin.page.mediators.new.title'), path: admin_mediators_path %>
+
+<% end %>

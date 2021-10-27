@@ -1,0 +1,12 @@
+<%= render Admin::Pages::AdminPageComponent.new(
+          breadcrumbs: Admin::Pages::Breadcrumbs::BreadcrumbComponent.new(
+            links: [
+              Admin::Pages::Breadcrumbs::Links::LinkComponent.new(
+                url: admin_agreement_templates_path,
+                text: t('admin.component.breadcrumbs.agreement_templates'))
+            ]
+          )) do %>
+
+  <%= render 'form', title: t('admin.page.agreement_templates.edit.title') %>
+
+<% end %>

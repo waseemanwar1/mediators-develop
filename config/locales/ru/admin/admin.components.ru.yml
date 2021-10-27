@@ -1,0 +1,78 @@
+ru:
+  admin:
+    component:
+      grids:
+        actions:
+          destroy:
+            sure: Вы уверены что хотите удалить объект?
+        empty: Данные не найдены
+      toolbars:
+        tools:
+          query:
+            placeholder: Поиск
+      forms:
+        fields:
+          avatar:
+            change: Изменить
+            cancel: Отмена
+
+      app_asides:
+        profile_aside:
+          profile: Мой Профиль
+          change_password: Изменить Пароль
+          settings: Настройки
+      footer:
+        brand:
+          text: 'checked.pro'
+          link: 'https://checked.pro'
+        support:
+          text: Поддержка
+          link: 'mailto:support@checked.pro'
+      header_items:
+        menus:
+          applications: Приложения
+        user_item:
+          link: Мой Аккаунт
+          profile: Мой Профиль
+          change_password: Изменить Пароль
+          settings: Настройки
+          sign_out: Выйти
+      subheader:
+        actions:
+          create: Создать
+      breadcrumbs:
+        # Breadcrumbs start
+        new: Создать
+        edit: Редактировать
+        home: Домашняя
+        admin: Домашняя
+        my: Мой профиль
+        settings: Настройки
+        permissions: Настройки прав
+        admin_users: Администраторы
+        groups: Группы
+        cases: Cases
+        parties: Parties
+        sessions: Sessions
+        messages: Messages
+        documents: Documents
+        reminders: Reminders
+        contacts: Contacts
+        invoices: Invoices
+        issues: Issues
+        agreements: Agreements
+        agreement_templates: AgreementTemplates
+        # Breadcrumbs end
+      actions:
+        manage: Управление
+        cancel: Сброс
+        save: Сохранить
+        submit: Отправить
+        create: Создать
+        return: Вернуться
+      alerts:
+        successfull:
+          create: успешно создан
+          update: успешно обновлен
+          destroy: успешно удален
+        last_user: Действие невозможно, должен остаться хотя бы один пользователь с настройками прав

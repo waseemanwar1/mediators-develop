@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col-xl-8">
+    <%= render Admin::Forms::SimpleFormComponent.new(
+              title: title,
+              resource: resource,
+              alerts: flash[:errors],
+              fields: [
+                Admin::Forms::Fields::TextComponent.new(
+                  :name,
+                  label: t('admin.page.groups.form.name.label'),
+                  placeholder: t('admin.page.groups.form.name.placeholder')),
+              ],
+              actions: [
+                Admin::Forms::Actions::ReturnButtonComponent.new(url: admin_groups_path),
+                Admin::Forms::Actions::CancelButtonComponent.new,
+                Admin::Forms::Actions::SaveButtonComponent.new
+              ]) %>
+  </div>
+  <div class="col-4">
+
+  </div>
+</div>

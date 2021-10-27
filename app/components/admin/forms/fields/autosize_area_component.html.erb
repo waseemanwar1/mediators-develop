@@ -1,0 +1,6 @@
+<div class="form-group <%= "row" if horizontal %>" data-controller="admin--autosize-area">
+  <label class="<%= "col-xl-3" if horizontal %> col-form-label"><%= label %></label>
+  <div class="<%= "col-xl-9" if horizontal %>">
+    <%= form.text_area field, options %>
+  </div>
+</div>

@@ -1,0 +1,104 @@
+<div class="row">
+  <div class="col-xl-8">
+    <%= render Admin::Forms::SimpleFormComponent.new(
+              title: title,
+              resource: resource,
+              alerts: flash[:errors],
+              fields: [
+                  Admin::Forms::Fields::SelectComponent.new(
+                    :admin_user_id,
+                    label: t('admin.page.parties.form.admin_user_id.label'),
+                    values: AdminUser.all.map{ |u| [u.username, u.id] },
+                    include_blank: true,
+                    placeholder: t('admin.page.parties.form.admin_user_id.placeholder')
+                  ),
+                  Admin::Forms::Fields::SelectComponent.new(
+                    :case_id,
+                    label: t('admin.page.parties.form.case_id.label'),
+                    values: Case.all.pluck(:name, :id),
+                    include_blank: true,
+                    placeholder: t('admin.page.parties.form.case_id.placeholder')
+                  ),
+                  Admin::Forms::Fields::TextComponent.new(
+                    :first_name,
+                    label: t('admin.page.parties.form.first_name.label'),
+                    placeholder: t('admin.page.parties.form.first_name.placeholder')
+                  ),
+                  Admin::Forms::Fields::TextComponent.new(
+                    :last_name,
+                    label: t('admin.page.parties.form.last_name.label'),
+                    placeholder: t('admin.page.parties.form.last_name.placeholder')
+                  ),
+                  Admin::Forms::Fields::TextComponent.new(
+                    :title,
+                    label: t('admin.page.parties.form.title.label'),
+                    placeholder: t('admin.page.parties.form.title.placeholder')
+                  ),
+                  Admin::Forms::Fields::TextComponent.new(
+                    :company,
+                    label: t('admin.page.parties.form.company.label'),
+                    placeholder: t('admin.page.parties.form.company.placeholder')
+                  ),
+                  Admin::Forms::Fields::TextComponent.new(
+                    :address,
+                    label: t('admin.page.parties.form.address.label'),
+                    placeholder: t('admin.page.parties.form.address.placeholder')
+                  ),
+                  Admin::Forms::Fields::AutosizeAreaComponent.new(
+                    :notes,
+                    label: t('admin.page.parties.form.notes.label'),
+                    placeholder: t('admin.page.parties.form.notes.placeholder')
+                  ),
+                  Admin::Forms::Fields::TextComponent.new(
+                    :email,
+                    label: t('admin.page.parties.form.email.label'),
+                    mask: 'email',
+                    placeholder: t('admin.page.parties.form.email.placeholder')
+                  ),
+                  Admin::Forms::Fields::TextComponent.new(
+                    :phone,
+                    label: t('admin.page.parties.form.phone.label'),
+                    mask: 'phone',
+                    placeholder: t('admin.page.parties.form.phone.placeholder')
+                  ),
+                  Admin::Forms::Fields::TextComponent.new(
+                    :street,
+                    label: t('admin.page.parties.form.street.label'),
+                    placeholder: t('admin.page.parties.form.street.placeholder')
+                  ),
+                  Admin::Forms::Fields::TextComponent.new(
+                    :city,
+                    label: t('admin.page.parties.form.city.label'),
+                    placeholder: t('admin.page.parties.form.city.placeholder')
+                  ),
+                  Admin::Forms::Fields::TextComponent.new(
+                    :state,
+                    label: t('admin.page.parties.form.state.label'),
+                    placeholder: t('admin.page.parties.form.state.placeholder')
+                  ),
+                  Admin::Forms::Fields::TextComponent.new(
+                    :zip_code,
+                    label: t('admin.page.parties.form.zip_code.label'),
+                    placeholder: t('admin.page.parties.form.zip_code.placeholder')
+                  ),
+                  Admin::Forms::Fields::TextComponent.new(
+                    :country,
+                    label: t('admin.page.parties.form.country.label'),
+                    placeholder: t('admin.page.parties.form.country.placeholder')
+                  ),
+                  Admin::Forms::Fields::TagifyComponent.new(
+                    :tags,
+                    label: t('admin.page.parties.form.tags.label'),
+                    placeholder: t('admin.page.parties.form.tags.placeholder')
+                  ),
+              ],
+              actions: [
+                Admin::Forms::Actions::ReturnButtonComponent.new(url: admin_parties_path),
+                Admin::Forms::Actions::CancelButtonComponent.new,
+                Admin::Forms::Actions::SaveButtonComponent.new
+              ]) %>
+  </div>
+  <div class="col-4">
+
+  </div>
+</div>

@@ -1,0 +1,16 @@
+<div class="kt-grid__item kt-grid__item--fluid kt-portlet toolbar">
+  <div class="kt-portlet__body kt-portlet__body--fit kt-padding-20">
+    <% if query %>
+      <div class="row">
+        <%= render query %>
+      </div>
+    <% end %>
+    <% if filters.present? %>
+      <div class="row kt-margin-t-10">
+        <% filters.each do |filter| %>
+          <%= render filter %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

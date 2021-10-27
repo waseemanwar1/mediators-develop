@@ -1,0 +1,38 @@
+.table {
+  display: table;
+  box-sizing: border-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border-radius: 4px;
+
+  .sort_icon {
+    left: 0px;
+    color: #5d78ff;
+    font-size: 0.6rem;
+    width: 124px;
+    vertical-align: middle;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    // padding: 16px 10px;
+    box-sizing: border-box;
+    cursor: pointer;
+    font-weight: bold;
+  }
+
+  .sortable-field {
+    padding: 16px 10px;
+    text-align: left;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  .sorted-field {
+    color: #5d78ff;
+    display: table;
+    box-sizing: border-box;
+    text-overflow: ellipsis;
+    font-weight: 500;
+    vertical-align: middle;
+
+  }
+}

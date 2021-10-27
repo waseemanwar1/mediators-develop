@@ -1,0 +1,19 @@
+<div class="form-group <%= "row" if horizontal %>">
+  <label for="example-text-input" class="<%= "col-xl-3" if horizontal %> col-form-label"><%= label %></label>
+  <div class="<%= "col-xl-9" if horizontal %>">
+    <div class="kt-avatar kt-avatar--circle" data-controller="admin--avatar">
+      <% if form.object.send(field).attached? %>
+        <div class="kt-avatar__holder" style="background-image: url(<%= rails_blob_url(form.object.send(field)) %>)"></div>
+      <% else %>
+        <div class="kt-avatar__holder" style="background-image: url(<%= asset_pack_path("media/images/admin/default.jpg") %>)"></div>
+      <% end %>
+      <label class="kt-avatar__upload" data-toggle="kt-tooltip" title="<%= t('admin.component.forms.fields.avatar.change') %>">
+        <i class="fa fa-pen"></i>
+        <%= form.file_field field, accept: '.png, .jpg, .jpeg' %>
+      </label>
+      <span class="kt-avatar__cancel" data-toggle="kt-tooltip" title="<%= t('admin.component.forms.fields.avatar.cancel') %>">
+        <i class="fa fa-times"></i>
+      </span>
+    </div>
+  </div>
+</div>

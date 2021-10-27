@@ -1,0 +1,42 @@
+<div class="row">
+  <div class="col-xl-12">
+    <%= render Admin::Forms::SimpleFormComponent.new(
+              title: title,
+              resource: resource,
+              alerts: flash[:errors],
+              fields: [
+                  Admin::Forms::Fields::CheckboxComponent.new(
+                    :public,
+                    horizontal: false,
+                    label: t('admin.page.agreement_templates.form.public.label'),
+                  ),
+                  Admin::Forms::Fields::TextComponent.new(
+                    :name,
+                    label: t('admin.page.agreement_templates.form.name.label'),
+                    horizontal: false,
+                    placeholder: t('admin.page.agreement_templates.form.name.placeholder')
+                  ),
+                  Admin::Forms::Fields::QuillComponent.new(
+                    :content,
+                    label: t('admin.page.agreement_templates.form.content.label'),
+                    horizontal: false,
+                    help: "Available keys are:
+                            <br> %{username} - Mediator name,
+                            <br> %{hourly_rate} - Mediator hourly rate,
+                            <br> %{day} - Day when agreement will create,
+                            <br> %{month} - Month when agreement will create,
+                            <br> %{year} - Year when agreement will create,
+                            <br> %{party1_username} - First Party Username,
+                            <br> %{party2_username} - Second Party Username,
+                            <br> %{date} - Date when agreement will create,
+                            <br> %{agreements} - Numbered list of issue agreements",
+                    placeholder: t('admin.page.agreement_templates.form.content.placeholder')
+                  ),
+              ],
+              actions: [
+                Admin::Forms::Actions::ReturnButtonComponent.new(url: admin_agreement_templates_path),
+                Admin::Forms::Actions::CancelButtonComponent.new,
+                Admin::Forms::Actions::SaveButtonComponent.new
+              ]) %>
+  </div>
+</div>

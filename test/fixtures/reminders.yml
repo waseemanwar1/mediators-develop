@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  admin_user: 
+  case: 
+  party: 
+  name: 
+  description: 
+  priority: 
+  due_date: 
+  contact: 
+  status: 
+
+two:
+  admin_user: 
+  case: 
+  party: 
+  name: 
+  description: 
+  priority: 
+  due_date: 
+  contact: 
+  status: 

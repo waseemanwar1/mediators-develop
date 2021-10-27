@@ -1,0 +1,55 @@
+<%= render Admin::Pages::DevisePageComponent.new(
+            header_link: {
+              text: t('admin.page.sign_up.sign_in_link'),
+              path: new_session_path(resource_name)
+            }) do %>
+
+  <!--begin::Wrapper-->
+  <div class="kt-login-v2__wrapper">
+    <div class="kt-login-v2__container">
+      <div class="kt-login-v2__title">
+        <h3><%= t('admin.page.sign_up.form_label') %></h3>
+      </div>
+
+      <div class="mx-5">
+        <%= render "admin_users/shared/error_messages", resource: resource %>
+      </div>
+
+      <!--begin::Form-->
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: 'kt-login-v2__form kt-form' } ) do |f| %>
+        <div class="form-group">
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control', placeholder: t('admin.page.sign_up.email.placeholder') %>
+        </div>
+        <div class="form-group">
+          <%= f.password_field :password, autocomplete: "current-password", class: 'form-control', placeholder: t('admin.page.sign_up.password.placeholder') %>
+          <% if @minimum_password_length %>
+            <span class="form-text text-muted"><%= t('admin.page.sign_up.password.help') %></span>
+          <% end %>
+        </div>
+        <div class="form-group">
+          <%= f.password_field :password_confirmation, autocomplete: "current-password", class: 'form-control', placeholder: t('admin.page.sign_up.password_confirmation.placeholder') %>
+        </div>
+
+        <!--begin::Action-->
+        <div class="kt-login-v2__actions">
+          <%= f.submit t('admin.page.sign_up.sign_up_button'), class: 'btn btn-brand btn-elevate btn-pill ml-auto' %>
+        </div>
+
+        <!--end::Action-->
+      <% end %>
+
+      <!--end::Form-->
+
+    </div>
+  </div>
+
+  <!--end::Wrapper-->
+
+  <!--begin::Image-->
+  <div class="kt-login-v2__image">
+    <%= image_pack_tag 'admin/signin-background.svg', alt: 'Background' %>
+  </div>
+
+  <!--begin::Image-->
+
+<% end %>

@@ -1,0 +1,55 @@
+<%= render Admin::Pages::AdminPageComponent.new do %>
+
+  <div class="kt-grid kt-grid--desktop kt-grid--ver kt-grid--ver-desktop kt-app">
+
+    <%= render Admin::Asides::AsideComponent.new(
+                items: [
+                  Admin::Asides::Items::LinkComponent.new(
+                    url: my_admin_profile_path,
+                    icon: "flaticon2-calendar-3",
+                    text: t('admin.component.app_asides.profile_aside.profile'),
+                    active: true),
+                  Admin::Asides::Items::LinkComponent.new(
+                    url: edit_admin_user_registration_path,
+                    icon: "flaticon2-lock",
+                    text: t('admin.component.app_asides.profile_aside.change_password')),
+                  Admin::Asides::Items::LinkComponent.new(
+                    url: settings_admin_profile_path,
+                    icon: "flaticon2-gear",
+                    text: t('admin.component.app_asides.profile_aside.settings'))
+                ]) %>
+
+    <!--Begin:: App Content-->
+    <div class="kt-grid__item kt-grid__item--fluid kt-app__content">
+      <%= render Admin::Forms::SimpleFormComponent.new(
+                  url: admin_profile_path,
+                  title: t('admin.page.profile_edit.title'),
+                  resource: @user,
+                  alerts: flash[:errors],
+                  fields: [
+                    Admin::Forms::Fields::AvatarComponent.new(
+                      :avatar,
+                      label: t('admin.page.admin_users.form.avatar.label')
+                    ),
+                    Admin::Forms::Fields::EmailComponent.new(
+                      :email,
+                      label: t('admin.page.profile_edit.email.label'),
+                      placeholder: t('admin.page.profile_edit.email.placeholder')),
+                    Admin::Forms::Fields::TextComponent.new(
+                      :first_name,
+                      label: t('admin.page.admin_users.form.first_name.label'),
+                      placeholder: t('admin.page.admin_users.form.first_name.placeholder')),
+                    Admin::Forms::Fields::TextComponent.new(
+                      :last_name,
+                      label: t('admin.page.admin_users.form.last_name.label'),
+                      placeholder: t('admin.page.admin_users.form.last_name.placeholder')),
+                  ],
+                  actions: [
+                    Admin::Forms::Actions::CancelButtonComponent.new,
+                    Admin::Forms::Actions::SaveButtonComponent.new
+                  ]) %>
+    </div>
+    <!--End:: App Content-->
+
+  </div>
+<% end %>

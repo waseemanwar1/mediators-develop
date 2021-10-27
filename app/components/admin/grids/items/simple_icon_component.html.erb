@@ -1,0 +1,27 @@
+<div class="col-xl-4 col-lg-6">
+  <div class="kt-portlet kt-portlet--height-fluid">
+    <div class="kt-portlet__body">
+      <div class="kt-widget kt-widget--general-1">
+        <div class="kt-media kt-media--lg kt-media--circle">
+          <% if resource.send(icon).attached? %>
+            <%= image_tag resource.send(icon) %>
+          <% else %>
+            <%= image_tag asset_pack_path("media/images/admin/default.jpg") %>
+          <% end %>
+				</div>
+        <div class="kt-widget__wrapper">
+          <div class="kt-widget__label">
+            <span class="kt-widget__title">
+              <%= resource.to_s %>
+            </span>
+          </div>
+          <div class="kt-widget__toolbar">
+            <% actions.each do |action| %>
+              <%= render action %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

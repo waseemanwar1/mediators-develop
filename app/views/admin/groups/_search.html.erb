@@ -1,0 +1,8 @@
+<% items.each do |item| %>
+  <%= render Admin::Grids::Items::SimpleComponent.new(
+              resource: item,
+              actions: [
+                Admin::Grids::Actions::EditComponent.new(url: edit_admin_group_path(item)),
+                Admin::Grids::Actions::DestroyComponent.new(url: admin_group_path(item))
+              ]) %>
+<% end %>

@@ -1,0 +1,90 @@
+<!-- begin:: Page -->
+<div class="kt-grid kt-grid--ver kt-grid--root">
+  <div class="kt-grid__item   kt-grid__item--fluid kt-grid  kt-grid kt-grid--hor kt-login-v2" id="kt_login_v2">
+
+    <!--begin::Item-->
+    <div class="kt-grid__item  kt-grid--hor">
+
+      <!--begin::Head-->
+      <div class="kt-login-v2__head">
+        <div class="kt-login-v2__logo">
+          <a href="#">
+            <%= image_pack_tag 'admin/logo-dark.png', alt: 'Logo' %>
+          </a>
+        </div>
+        <div class="kt-login-v2__signup">
+          <%= link_to head_link[:text], head_link[:path], class: 'kt-link kt-font-brand' rescue '' %>
+        </div>
+      </div>
+
+      <!--begin::Head-->
+    </div>
+    <!--end::Item-->
+
+    <!--begin::Item-->
+    <div class="kt-grid__item  kt-grid  kt-grid--ver  kt-grid__item--fluid">
+
+      <!--begin::Body-->
+      <div class="kt-login-v2__body">
+        <%= yield %>
+      </div>
+
+      <!--begin::Body-->
+    </div>
+
+    <!--end::Item-->
+
+
+    <!--begin::Item-->
+    <div class="kt-grid__item">
+      <div class="kt-login-v2__footer">
+        <div class="kt-login-v2__link">
+          <%= link_to t('admin.sign_in.support_link'), '#', class: 'kt-link kt-font-brand' %>
+        </div>
+        <div class="kt-login-v2__info">
+          <%= link_to t('admin.sign_in.footer_logo'), '#', class: 'kt-link' %>
+        </div>
+      </div>
+    </div>
+    <!--end::Item-->
+
+  </div>
+</div>
+
+<!-- end:: Page -->
+
+<!-- begin::Global Config(global config for global JS sciprts) -->
+<script>
+  var KTAppOptions = {
+    "colors": {
+      "state": {
+        "brand": "#5d78ff",
+        "metal": "#c4c5d6",
+        "light": "#ffffff",
+        "accent": "#00c5dc",
+        "primary": "#5867dd",
+        "success": "#34bfa3",
+        "info": "#36a3f7",
+        "warning": "#ffb822",
+        "danger": "#fd3995",
+        "focus": "#9816f4"
+      },
+      "base": {
+        "label": [
+          "#c5cbe3",
+          "#a1a8c3",
+          "#3d4465",
+          "#3e4466"
+        ],
+        "shape": [
+          "#f0f3ff",
+          "#d9dffa",
+          "#afb4d4",
+          "#646c9a"
+        ]
+      }
+    }
+  };
+</script>
+
+<!-- end::Global Config -->

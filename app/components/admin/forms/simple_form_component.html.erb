@@ -1,0 +1,22 @@
+<%= form_for [:admin, resource], options do |f| %>
+  <div class="kt-portlet" id="kt_page_portlet">
+    <div class="kt-portlet__head kt-portlet__head--lg">
+      <div class="kt-portlet__head-label">
+        <h3 class="kt-portlet__head-title"><%= title %><small><%= subtitle %></small></h3>
+      </div>
+      <div class="kt-portlet__head-toolbar">
+        <% actions.each do |action| %>
+          <%= render action %>
+        <% end %>
+      </div>
+    </div>
+    <div class="kt-portlet__body">
+      <%= render Admin::Forms::Alerts::AlertsListComponent.new(alerts: alerts, type: 'danger') %>
+
+      <% fields.each do |field| %>
+        <% field.form = f %>
+        <%= render field %>
+      <% end %>
+     </div>
+  </div>
+<% end %>

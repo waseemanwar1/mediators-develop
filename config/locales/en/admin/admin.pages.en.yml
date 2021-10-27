@@ -1,0 +1,602 @@
+en:
+  admin:
+    page:
+      # Pages start
+
+      # Sign In
+      sign_in:
+        sign_up_link: Sign Up
+        form_label: Sign to Admin
+        email:
+          placeholder: Email
+        password:
+          placeholder: Password
+        forgot_link: Forgot Password ?
+        sign_in_button: Sign In
+
+      # Sign Up
+      sign_up:
+        sign_in_link: Sign In
+        form_label: Sign Up for Admin
+        email:
+          placeholder: Email
+        password:
+          placeholder: Password
+          help: 6 characters minimum
+        password_confirmation:
+          placeholder: Password confirmation
+        sign_up_button: Sign Up
+
+      # Forgot
+      forgot:
+        sign_in_link: Sign In
+        form_label: Forgot your password ?
+        email:
+          placeholder: Email
+        forgot_button: Send instructions
+
+      # Reset password
+      reset_password:
+        sign_in_link: Sign In
+        form_label: Change your password
+        password:
+          placeholder: New Password
+          help: 6 characters minimum
+        password_confirmation:
+          placeholder: New Password confirmation
+        reset_password_button: Change password
+
+      # Change password
+      change_password:
+        title: Change password
+        subtitle: here you can change your password
+        current_password:
+          label: Current Password
+        new_password:
+          label: New Password
+        verify_password:
+          label: Verify Password
+        change: Change Password
+        cancel: Cancel
+
+      # Profile edit
+      profile_edit:
+        title: My Profile
+        subtitle: here you can change your data
+        profile_subtitle: Your data
+        email:
+          label: Email
+          placeholder: your-email@example.com
+        submit: Submit
+        cancel: Cancel
+
+      # Settings
+      settings:
+        title: Settings
+        subtitle: here you can set up your accout
+        destroy_account: Deactivate your account?
+        destroy_confirm: Do you really want to delete your account?
+
+      # Permissions
+      permissions:
+        admin_users: Admin Users
+        groups: Groups
+        perms: Permissions
+
+      # Groups
+      groups:
+        form:
+          name:
+            label: Name
+            placeholder: Enter Group Name
+        new:
+          title: Create Group
+        edit:
+          title: Edit Group
+
+      # Admin Users
+      admin_users:
+        form:
+          active:
+            label: Active
+          avatar:
+            label: Avatar
+          email:
+            label: Email
+            placeholder: i.e., admin@example.com
+          first_name:
+            label: First Name
+            placeholder: i.e., John
+          last_name:
+            label: Last Name
+            placeholder: i.e., Doe
+          password:
+            label: Password
+          password_confirmation:
+            label: Password Confirmation
+          hourly_rate:
+            label: Hourly Rate
+            placeholder: Enter the Hourly Rate
+          company_name:
+            label: Company Name
+            placeholder: Enter the Company Name
+          phone:
+            label: Phone
+            placeholder: Enter the Phone
+          company_website:
+            label: Company Website
+            placeholder: Enter the Company Website
+          address_line_1:
+            label: Address Line 1
+            placeholder: Enter the Address Line 1
+          address_line_2:
+            label: Address Line 2
+            placeholder: Enter the Address Line 2
+          postcode:
+            label: Postcode
+            placeholder: Enter the Postcode
+          city:
+            label: City
+            placeholder: Enter the City
+          state:
+            label: State
+            placeholder: Enter the State
+          country:
+            label: Country
+            placeholder: Enter the Country
+          billing_address_line_1:
+            label: Billing Address Line 1
+            placeholder: Enter the Billing Address Line 1
+          billing_address_line_2:
+            label: Billing Address Line 2
+            placeholder: Enter the Billing Address Line 2
+          billing_postcode:
+            label: Billing Postcode
+            placeholder: Enter the Billing Postcode
+          billing_city:
+            label: Billing City
+            placeholder: Enter the Billing City
+          billing_state:
+            label: Billing State
+            placeholder: Enter the Billing State
+          billing_country:
+            label: Billing Country
+            placeholder: Enter the Billing Country
+          stripe_customer_id:
+            label: Stripe Cutomer ID
+            placeholder: Enter the Stripe Cutomer ID
+          subscription_paid:
+            label: Subscription Paid
+          stripe_product_id:
+            label: Stripe Product ID
+            placeholder: Enter the Stripe Product ID
+          stripe_subscription_id:
+            label: Stripe Subscription ID
+            placeholder: Enter the Stripe Subscription ID
+          stripe_connected_account_id:
+            label: Stripe Connected Account ID
+            placeholder: Enter the Stripe Connected Account ID
+        new:
+          title: Create Admin User
+        edit:
+          title: Edit Admin User
+
+      # Mediators
+      mediators:
+        new:
+          title: Create Mediator
+        edit:
+          title: Edit Mediator
+
+      # Cases
+      cases:
+        form:
+          admin_user_id:
+            label: Admin User
+            placeholder: Enter the Case Admin User
+          program:
+            label: Program
+            placeholder: Enter the Case Program
+          name:
+            label: Name
+            placeholder: Enter the Case Name
+          description:
+            label: Description
+            placeholder: Enter the Case Description
+          tags:
+            label: Tags
+            placeholder: Enter the Case Tags
+          status:
+            label: Status
+            placeholder: Enter the Case Status
+
+        new:
+          title: Create a Case
+        edit:
+          title: Edit the Case
+      # Parties
+      parties:
+        form:
+          admin_user_id:
+            label: Admin User
+            placeholder: Select the Party Admin User
+          case_id:
+            label: Case
+            placeholder: Select the Party Case
+          first_name:
+            label: First name
+            placeholder: Enter the Party First name
+          last_name:
+            label: Last name
+            placeholder: Enter the Party Last name
+          title:
+            label: Title
+            placeholder: Enter the Party Title
+          company:
+            label: Company
+            placeholder: Enter the Party Company
+          address:
+            label: Address
+            placeholder: Enter the Party Address
+          notes:
+            label: Notes
+            placeholder: Enter the Party Notes
+          email:
+            label: Email
+            placeholder: Enter the Party Email
+          phone:
+            label: Phone
+            placeholder: Enter the Party Phone
+          street:
+            label: Street
+            placeholder: Enter the Party Street
+          city:
+            label: City
+            placeholder: Enter the Party City
+          state:
+            label: State
+            placeholder: Enter the Party State
+          zip_code:
+            label: Zip code
+            placeholder: Enter the Party Zip code
+          country:
+            label: Country
+            placeholder: Enter the Party Country
+          tags:
+            label: Tags
+            placeholder: Enter the Party Tags
+
+        new:
+          title: Create a Party
+        edit:
+          title: Edit the Party
+      # Sessions
+      sessions:
+        form:
+          admin_user_id:
+            label: Admin User
+            placeholder: Select the Session Admin User
+          case_id:
+            label: Case
+            placeholder: Select the Session Case
+          party_id:
+            label: Party
+            placeholder: Select the Session Party
+          name:
+            label: Name
+            placeholder: Enter the Session Name
+          due_date:
+            label: Due Date
+            placeholder: Enter the Session Due Date
+          time_start:
+            label: Time Start
+            placeholder: Enter the Session Time Start
+          time_finish:
+            label: Time Finish
+            placeholder: Enter the Session Time Finish
+          session_type:
+            label: Session Type
+            placeholder: Enter the Session Session Type
+          location:
+            label: Location
+            placeholder: Enter the Session Location
+          tags:
+            label: Tags
+            placeholder: Enter the Session Tags
+          rate_type:
+            label: Rate Type
+            placeholder: Enter the Session Rate Type
+          rate:
+            label: Rate
+            placeholder: Enter the Session Rate
+
+        new:
+          title: Create a Session
+        edit:
+          title: Edit the Session
+      # Messages
+      messages:
+        form:
+          admin_user_id:
+            label: Admin User
+            placeholder: Enter the Message Admin User
+          case_id:
+            label: Case
+            placeholder: Enter the Message Case
+          party_id:
+            label: Party
+            placeholder: Enter the Message Party
+          subject:
+            label: Subject
+            placeholder: Enter the Message Subject
+          sent_at:
+            label: Sent At
+            placeholder: Enter the Message Sent At
+          content:
+            label: Content
+            placeholder: Enter the Message Content
+          from:
+            label: From
+            placeholder: Enter the Message From
+          to:
+            label: To
+            placeholder: Enter the Message To
+          read:
+            label: Read
+
+        new:
+          title: Create a Message
+        edit:
+          title: Edit the Message
+      # Documents
+      documents:
+        form:
+          admin_user_id:
+            label: Admin User
+            placeholder: Enter the Document Admin User
+          case_id:
+            label: Case
+            placeholder: Enter the Document Case
+          file_name:
+            label: File Name
+            placeholder: Enter the Document File Name
+          description:
+            label: Description
+            placeholder: Enter the Document Description
+          date:
+            label: Date
+            placeholder: Enter the Document Date
+          author:
+            label: Author
+            placeholder: Enter the Document Author
+          file:
+            label: File
+            placeholder: Attach the File
+
+        new:
+          title: Create a Document
+        edit:
+          title: Edit the Document
+      # Reminders
+      reminders:
+        form:
+          admin_user_id:
+            label: Admin User
+            placeholder: Enter the Reminder Admin User
+          case_id:
+            label: Case
+            placeholder: Enter the Reminder Case
+          party_id:
+            label: Party
+            placeholder: Enter the Reminder Party
+          name:
+            label: Name
+            placeholder: Enter the Reminder Name
+          description:
+            label: Description
+            placeholder: Enter the Reminder Description
+          priority:
+            label: Priority
+            placeholder: Enter the Reminder Priority
+          due_date:
+            label: Due date
+            placeholder: Enter the Reminder Due date
+          contact_id:
+            label: Contact
+            placeholder: Enter the Reminder Contact
+          status:
+            label: Status
+            placeholder: Enter the Reminder Status
+
+        new:
+          title: Create a Reminder
+        edit:
+          title: Edit the Reminder
+      # Contacts
+      contacts:
+        form:
+          admin_user_id:
+            label: Admin User
+            placeholder: Enter the Contact Admin User
+          case_id:
+            label: Case
+            placeholder: Enter the Contact Case
+          party_id:
+            label: Party
+            placeholder: Enter the Contact Party
+          first_name:
+            label: First Name
+            placeholder: Enter the Contact First Name
+          last_name:
+            label: Last Name
+            placeholder: Enter the Contact Last Name
+          contact_type:
+            label: Contact Type
+            placeholder: Enter the Contact Contact Type
+          email:
+            label: Email
+            placeholder: Enter the Contact Email
+          title:
+            label: Title
+            placeholder: Enter the Contact Title
+          company:
+            label: Company
+            placeholder: Enter the Contact Company
+          phone:
+            label: Phone
+            placeholder: Enter the Contact Phone
+          address:
+            label: Address
+            placeholder: Enter the Contact Address
+          notes:
+            label: Notes
+            placeholder: Enter the Contact Notes
+          street:
+            label: Street
+            placeholder: Enter the Contact Street
+          city:
+            label: City
+            placeholder: Enter the Contact City
+          state:
+            label: State
+            placeholder: Enter the Contact State
+          zip_code:
+            label: Zip Code
+            placeholder: Enter the Contact Zip Code
+          country:
+            label: Country
+            placeholder: Enter the Contact Country
+          tags:
+            label: Tags
+            placeholder: Enter the Contact Tags
+
+        new:
+          title: Create a Contact
+        edit:
+          title: Edit the Contact
+      # Invoices
+      invoices:
+        form:
+          admin_user_id:
+            label: Admin User
+            placeholder: Enter the Invoice Admin User
+          case_id:
+            label: Case
+            placeholder: Enter the Invoice Case
+          party_id:
+            label: Party
+            placeholder: Enter the Invoice Party
+          name:
+            label: Name
+            placeholder: Enter the Invoice Name
+          time:
+            label: Time
+            placeholder: Enter the Invoice Time
+          amount:
+            label: Amount
+            placeholder: Enter the Invoice Amount
+          date:
+            label: Date
+            placeholder: Enter the Invoice Date
+          due_date:
+            label: Due Date
+            placeholder: Enter the Invoice Due Date
+          status:
+            label: Status
+            placeholder: Enter the Invoice Status
+          stripe_payment_intent_id:
+            label: Stripe Payment Intent Id
+            placeholder: Enter the Stripe Payment Intent Id
+          stripe_client_secret:
+            label: Stripe Client Secret
+            placeholder: Enter the Stripe Client Secret
+          description:
+            label: Description
+            placeholder: Invoice Description
+
+        new:
+          title: Create a Invoice
+        edit:
+          title: Edit the Invoice
+      # Issues
+      issues:
+        form:
+          admin_user_id:
+            label: Admin User
+            placeholder: Enter the Issue Admin User
+          case_id:
+            label: Case
+            placeholder: Enter the Issue Case
+          party_id:
+            label: Party
+            placeholder: Enter the Issue Party
+          title:
+            label: Title
+            placeholder: Enter the Issue Title
+          description:
+            label: Description
+            placeholder: Enter the Issue Description
+          resolution_title:
+            label: Resolution Title
+            placeholder: Enter the Issue Resolution Title
+          resolution_description:
+            label: Resolution Description
+            placeholder: Enter the Issue Resolution Description
+          mediators_notes_title:
+            label: Mediators Notes Title
+            placeholder: Enter the Issue Mediators Notes Title
+          mediators_notes_description:
+            label: Mediators Notes Description
+            placeholder: Enter the Issue Mediators Notes Description
+          agreement:
+            label: Agreement
+            placeholder: Enter the Issue Agreement
+
+        new:
+          title: Create a Issue
+        edit:
+          title: Edit the Issue
+      # Agreements
+      agreements:
+        form:
+          admin_user_id:
+            label: Admin User
+            placeholder: Enter the Agreement Admin User
+          case_id:
+            label: Case
+            placeholder: Enter the Agreement Case
+          agreement_template_id:
+            label: Agreement Template
+            placeholder: Enter the Agreement Agreement Template
+          name:
+            label: Name
+            placeholder: Enter the Agreement Name
+          content:
+            label: Content
+            placeholder: Enter the Agreement Content
+          file:
+            label: PDF File
+            placeholder: Enter the Agreement File
+
+        new:
+          title: Create a Agreement
+        edit:
+          title: Edit the Agreement
+      # Agreement Templates
+      agreement_templates:
+        form:
+          name:
+            label: Name
+            placeholder: Enter the Agreement Template Name
+          content:
+            label: Content
+            placeholder: Enter the Agreement Template Content
+          public:
+            label: Public
+            placeholder: Enter the Agreement Template Public
+
+        new:
+          title: Create a Agreement Template
+        edit:
+          title: Edit the Agreement Template
+      # Pages end

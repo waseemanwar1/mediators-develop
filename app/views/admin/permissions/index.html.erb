@@ -1,0 +1,31 @@
+<%= render Admin::Pages::AdminPageComponent.new do %>
+  <div class="row permissions-page" data-controller="admin--permissions-page" data-references-url="<%= get_references_admin_permissions_path %>">
+
+  	<div class="col-lg-4">
+      <%= render Admin::Lists::SearchableListComponent.new(
+                  title: t('admin.page.permissions.admin_users'),
+                  url: search_admin_users_admin_permissions_path,
+                  actions: [
+                    name: t('admin.component.actions.manage'),
+                    url: admin_admin_users_path
+                  ]) %>
+  	</div>
+
+    <div class="col-lg-4">
+      <%= render Admin::Lists::SearchableListComponent.new(
+                  title: t('admin.page.permissions.groups'),
+                  url: search_groups_admin_permissions_path,
+                  actions: [
+                    name: t('admin.component.actions.manage'),
+                    url: admin_groups_path
+                  ]) %>
+  	</div>
+
+    <div class="col-lg-4">
+      <%= render Admin::Lists::SearchableListComponent.new(
+                  title: t('admin.page.permissions.perms'),
+                  url: search_permissions_admin_permissions_path) %>
+  	</div>
+
+  </div>
+<% end %>

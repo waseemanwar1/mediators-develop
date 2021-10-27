@@ -1,0 +1,23 @@
+<%= render Admin::Pages::AdminPageComponent.new(
+            breadcrumbs: Admin::Pages::Breadcrumbs::BreadcrumbComponent.new(),
+            actions: [
+              Admin::Pages::Subheaders::Actions::CreateButtonComponent.new(url: new_admin_contact_path)
+            ]) do %>
+
+  <%= render Admin::Catalogs::CatalogComponent.new(
+              url: search_admin_contacts_path,
+              toolbar: Admin::Toolbars::ToolbarComponent.new(
+                query: Admin::Toolbars::Tools::QueryComponent.new
+              ),
+              container: Admin::Tables::SimpleTableComponent.new( headers: [
+                  [:sid, "ID", :sortable],
+                  [:admin_user_name, "Admin User"],
+                  [:first_name, "First Name", :sortable],
+                  [:last_name, "Last Name", :sortable],
+                  [:contact_type, "Contact Type", :sortable],
+                  [:tags, "Tags", :sortable],
+                ]
+              ),
+              pagination: Admin::Paginations::PaginationComponent.new) %>
+
+<% end %>

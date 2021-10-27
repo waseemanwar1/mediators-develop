@@ -1,0 +1,16 @@
+<div class="toolbar-search col-12">
+  <div class="input-group">
+    <%= text_field_tag :query,
+                        nil,
+                        class: 'form-control',
+                        placeholder: t('admin.component.toolbars.tools.query.placeholder'),
+                        data: {
+                          action: "keyup->admin--catalog#search"
+                        } %>
+    <div class="input-group-append">
+      <span class="input-group-text">
+        <i class="flaticon2-magnifier-tool"></i>
+      </span>
+    </div>
+  </div>
+</div>

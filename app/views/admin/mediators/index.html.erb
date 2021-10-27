@@ -1,0 +1,21 @@
+<%= render Admin::Pages::AdminPageComponent.new(
+            breadcrumbs: Admin::Pages::Breadcrumbs::BreadcrumbComponent.new,
+            actions: [
+              Admin::Pages::Subheaders::Actions::CreateButtonComponent.new(url: new_admin_mediator_path)
+            ]) do %>
+
+  <%= render Admin::Catalogs::CatalogComponent.new(
+              url: search_admin_mediators_path,
+              toolbar: Admin::Toolbars::ToolbarComponent.new(query: Admin::Toolbars::Tools::QueryComponent.new),
+              container: Admin::Tables::SimpleTableComponent.new(
+                headers: [
+                  [:sid, "ID", :sortable],
+                  [:first_name, "First Name"],
+                  [:last_name, "Last Name"],
+                  [:plan, "Plan"],
+                  [:next_pay, "Next Pay Date"],
+                ]
+              ),
+              pagination: Admin::Paginations::PaginationComponent.new) %>
+
+<% end %>

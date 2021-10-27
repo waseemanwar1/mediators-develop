@@ -1,0 +1,6 @@
+<div class="form-group <%= "row" if horizontal %>" data-controller="admin--touchspin">
+  <label class="col-form-label <%= "col-xl-3" if horizontal %>"><%= label %></label>
+  <div class="<%= "col-xl-9" if horizontal %>">
+    <%= form.text_field field, options %>
+  </div>
+</div>

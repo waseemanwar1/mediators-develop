@@ -1,0 +1,14 @@
+<div class="kt-subheader   kt-grid__item" id="kt_subheader">
+	<div class="kt-container  kt-container--fluid ">
+
+		<%= render breadcrumbs %>
+
+		<div class="kt-subheader__toolbar">
+			<div class="kt-subheader__wrapper">
+				<% actions.each do |action| %>
+					<%= render action %>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>

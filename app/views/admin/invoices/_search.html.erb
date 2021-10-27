@@ -1,0 +1,17 @@
+<% items.each do |item| %>
+  <%= render Admin::Tables::Items::SimpleRowComponent.new(
+              resource: item,
+              fields: [
+                Admin::Tables::Fields::TextComponent.new(item.id),
+                Admin::Tables::Fields::TextComponent.new(item.admin_user),
+                Admin::Tables::Fields::TextComponent.new(Case.find(item.case_id)),
+                Admin::Tables::Fields::TextComponent.new(item.party),
+                Admin::Tables::Fields::TextComponent.new(item.name),
+                Admin::Tables::Fields::TextComponent.new(item.amount),
+                Admin::Tables::Fields::BadgeComponent.new(item.status, type: "secondary"),
+              ],
+              actions: [
+                Admin::Tables::Actions::IconButtonComponent.new(url: edit_admin_invoice_path(item), icon: 'la la-pencil'),
+                Admin::Tables::Actions::DestroyButtonComponent.new(url: admin_invoice_path(item))
+              ]) %>
+<% end %>

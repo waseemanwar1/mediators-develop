@@ -1,0 +1,12 @@
+<%= render Admin::Pages::AdminPageComponent.new(
+          breadcrumbs: Admin::Pages::Breadcrumbs::BreadcrumbComponent.new(
+            links: [
+              Admin::Pages::Breadcrumbs::Links::LinkComponent.new(
+                url: admin_parties_path,
+                text: t('admin.component.breadcrumbs.parties'))
+            ]
+          )) do %>
+
+  <%= render 'form', title: t('admin.page.parties.edit.title') %>
+
+<% end %>

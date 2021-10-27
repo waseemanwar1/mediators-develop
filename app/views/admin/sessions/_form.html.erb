@@ -1,0 +1,88 @@
+<div class="row">
+  <div class="col-xl-8">
+    <%= render Admin::Forms::SimpleFormComponent.new(
+              title: title,
+              resource: resource,
+              alerts: flash[:errors],
+              fields: [
+                  Admin::Forms::Fields::SelectComponent.new(
+                    :admin_user_id,
+                    label: t('admin.page.sessions.form.admin_user_id.label'),
+                    values: AdminUser.all.map{ |u| [u.username, u.id] },
+                    include_blank: true,
+                    placeholder: t('admin.page.sessions.form.admin_user_id.placeholder')
+                  ),
+                  Admin::Forms::Fields::SelectComponent.new(
+                    :case_id,
+                    label: t('admin.page.sessions.form.case_id.label'),
+                    values: Case.all.pluck(:name, :id),
+                    include_blank: true,
+                    placeholder: t('admin.page.sessions.form.case_id.placeholder')
+                  ),
+                  Admin::Forms::Fields::SelectComponent.new(
+                    :party_id,
+                    label: t('admin.page.sessions.form.party_id.label'),
+                    values: Party.all.map{ |u| [u.to_s, u.id] },
+                    include_blank: true,
+                    placeholder: t('admin.page.sessions.form.party_id.placeholder')
+                  ),
+                  Admin::Forms::Fields::TextComponent.new(
+                    :name,
+                    label: t('admin.page.sessions.form.name.label'),
+                    placeholder: t('admin.page.sessions.form.name.placeholder')
+                  ),
+                  Admin::Forms::Fields::DatepickerComponent.new(
+                    :due_date,
+                    label: t('admin.page.sessions.form.due_date.label'),
+                    placeholder: t('admin.page.sessions.form.due_date.placeholder')
+                  ),
+                  Admin::Forms::Fields::TimepickerComponent.new(
+                    :time_start,
+                    label: t('admin.page.sessions.form.time_start.label'),
+                    placeholder: t('admin.page.sessions.form.time_start.placeholder')
+                  ),
+                  Admin::Forms::Fields::TimepickerComponent.new(
+                    :time_finish,
+                    label: t('admin.page.sessions.form.time_finish.label'),
+                    placeholder: t('admin.page.sessions.form.time_finish.placeholder')
+                  ),
+                  Admin::Forms::Fields::SelectComponent.new(
+                    :session_type,
+                    label: t('admin.page.sessions.form.session_type.label'),
+                    values: Session.session_types.keys,
+                    include_blank: true,
+                    placeholder: t('admin.page.sessions.form.session_type.placeholder')
+                  ),
+                  Admin::Forms::Fields::TextComponent.new(
+                    :location,
+                    label: t('admin.page.sessions.form.location.label'),
+                    placeholder: t('admin.page.sessions.form.location.placeholder')
+                  ),
+                  Admin::Forms::Fields::TagifyComponent.new(
+                    :tags,
+                    label: t('admin.page.sessions.form.tags.label'),
+                    placeholder: t('admin.page.sessions.form.tags.placeholder')
+                  ),
+                  Admin::Forms::Fields::SelectComponent.new(
+                    :rate_type,
+                    label: t('admin.page.sessions.form.rate_type.label'),
+                    values: Session.rate_types.keys,
+                    include_blank: true,
+                    placeholder: t('admin.page.sessions.form.rate_type.placeholder')
+                  ),
+                  Admin::Forms::Fields::TextComponent.new(
+                    :rate,
+                    label: t('admin.page.sessions.form.rate.label'),
+                    placeholder: t('admin.page.sessions.form.rate.placeholder')
+                  ),
+              ],
+              actions: [
+                Admin::Forms::Actions::ReturnButtonComponent.new(url: admin_sessions_path),
+                Admin::Forms::Actions::CancelButtonComponent.new,
+                Admin::Forms::Actions::SaveButtonComponent.new
+              ]) %>
+  </div>
+  <div class="col-4">
+
+  </div>
+</div>

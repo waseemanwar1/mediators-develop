@@ -1,0 +1,11 @@
+<div class="form-group <%= "row" if horizontal %>">
+  <label class="<%= "col-xl-3" if horizontal %> col-form-label"><%= label %></label>
+  <div class="<%= "col-xl-9" if horizontal %>">
+    <span class="kt-switch kt-switch--icon">
+      <label>
+        <%= form.check_box field, options %>
+        <span></span>
+      </label>
+    </span>
+  </div>
+</div>

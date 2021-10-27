@@ -1,0 +1,68 @@
+<div class="row">
+  <div class="col-xl-8">
+    <%= render Admin::Forms::SimpleFormComponent.new(
+              title: title,
+              resource: resource,
+              alerts: flash[:errors],
+              fields: [
+                  Admin::Forms::Fields::SelectComponent.new(
+                    :admin_user_id,
+                    label: t('admin.page.messages.form.admin_user_id.label'),
+                    values: AdminUser.all.map{ |u| [u.username, u.id] },
+                    include_blank: true,
+                    placeholder: t('admin.page.messages.form.admin_user_id.placeholder')
+                  ),
+                  Admin::Forms::Fields::SelectComponent.new(
+                    :case_id,
+                    label: t('admin.page.messages.form.case_id.label'),
+                    values: Case.all.pluck(:name, :id),
+                    include_blank: true,
+                    placeholder: t('admin.page.messages.form.case_id.placeholder')
+                  ),
+                  Admin::Forms::Fields::SelectComponent.new(
+                    :party_id,
+                    label: t('admin.page.messages.form.party_id.label'),
+                    values: Party.all.map{ |u| [u.to_s, u.id] },
+                    include_blank: true,
+                    placeholder: t('admin.page.messages.form.party_id.placeholder')
+                  ),
+                  Admin::Forms::Fields::TextComponent.new(
+                    :subject,
+                    label: t('admin.page.messages.form.subject.label'),
+                    placeholder: t('admin.page.messages.form.subject.placeholder')
+                  ),
+                  Admin::Forms::Fields::DatepickerComponent.new(
+                    :sent_at,
+                    label: t('admin.page.messages.form.sent_at.label'),
+                    placeholder: t('admin.page.messages.form.sent_at.placeholder')
+                  ),
+                  Admin::Forms::Fields::QuillComponent.new(
+                    :content,
+                    label: t('admin.page.messages.form.content.label'),
+                    placeholder: t('admin.page.messages.form.content.placeholder')
+                  ),
+                  Admin::Forms::Fields::TextComponent.new(
+                    :from,
+                    label: t('admin.page.messages.form.from.label'),
+                    placeholder: t('admin.page.messages.form.from.placeholder')
+                  ),
+                  Admin::Forms::Fields::TextComponent.new(
+                    :to,
+                    label: t('admin.page.messages.form.to.label'),
+                    placeholder: t('admin.page.messages.form.to.placeholder')
+                  ),
+                  Admin::Forms::Fields::CheckboxComponent.new(
+                    :read,
+                    label: t('admin.page.admin_users.form.read.label')
+                  ),
+              ],
+              actions: [
+                Admin::Forms::Actions::ReturnButtonComponent.new(url: admin_messages_path),
+                Admin::Forms::Actions::CancelButtonComponent.new,
+                Admin::Forms::Actions::SaveButtonComponent.new
+              ]) %>
+  </div>
+  <div class="col-4">
+
+  </div>
+</div>

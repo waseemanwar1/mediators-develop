@@ -1,0 +1,12 @@
+<%= render Admin::Pages::AdminPageComponent.new(
+          breadcrumbs: Admin::Pages::Breadcrumbs::BreadcrumbComponent.new(
+            links: [
+              Admin::Pages::Breadcrumbs::Links::LinkComponent.new(
+                url: admin_messages_path,
+                text: t('admin.component.breadcrumbs.messages'))
+            ]
+          )) do %>
+
+  <%= render 'form', title: t('admin.page.messages.new.title') %>
+
+<% end %>

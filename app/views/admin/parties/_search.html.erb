@@ -1,0 +1,18 @@
+<% items.each do |item| %>
+  <%= render Admin::Tables::Items::SimpleRowComponent.new(
+              resource: item,
+              fields: [
+                Admin::Tables::Fields::TextComponent.new(item.id),
+                Admin::Tables::Fields::TextComponent.new(item.admin_user),
+                Admin::Tables::Fields::TextComponent.new(Case.find(item.case_id)),
+                Admin::Tables::Fields::TextComponent.new(item.first_name),
+                Admin::Tables::Fields::TextComponent.new(item.last_name),
+                Admin::Tables::Fields::TextComponent.new(item.email),
+                Admin::Tables::Fields::TextComponent.new(item.phone),
+                Admin::Tables::Fields::TagsComponent.new(item.tags),
+              ],
+              actions: [
+                Admin::Tables::Actions::IconButtonComponent.new(url: edit_admin_party_path(item), icon: 'la la-pencil'),
+                Admin::Tables::Actions::DestroyButtonComponent.new(url: admin_party_path(item))
+              ]) %>
+<% end %>

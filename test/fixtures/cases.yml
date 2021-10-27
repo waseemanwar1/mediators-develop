@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  admin_user: 
+  program: 
+  name: 
+  description: 
+  tags: 
+  status: 
+
+two:
+  admin_user: 
+  program: 
+  name: 
+  description: 
+  tags: 
+  status: 

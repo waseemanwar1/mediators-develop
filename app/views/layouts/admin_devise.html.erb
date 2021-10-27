@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Equisettle</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_pack_tag 'admin', media: 'all', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body class="kt-login-v2--enabled kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-header--fixed kt-header-mobile--fixed kt-subheader--enabled kt-subheader--transparent kt-aside--enabled kt-aside--fixed kt-page--loading">
+
+    <div class="alert-system-container">
+      <%= render Admin::Pages::Alerts::AlertComponent.new alert: notice, type: 'success' %>
+    </div>
+
+    <%= yield %>
+    <%= javascript_pack_tag 'admin', 'data-turbolinks-track': 'reload' %>
+
+  </body>
+</html>

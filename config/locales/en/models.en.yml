@@ -1,0 +1,22 @@
+en:
+  group: Group
+  admin_user: Admin User
+  case: Case
+  party: Party
+  session: Session
+  message: Message
+  document: Document
+  reminder: Reminder
+  contact: Contact
+  invoice: Invoice
+  issue: Issue
+  agreement: Agreement
+  agreement_template: Agreement Template
+
+  activerecord:
+    attributes:
+      admin_user:
+        email: Email
+        password: Password
+        password_confirmation: Password Confirmation
+        current_password: Current Password

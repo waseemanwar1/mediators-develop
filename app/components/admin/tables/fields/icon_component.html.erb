@@ -1,0 +1,13 @@
+<td data-field="employee_id" class="kt-datatable__cell">
+  <span style="width: 124px;">
+    <div class="kt-user-card-v2">
+      <div class="kt-user-card-v2__pic">
+        <% if resource.send(icon).attached? %>
+          <%= image_tag resource.send(icon) %>
+        <% else %>
+          <%= image_tag asset_pack_path("media/images/admin/default.jpg") %>
+        <% end %>
+      </div>
+    </div>
+  </span>
+</td>

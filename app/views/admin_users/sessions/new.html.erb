@@ -1,0 +1,50 @@
+<%= render Admin::Pages::DevisePageComponent.new(
+            header_link: {
+              text: t('admin.page.sign_in.sign_up_link'),
+              path: new_registration_path(resource_name)
+            }) do %>
+
+  <!--begin::Wrapper-->
+  <div class="kt-login-v2__wrapper">
+    <div class="kt-login-v2__container">
+      <div class="kt-login-v2__title">
+        <h3><%= t('admin.page.sign_in.form_label') %></h3>
+      </div>
+
+        <div class="mx-5">
+          <%= render Admin::Forms::Alerts::AlertComponent.new(alert: flash.to_a[0][1], type: 'danger') if flash.present? %>
+        </div>
+
+      <!--begin::Form-->
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'kt-login-v2__form kt-form' } ) do |f| %>
+        <div class="form-group">
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control', placeholder: t('admin.page.sign_in.email.placeholder') %>
+        </div>
+        <div class="form-group">
+          <%= f.password_field :password, autocomplete: "current-password", class: 'form-control', placeholder: t('admin.page.sign_in.password.placeholder') %>
+        </div>
+
+        <!--begin::Action-->
+        <div class="kt-login-v2__actions">
+          <%= link_to t('admin.page.sign_in.forgot_link'), new_admin_user_password_path, class: 'kt-link kt-link--brand' %>
+          <%= f.submit t('admin.page.sign_in.sign_in_button'), class: 'btn btn-brand btn-elevate btn-pill' %>
+        </div>
+
+        <!--end::Action-->
+      <% end %>
+
+      <!--end::Form-->
+
+    </div>
+  </div>
+
+  <!--end::Wrapper-->
+
+  <!--begin::Image-->
+  <div class="kt-login-v2__image">
+    <%= image_pack_tag 'admin/signin-background.svg', alt: 'Background' %>
+  </div>
+
+  <!--begin::Image-->
+
+<% end %>

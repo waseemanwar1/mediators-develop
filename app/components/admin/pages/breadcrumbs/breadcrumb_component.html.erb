@@ -1,0 +1,14 @@
+<div class="kt-subheader__main">
+
+  <h3 class="kt-subheader__title"><%= current %></h3>
+  <span class="kt-subheader__separator kt-subheader__separator--v"></span>
+
+  <div class="kt-subheader__breadcrumbs">
+
+    <% links.each do |link| %>
+      <%= render link %>
+    <% end %>
+
+    <span class="kt-subheader__breadcrumbs-link"><%= current %></span>
+  </div>
+</div>

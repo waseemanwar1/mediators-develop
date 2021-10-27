@@ -1,0 +1,7 @@
+<div class="form-group <%= "row" if horizontal %>">
+  <label class="<%= "col-xl-3" if horizontal %> col-form-label"><%= label %></label>
+  <div class="<%= "col-xl-9" if horizontal %>">
+    <%= form.hidden_field :content, id: "trix_input_#{field}" %>
+    <trix-editor input="trix_input_<%= field %>" class="trix-content" data-direct-upload-url="http://localhost:3000/rails/active_storage/direct_uploads?locale=ru" data-blob-url-template="http://localhost:3000/rails/active_storage/blobs/:signed_id/:filename?locale=ru"></trix-editor>
+  </div>
+</div>

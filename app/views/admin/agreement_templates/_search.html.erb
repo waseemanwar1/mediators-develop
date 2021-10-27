@@ -1,0 +1,13 @@
+<% items.each do |item| %>
+  <%= render Admin::Tables::Items::SimpleRowComponent.new(
+              resource: item,
+              fields: [
+                Admin::Tables::Fields::TextComponent.new(item.id),
+                Admin::Tables::Fields::TextComponent.new(item.name),
+                Admin::Tables::Fields::TextComponent.new(item.public),
+              ],
+              actions: [
+                Admin::Tables::Actions::IconButtonComponent.new(url: edit_admin_agreement_template_path(item), icon: 'la la-pencil'),
+                Admin::Tables::Actions::DestroyButtonComponent.new(url: admin_agreement_template_path(item))
+              ]) %>
+<% end %>

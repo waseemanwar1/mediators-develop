@@ -1,0 +1,80 @@
+en:
+  admin:
+    component:
+      grids:
+        actions:
+          destroy:
+            sure: Are you sure that you want to destroy the object?
+        empty: Data not found
+      toolbars:
+        tools:
+          query:
+            placeholder: Search
+      forms:
+        fields:
+          avatar:
+            change: Change
+            cancel: Cancel
+
+      app_asides:
+        profile_aside:
+          profile: My Profile
+          change_password: Change Password
+          settings: Settings
+      footer:
+        brand:
+          text: ''
+          link: ''
+        support:
+          text: ''
+          link: ''
+      header_items:
+        menus:
+          applications: Applications
+        user_item:
+          link: My Account
+          profile: My Profile
+          change_password: Change Password
+          settings: Settings
+          sign_out: Sign Out
+      subheader:
+        actions:
+          create: Create
+      breadcrumbs:
+        # Breadcrumbs start
+        new: Create
+        edit: Edit
+        home: Home
+        admin: Home
+        my: My Profile
+        admin_edit: Change Password
+        settings: Settings
+        permissions: Permission Settings
+        admin_users: Admin Users
+        groups: Groups
+        mediators: Mediators
+        cases: Cases
+        parties: Parties
+        sessions: Sessions
+        messages: Messages
+        documents: Documents
+        reminders: Reminders
+        contacts: Contacts
+        invoices: Invoices
+        issues: Issues
+        agreements: Agreements
+        agreement_templates: Agreement Templates
+        # Breadcrumbs end
+      actions:
+        manage: Manage
+        cancel: Cancel
+        save: Save
+        submit: Submit
+        create: Create
+        return: Return
+      alerts:
+        successfull:
+          create: was successfully created
+          update: was successfully updated
+          destroy: was successfully destroyed
+        last_user: Action is not possible, at least one user with permission settings must remain

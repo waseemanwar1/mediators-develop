@@ -1,0 +1,12 @@
+<div class="form-group <%= "row" if horizontal %>">
+  <label for="example-text-input" class="<%= "col-xl-3" if horizontal %> col-form-label"><%= label %></label>
+  <div class="<%= "col-xl-9" if horizontal %>">
+    <div class="dropzone dropzone-default" data-controller="admin--dropzone" data-admin--dropzone-max-file-size="<%= max_file_size %>" data-admin--dropzone-max-files="<%= max_files %>">
+      <%= form.file_field field, direct_upload: true, data: { target: 'admin--dropzone.input' } %>
+      <div class="dropzone-msg dz-message needsclick">
+        <h3 class="dropzone-msg-title">Drag here to upload or click here to browse</h3>
+        <span class="dropzone-msg-desc">0 MB file size maximum. Allowed file types png, jpg.</span>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,7 @@
+<div class="form-group <%= "row" if horizontal %>" data-controller="admin--select" data-placeholder="<%= options[:placeholder] %>">
+  <label class="col-form-label <%= "col-xl-3" if horizontal %>"><%= label %></label>
+  <div class="<%= "col-xl-9" if horizontal %>">
+    <span class="form-text text-muted"><%= help.html_safe %></span>
+    <%= form.select field, values, { include_blank: include_blank }, options %>
+  </div>
+</div>

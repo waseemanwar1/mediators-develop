@@ -1,0 +1,13 @@
+<div class="form-group <%= "row" if horizontal %>">
+  <label class="col-form-label <%= "col-xl-3" if horizontal %>"><%= label %></label>
+  <div class="<%= "col-xl-9" if horizontal %>">
+    <div class="kt-radio-inline">
+      <% values.each do |value| %>
+        <label class="kt-radio kt-radio--tick kt-radio--brand">
+          <%= form.radio_button field, value[1], checked: value[2] %> <%= value[0] %>
+          <span></span>
+        </label>
+      <% end %>
+    </div>
+  </div>
+</div>

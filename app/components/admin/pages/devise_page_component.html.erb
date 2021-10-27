@@ -1,0 +1,92 @@
+<!-- begin:: Page -->
+<div class="kt-grid kt-grid--ver kt-grid--root">
+  <div class="kt-grid__item   kt-grid__item--fluid kt-grid  kt-grid kt-grid--hor kt-login-v2" id="kt_login_v2">
+
+    <!--begin::Item-->
+    <div class="kt-grid__item  kt-grid--hor">
+
+      <!--begin::Head-->
+      <div class="kt-login-v2__head">
+        <div class="kt-login-v2__logo">
+          <a href="#" class="mr-5">
+            <%= image_pack_tag 'admin/equisettle_copy.png', alt: 'Logo' %>
+          </a>
+        </div>
+        <div class="kt-login-v2__signup">
+          <div class="btn-group mr-2">
+						<button type="button" class="btn btn-clean btn-bold btn-upper dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<%= I18n.t('admin.locale', locale: locale) %>
+						</button>
+						<div class="dropdown-menu dropdown-menu-right" x-placement="bottom-end" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(113px, 38px, 0px);">
+              <% I18n.available_locales.each do |locale| %>
+                <%= link_to I18n.t('admin.locale', locale: locale), url_for(locale: locale), class: 'dropdown-item' %>
+              <% end %>
+						</div>
+					</div>
+          <% if @header_link %>
+            <%= link_to @header_link[:text], @header_link[:path], class: 'btn btn-clean btn-bold btn-upper' rescue '' %>
+          <% end %>
+        </div>
+
+      </div>
+
+      <!--begin::Head-->
+    </div>
+    <!--end::Item-->
+
+    <!--begin::Item-->
+    <div class="kt-grid__item  kt-grid  kt-grid--ver  kt-grid__item--fluid">
+
+      <!--begin::Body-->
+      <div class="kt-login-v2__body">
+        <%= content %>
+      </div>
+
+      <!--begin::Body-->
+    </div>
+
+    <!--end::Item-->
+
+
+    <%= render Admin::Pages::Footers::DeviseFooterComponent.new %>
+
+  </div>
+</div>
+
+<!-- end:: Page -->
+
+<!-- begin::Global Config(global config for global JS sciprts) -->
+<script>
+  var KTAppOptions = {
+    "colors": {
+      "state": {
+        "brand": "#5d78ff",
+        "metal": "#c4c5d6",
+        "light": "#ffffff",
+        "accent": "#00c5dc",
+        "primary": "#5867dd",
+        "success": "#34bfa3",
+        "info": "#36a3f7",
+        "warning": "#ffb822",
+        "danger": "#fd3995",
+        "focus": "#9816f4"
+      },
+      "base": {
+        "label": [
+          "#c5cbe3",
+          "#a1a8c3",
+          "#3d4465",
+          "#3e4466"
+        ],
+        "shape": [
+          "#f0f3ff",
+          "#d9dffa",
+          "#afb4d4",
+          "#646c9a"
+        ]
+      }
+    }
+  };
+</script>
+
+<!-- end::Global Config -->

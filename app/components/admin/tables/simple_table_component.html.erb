@@ -1,0 +1,32 @@
+<div class="kt-portlet kt-portlet--height-fluid" data-controller="admin--table">
+  <table class="table">
+    <thead>
+      <tr>
+        <% headers.each do |header| %>
+          <% if header[2] == :sortable %>
+            <th class="kt-padding-20 sortable-field" data-action="click->admin--catalog#sort" data-order="<%= header[0] %>">
+              <span class="sorted-field">
+                <%= header[1] %>
+                <i class="sort_icon <%= header[0] %>"></i>
+              </span>
+            </th>
+          <% else %>
+            <th class="kt-padding-20">
+              <span><%= header[1] %></span>
+            </th>
+          <% end %>
+        <% end %>
+      </tr>
+    </thead>
+    <tbody data-target="admin--catalog.container">
+    </tbody>
+  </table>
+</div>
+
+<div class="kt-hidden" data-target="admin--catalog.empty">
+  <div class="kt-portlet kt-portlet--height-fluid">
+    <div class="kt-portlet__body kt-align-center">
+      <%= t('admin.component.grids.empty') %>
+    </div>
+  </div>
+</div>

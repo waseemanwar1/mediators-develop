@@ -1,0 +1,3 @@
+<% if alerts.present? %>
+    <%= render Admin::Forms::Alerts::AlertComponent.new(alert: alerts.join("<br>").html_safe, type: type) %>
+<% end %>

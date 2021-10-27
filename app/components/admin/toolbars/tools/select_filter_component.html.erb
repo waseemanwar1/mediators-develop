@@ -1,0 +1,10 @@
+<div class="col-md-<%= size %> col-sm-12">
+  <div class="kt-form__group kt-form__group--inline">
+    <div class="kt-form__label">
+      <label><%= label %>:</label>
+    </div>
+    <div class="kt-form__control">
+      <%= select_tag field, options_for_select(values), options %>
+    </div>
+  </div>
+</div>

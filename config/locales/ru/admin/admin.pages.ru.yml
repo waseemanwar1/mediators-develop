@@ -1,0 +1,508 @@
+ru:
+  admin:
+    page:
+      # Pages start
+
+      # Sign In
+      sign_in:
+        sign_up_link: Регистрация
+        form_label: Вход администратора
+        email:
+          placeholder: Почта
+        password:
+          placeholder: Пароль
+        forgot_link: Забыли пароль ?
+        sign_in_button: Вход
+
+      # Sign Up
+      sign_up:
+        sign_in_link: Вход
+        form_label: Регистрация администратора
+        email:
+          placeholder: Почта
+        password:
+          placeholder: Пароль
+          help: 6 символов минимум
+        password_confirmation:
+          placeholder: Подтверждение пароля
+        sign_up_button: Регистрация
+
+      # Forgot
+      forgot:
+        sign_in_link: Вход
+        form_label: Забыли пароль ?
+        email:
+          placeholder: Почта
+        forgot_button: Отправить инструкции
+
+      # Reset password
+      reset_password:
+        sign_in_link: Вход
+        form_label: Измените пароль
+        password:
+          placeholder: Новый пароль
+          help: 6 символов минимум
+        password_confirmation:
+          placeholder: Подтвеждение нового пароля
+        reset_password_button: Изменить пароль
+
+      # Change password
+      change_password:
+        title: Изменить пароль
+        subtitle: здесь вы можете изменить свой пароль
+        change_password_subtitle: Изменить пароль
+        current_password:
+          label: Действующий пароль
+        new_password:
+          label: Новый пароль
+        verify_password:
+          label: Подтверите новый пароль
+        change: Изменить пароль
+        cancel: Отмена
+
+      # Profile edit
+      profile_edit:
+        title: Мой профиль
+        subtitle: здесь вы можете изменить свои данные
+        profile_subtitle: Ваши данные
+        email:
+          label: Почта
+          placeholder: your-email@example.com
+        submit: Отправить
+        cancel: Отмена
+
+      # Settings
+      settings:
+        title: Настройки
+        subtitle: здесь вы можете настроить свой аккаунт
+        destroy_account: Удалить ваш аккаунт?
+        destroy_confirm: Вы уверены что хотите удалить свой аккаунт?
+
+      # Permissions
+      permissions:
+        admin_users: Администраторы
+        groups: Группы
+        perms: Права
+
+      # Groups
+      groups:
+        form:
+          name:
+            label: Название
+            placeholder: Введите название группы
+        new:
+          title: Создать группу
+        edit:
+          title: Редактировать группу
+
+      # Admin Users
+      admin_users:
+        form:
+          avatar:
+            label: Аватар
+          email:
+            label: Email
+            placeholder: Например, admin@example.com
+          first_name:
+            label: Имя
+            placeholder: Например, Иван
+          last_name:
+            label: Фамилия
+            placeholder: Например, Петров
+        new:
+          title: Создать администратора
+        edit:
+          title: Редактировать администратора
+
+      # Cases
+      cases:
+        form:
+          admin_user_id:
+            label: Admin_user_id
+            placeholder: Введите Case Admin_user_id
+          program:
+            label: Program
+            placeholder: Введите Case Program
+          name:
+            label: Name
+            placeholder: Введите Case Name
+          description:
+            label: Description
+            placeholder: Введите Case Description
+          tags:
+            label: Tags
+            placeholder: Введите Case Tags
+          status:
+            label: Status
+            placeholder: Введите Case Status
+
+        new:
+          title: Создать Case
+        edit:
+          title: Редактировать Case
+      # Parties
+      parties:
+        form:
+          admin_user_id:
+            label: Admin_user_id
+            placeholder: Введите Party Admin_user_id
+          case_id:
+            label: Case_id
+            placeholder: Введите Party Case_id
+          first_name:
+            label: First name
+            placeholder: Введите Party First name
+          last_name:
+            label: Last name
+            placeholder: Введите Party Last name
+          title:
+            label: Title
+            placeholder: Введите Party Title
+          company:
+            label: Company
+            placeholder: Введите Party Company
+          address:
+            label: Address
+            placeholder: Введите Party Address
+          notes:
+            label: Notes
+            placeholder: Введите Party Notes
+          email:
+            label: Email
+            placeholder: Введите Party Email
+          phone:
+            label: Phone
+            placeholder: Введите Party Phone
+          street:
+            label: Street
+            placeholder: Введите Party Street
+          city:
+            label: City
+            placeholder: Введите Party City
+          state:
+            label: State
+            placeholder: Введите Party State
+          zip_code:
+            label: Zip code
+            placeholder: Введите Party Zip code
+          country:
+            label: Country
+            placeholder: Введите Party Country
+          tags:
+            label: Tags
+            placeholder: Введите Party Tags
+
+        new:
+          title: Создать Party
+        edit:
+          title: Редактировать Party
+      # Sessions
+      sessions:
+        form:
+          admin_user_id:
+            label: Admin_user_id
+            placeholder: Введите Session Admin_user_id
+          case_id:
+            label: Case_id
+            placeholder: Введите Session Case_id
+          party_id:
+            label: Party_id
+            placeholder: Введите Session Party_id
+          name:
+            label: Name
+            placeholder: Введите Session Name
+          due_date:
+            label: Due date
+            placeholder: Введите Session Due date
+          time_start:
+            label: Time_start
+            placeholder: Введите Session Time_start
+          time_finish:
+            label: Time_finish
+            placeholder: Введите Session Time_finish
+          session_type:
+            label: Session_type
+            placeholder: Введите Session Session_type
+          location:
+            label: Location
+            placeholder: Введите Session Location
+          tags:
+            label: Tags
+            placeholder: Введите Session Tags
+          rate_type:
+            label: Rate_type
+            placeholder: Введите Session Rate_type
+          rate:
+            label: Rate
+            placeholder: Введите Session Rate
+
+        new:
+          title: Создать Session
+        edit:
+          title: Редактировать Session
+      # Messages
+      messages:
+        form:
+          admin_user_id:
+            label: Admin_user_id
+            placeholder: Введите Message Admin_user_id
+          case_id:
+            label: Case_id
+            placeholder: Введите Message Case_id
+          party_id:
+            label: Party_id
+            placeholder: Введите Message Party_id
+          subject:
+            label: Subject
+            placeholder: Введите Message Subject
+          sent_at:
+            label: Sent_at
+            placeholder: Введите Message Sent_at
+          content:
+            label: Content
+            placeholder: Введите Message Content
+          from:
+            label: From
+            placeholder: Введите Message From
+          to:
+            label: To
+            placeholder: Введите Message To
+
+        new:
+          title: Создать Message
+        edit:
+          title: Редактировать Message
+      # Documents
+      documents:
+        form:
+          admin_user_id:
+            label: Admin_user_id
+            placeholder: Введите Document Admin_user_id
+          case_id:
+            label: Case_id
+            placeholder: Введите Document Case_id
+          file_name:
+            label: File_name
+            placeholder: Введите Document File_name
+          description:
+            label: Description
+            placeholder: Введите Document Description
+          date:
+            label: Date
+            placeholder: Введите Document Date
+          author:
+            label: Author
+            placeholder: Введите Document Author
+
+        new:
+          title: Создать Document
+        edit:
+          title: Редактировать Document
+      # Reminders
+      reminders:
+        form:
+          admin_user_id:
+            label: Admin_user_id
+            placeholder: Введите Reminder Admin_user_id
+          case_id:
+            label: Case_id
+            placeholder: Введите Reminder Case_id
+          party_id:
+            label: Party_id
+            placeholder: Введите Reminder Party_id
+          name:
+            label: Name
+            placeholder: Введите Reminder Name
+          description:
+            label: Description
+            placeholder: Введите Reminder Description
+          priority:
+            label: Priority
+            placeholder: Введите Reminder Priority
+          due_date:
+            label: Due date
+            placeholder: Введите Reminder Due date
+          contact_id:
+            label: Contact_id
+            placeholder: Введите Reminder Contact_id
+          status:
+            label: Status
+            placeholder: Введите Reminder Status
+
+        new:
+          title: Создать Reminder
+        edit:
+          title: Редактировать Reminder
+      # Contacts
+      contacts:
+        form:
+          admin_user_id:
+            label: Admin_user_id
+            placeholder: Введите Contact Admin_user_id
+          case_id:
+            label: Case_id
+            placeholder: Введите Contact Case_id
+          party_id:
+            label: Party_id
+            placeholder: Введите Contact Party_id
+          first_name:
+            label: First name
+            placeholder: Введите Contact First name
+          last_name:
+            label: Last name
+            placeholder: Введите Contact Last name
+          contact_type:
+            label: Contact_type
+            placeholder: Введите Contact Contact_type
+          email:
+            label: Email
+            placeholder: Введите Contact Email
+          title:
+            label: Title
+            placeholder: Введите Contact Title
+          company:
+            label: Company
+            placeholder: Введите Contact Company
+          phone:
+            label: Phone
+            placeholder: Введите Contact Phone
+          address:
+            label: Address
+            placeholder: Введите Contact Address
+          notes:
+            label: Notes
+            placeholder: Введите Contact Notes
+          street:
+            label: Street
+            placeholder: Введите Contact Street
+          city:
+            label: City
+            placeholder: Введите Contact City
+          state:
+            label: State
+            placeholder: Введите Contact State
+          zip_code:
+            label: Zip code
+            placeholder: Введите Contact Zip code
+          country:
+            label: Country
+            placeholder: Введите Contact Country
+          tags:
+            label: Tags
+            placeholder: Введите Contact Tags
+
+        new:
+          title: Создать Contact
+        edit:
+          title: Редактировать Contact
+      # Invoices
+      invoices:
+        form:
+          admin_user_id:
+            label: Admin_user_id
+            placeholder: Введите Invoice Admin_user_id
+          case_id:
+            label: Case_id
+            placeholder: Введите Invoice Case_id
+          party_id:
+            label: Party_id
+            placeholder: Введите Invoice Party_id
+          name:
+            label: Name
+            placeholder: Введите Invoice Name
+          time:
+            label: Time
+            placeholder: Введите Invoice Time
+          amount:
+            label: Amount
+            placeholder: Введите Invoice Amount
+          date:
+            label: Date
+            placeholder: Введите Invoice Date
+          due_date:
+            label: Due date
+            placeholder: Введите Invoice Due date
+          status:
+            label: Status
+            placeholder: Введите Invoice Status
+
+        new:
+          title: Создать Invoice
+        edit:
+          title: Редактировать Invoice
+      # Issues
+      issues:
+        form:
+          admin_user_id:
+            label: Admin_user_id
+            placeholder: Введите Issue Admin_user_id
+          case_id:
+            label: Case_id
+            placeholder: Введите Issue Case_id
+          party_id:
+            label: Party_id
+            placeholder: Введите Issue Party_id
+          title:
+            label: Title
+            placeholder: Введите Issue Title
+          description:
+            label: Description
+            placeholder: Введите Issue Description
+          resolution_title:
+            label: Resolution_title
+            placeholder: Введите Issue Resolution_title
+          resolution_description:
+            label: Resolution_description
+            placeholder: Введите Issue Resolution_description
+          mediators_notes_title:
+            label: Mediators_notes_title
+            placeholder: Введите Issue Mediators_notes_title
+          mediators_notes_description:
+            label: Mediators_notes_description
+            placeholder: Введите Issue Mediators_notes_description
+          agreement:
+            label: Agreement
+            placeholder: Введите Issue Agreement
+
+        new:
+          title: Создать Issue
+        edit:
+          title: Редактировать Issue
+      # Agreements
+      agreements:
+        form:
+          admin_user_id:
+            label: Admin_user_id
+            placeholder: Введите Agreement Admin_user_id
+          case_id:
+            label: Case_id
+            placeholder: Введите Agreement Case_id
+          name:
+            label: Name
+            placeholder: Введите Agreement Name
+          content:
+            label: Content
+            placeholder: Введите Agreement Content
+
+        new:
+          title: Создать Agreement
+        edit:
+          title: Редактировать Agreement
+      # AgreementTemplates
+      agreement_templates:
+        form:
+          name:
+            label: Name
+            placeholder: Введите AgreementTemplate Name
+          content:
+            label: Content
+            placeholder: Введите AgreementTemplate Content
+          public:
+            label: Public
+            placeholder: Введите AgreementTemplate Public
+
+        new:
+          title: Создать AgreementTemplate
+        edit:
+          title: Редактировать AgreementTemplate
+      # Pages end

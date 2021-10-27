@@ -1,0 +1,35 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 20
+  username: postgres
+  password: postgres
+  host: localhost
+
+development:
+  <<: *default
+  database: "mediators_development" 
+    # <%= Equisettle::Application.credentials.develeopment_db %>
+
+test:
+  <<: *default
+  database: "mediators_test" 
+  # <%= Equisettle::Application.credentials.test_db %>
+
+production:
+  <<: *default
+  database: <%= Equisettle::Application.credentials.production_db %>
+  username: <%= Equisettle::Application.credentials.production_db_user %>
+  password: <%= Equisettle::Application.credentials.production_db_password %>
+  host: <%= Equisettle::Application.credentials.production_db_host %>
+  port: <%= Equisettle::Application.credentials.production_db_port %>
+  ssl_mode: REQUIRED
+
+staging:
+  <<: *default
+  database: <%= Equisettle::Application.credentials.staging_db %>
+  username: <%= Equisettle::Application.credentials.staging_db_user %>
+  password: <%= Equisettle::Application.credentials.staging_db_password %>
+  host: <%= Equisettle::Application.credentials.staging_db_host %>
+  port: <%= Equisettle::Application.credentials.staging_db_port %>
+  ssl_mode: REQUIRED

@@ -1,0 +1,24 @@
+<%= render Admin::Pages::AdminPageComponent.new(
+            breadcrumbs: Admin::Pages::Breadcrumbs::BreadcrumbComponent.new(),
+            actions: [
+              Admin::Pages::Subheaders::Actions::CreateButtonComponent.new(url: new_admin_session_path)
+            ]) do %>
+
+  <%= render Admin::Catalogs::CatalogComponent.new(
+              url: search_admin_sessions_path,
+              toolbar: Admin::Toolbars::ToolbarComponent.new(
+                query: Admin::Toolbars::Tools::QueryComponent.new
+              ),
+              container: Admin::Tables::SimpleTableComponent.new( headers: [
+                  [:sid, "ID", :sortable],
+                  [:admin_user_name, "Admin User"],
+                  [:case_id, "Case"],
+                  [:party_id, "Party"],
+                  [:name, "Name", :sortable],
+                  [:due_date, "Due Date", :sortable],
+                  [:tags, "Tags"],
+                ]
+              ),
+              pagination: Admin::Paginations::PaginationComponent.new) %>
+
+<% end %>

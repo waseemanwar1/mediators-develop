@@ -1,0 +1,11 @@
+ru:
+  group: Группа
+  admin_user: Администратор
+
+  activerecord:
+    attributes:
+      admin_user:
+        email: Почта
+        password: Пароль
+        password_confirmation: Подтверждение пароля
+        current_password: Действующий пароль

@@ -1,0 +1,58 @@
+<div class="row">
+  <div class="col-xl-12">
+    <%= render Admin::Forms::SimpleFormComponent.new(
+              title: title,
+              resource: resource,
+              alerts: flash[:errors],
+              fields: [
+                  Admin::Forms::Fields::SelectComponent.new(
+                    :admin_user_id,
+                    label: t('admin.page.agreements.form.admin_user_id.label'),
+                    values: AdminUser.all.map{ |u| [u.username, u.id] },
+                    include_blank: true,
+                    horizontal: false,
+                    placeholder: t('admin.page.agreements.form.admin_user_id.placeholder')
+                  ),
+                  Admin::Forms::Fields::SelectComponent.new(
+                    :case_id,
+                    label: t('admin.page.agreements.form.case_id.label'),
+                    values: Case.all.pluck(:name, :id),
+                    include_blank: true,
+                    horizontal: false,
+                    placeholder: t('admin.page.agreements.form.case_id.placeholder')
+                  ),
+                  Admin::Forms::Fields::SelectComponent.new(
+                    :agreement_template_id,
+                    label: t('admin.page.agreements.form.agreement_template_id.label'),
+                    values: AgreementTemplate.all.pluck(:name, :id),
+                    include_blank: true,
+                    horizontal: false,
+                    help: "<span class='kt-font-danger'>Warning: when you update this field, the content field will be regenerated</span>",
+                    placeholder: t('admin.page.agreements.form.agreement_template_id.placeholder')
+                  ),
+                  Admin::Forms::Fields::TextComponent.new(
+                    :name,
+                    label: t('admin.page.agreements.form.name.label'),
+                    horizontal: false,
+                    placeholder: t('admin.page.agreements.form.name.placeholder')
+                  ),
+                  Admin::Forms::Fields::QuillComponent.new(
+                    :content,
+                    label: t('admin.page.agreements.form.content.label'),
+                    horizontal: false,
+                    placeholder: t('admin.page.agreements.form.content.placeholder')
+                  ),
+                  Admin::Forms::Fields::FileComponent.new(
+                    :file,
+                    label: t('admin.page.agreements.form.file.label'),
+                    horizontal: false,
+                    placeholder: t('admin.page.agreements.form.file.placeholder')
+                  ),
+              ],
+              actions: [
+                Admin::Forms::Actions::ReturnButtonComponent.new(url: admin_agreements_path),
+                Admin::Forms::Actions::CancelButtonComponent.new,
+                Admin::Forms::Actions::SaveButtonComponent.new
+              ]) %>
+  </div>
+</div>

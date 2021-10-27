@@ -1,0 +1,12 @@
+<%= render Admin::Pages::AdminPageComponent.new(
+          breadcrumbs: Admin::Pages::Breadcrumbs::BreadcrumbComponent.new(
+            links: [
+              Admin::Pages::Breadcrumbs::Links::LinkComponent.new(
+                url: admin_admin_users_path(group: params[:group]),
+                text: Group.find(params[:group]).name.pluralize)
+            ]
+          )) do %>
+
+  <%= render 'form', title: "Edit #{Group.find(params[:group]).name}" %>
+
+<% end %>

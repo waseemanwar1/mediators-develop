@@ -1,0 +1,25 @@
+<div class="kt-widget-4 p-3" data-target="admin--permissions-page.permissions" data-model="permission" data-id="<%= permission.id %>" data-action="mouseover->admin--permissions-page#showReferences mouseout->admin--permissions-page#hideReferences click->admin--permissions-page#fixReferences">
+  <div class="kt-widget-4__item">
+    <div class="kt-widget-4__item-content">
+      <div class="kt-widget-4__item-section">
+        <div class="kt-widget-4__item-pic">
+        </div>
+        <div class="kt-widget-4__item-info">
+          <a href="#" class="kt-widget-4__item-username"><%= permission.name %></a>
+          <div class="kt-widget-4__item-desc"><%= permission.description %></div>
+        </div>
+      </div>
+    </div>
+    <div class="kt-widget-4__item-content">
+      <button type="button" class="edit-button kt-hidden btn btn-label-primary btn-sm btn-icon">
+        <i class="fa fa-pen"></i>
+      </button>
+      <button type="button" class="plus-button kt-hidden btn btn-label-success btn-sm btn-icon" data-action="admin--permissions-page#addPermission">
+        <i class="fa fa-plus"></i>
+      </button>
+      <button type="button" class="minus-button kt-hidden btn btn-label-danger btn-sm btn-icon" data-action="admin--permissions-page#removePermission">
+        <i class="fa fa-minus"></i>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+<div class="form-group <%= "row" if horizontal %>" data-controller="admin--quill">
+  <label class="<%= "col-xl-3" if horizontal %> col-form-label"><%= label %></label>
+  <div class="<%= "col-xl-9" if horizontal %>">
+    <%= form.hidden_field :content, data: { target: "admin--quill.input" } %>
+
+    <span class="form-text text-muted"><%= help.html_safe %></span>
+
+    <div data-target="admin--quill.container" id="<%= field %>_container" style="height: 325px">
+      <%= raw(form.object.send(field)) %>
+    </div>
+  </div>
+</div>

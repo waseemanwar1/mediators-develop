@@ -1,0 +1,21 @@
+<!--begin:: Languages -->
+<div class="kt-header__topbar-item kt-header__topbar-item--langs">
+  <div class="kt-header__topbar-wrapper" data-toggle="dropdown" data-offset="10px,0px">
+    <span class="kt-header__topbar-icon">
+      <%= image_pack_tag "admin/flags/#{params[:locale] || @default}.svg" %>
+    </span>
+  </div>
+  <div class="dropdown-menu dropdown-menu-fit dropdown-menu-right dropdown-menu-anim dropdown-menu-top-unround">
+    <ul class="kt-nav kt-margin-t-10 kt-margin-b-10">
+      <% locales.each do |locale| %>
+        <li class="kt-nav__item <%= 'kt-nav__item--active' if locale == params[:locale] %>">
+          <%= link_to url_for(locale: locale), class: 'kt-nav__link' do %>
+            <span class="kt-nav__link-icon"><%= image_pack_tag "admin/flags/#{locale}.svg" %></span>
+            <span class="kt-nav__link-text"><%= I18n.t 'admin.locale', locale: locale %></span>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+<!--end:: Languages -->

@@ -1,0 +1,4668 @@
+---
+swagger: '2.0'
+info:
+  title: API V1
+  version: v1
+paths:
+  "/admin/api/admin_users/info":
+    get:
+      summary: Get Admin User Info
+      tags:
+      - Admin Users
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        type: string
+        required: true
+        description: Use a JWT auth_token which returns after sign in
+      responses:
+        '200':
+          description: Success
+          examples:
+            application/json:
+              data:
+                id: '1'
+                type: admin_user
+                attribures:
+                  email: mediator@example.com
+                  first_name: Test
+                  last_name: Mediator
+                  avatar: http://142.93.11.131/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--36c2a0f4812fdd7b49e5669e18331aeb753033bd/Checked_icon_2.png?locale=en
+                  hourly_rate: 100
+                  company_name: Company Name
+                  phone: '0000000000'
+                  company_website: https://company.website
+                  address_line_1: Address Line 1
+                  address_line_2: Address Line 2
+                  postcode: '000000'
+                  city: New York
+                  state: New York
+                  country: USA
+                  billing_address_line_1: Address Line 1
+                  billing_address_line_2: Address Line 2
+                  billing_postcode: '000000'
+                  billing_city: New York
+                  billing_state: New York
+                  billing_country: USA
+                  created_at: '2020-07-02T10:46:44.223Z'
+                  updated_at: '2020-07-02T10:46:44.223Z'
+        '401':
+          description: Unauthorized
+  "/admin/api/admin_users/update_info":
+    put:
+      summary: Update Admin User
+      tags:
+      - Admin Users
+      consumes:
+      - multipart/form-data
+      parameters:
+      - name: Authorization
+        in: header
+        type: string
+        required: true
+        description: Use a JWT auth_token which returns after sign in
+      - name: admin_user[email]
+        in: formData
+        type: string
+      - name: admin_user[password]
+        in: formData
+        type: string
+      - name: admin_user[password_confirmation]
+        in: formData
+        type: string
+      - name: admin_user[first_name]
+        in: formData
+        type: string
+      - name: admin_user[last_name]
+        in: formData
+        type: string
+      - name: admin_user[avatar]
+        in: formData
+        type: file
+      - name: admin_user[hourly_rate]
+        in: formData
+        type: integer
+      - name: admin_user[company_name]
+        in: formData
+        type: string
+      - name: admin_user[phone]
+        in: formData
+        type: string
+      - name: admin_user[company_website]
+        in: formData
+        type: string
+      - name: admin_user[address_line_1]
+        in: formData
+        type: string
+      - name: admin_user[address_line_2]
+        in: formData
+        type: string
+      - name: admin_user[postcode]
+        in: formData
+        type: string
+      - name: admin_user[city]
+        in: formData
+        type: string
+      - name: admin_user[state]
+        in: formData
+        type: string
+      - name: admin_user[country]
+        in: formData
+        type: string
+      - name: admin_user[billing_address_line_1]
+        in: formData
+        type: string
+      - name: admin_user[billing_address_line_2]
+        in: formData
+        type: string
+      - name: admin_user[billing_postcode]
+        in: formData
+        type: string
+      - name: admin_user[billing_city]
+        in: formData
+        type: string
+      - name: admin_user[billing_state]
+        in: formData
+        type: string
+      - name: admin_user[billing_country]
+        in: formData
+        type: string
+      responses:
+        '204':
+          description: Updated
+        '401':
+          description: Unauthorized
+        '422':
+          description: Failed
+  "/admin/api/agreement_templates":
+    get:
+      summary: Get Agreement Templates
+      tags:
+      - Agreement Templates
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        type: string
+        required: true
+        description: Use a JWT auth_token which returns after sign in
+      - name: query
+        in: query
+        type: string
+        description: Elasticsearch query string. See https://github.com/ankane/searchkick
+          for more details.
+      - name: match
+        in: query
+        type: string
+        description: 'Elasticsearch match option, variants: word, word_start, word_middle,
+          word_end, text_start, text_middle, text_end. See https://github.com/ankane/searchkick
+          for more details.'
+      - name: order_by
+        in: query
+        type: string
+        description: 'Elasticsearch order_by option, example: id. See https://github.com/ankane/searchkick
+          for more details.'
+      - name: order
+        in: query
+        type: string
+        description: 'Elasticsearch order option, variants: asc, desc. See https://github.com/ankane/searchkick
+          for more details.'
+      - name: page
+        in: query
+        type: integer
+        description: 'Elasticsearch pagination page number, example: 1. See https://github.com/ankane/searchkick
+          for more details.'
+      - name: per
+        in: query
+        type: integer
+        description: 'Elasticsearch pagination per page number, example: 20. See https://github.com/ankane/searchkick
+          for more details.'
+      - name: where
+        in: query
+        type: object
+        description: 'Elasticsearch where object, example: { created_at: { gte: Time.now
+          } }. See https://github.com/ankane/searchkick for more details.'
+      responses:
+        '200':
+          description: Success
+          examples:
+            application/json:
+              data:
+              - id: '1'
+                type: agreement_template
+                attributes:
+                  name: Agreement Template 1
+                  content: Content 1
+                  created_at: '2020-07-02T10:47:04.147Z'
+                  updated_at: '2020-07-02T10:47:04.147Z'
+        '401':
+          description: Unauthorized
+  "/admin/api/agreement_templates/{id}":
+    get:
+      summary: Get Agreement Template
+      tags:
+      - Agreement Templates
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        type: string
+        required: true
+        description: Use a JWT auth_token which returns after sign in
+      - name: id
+        in: path
+        type: integer
+        required: true
+      responses:
+        '200':
+          description: Success
+          examples:
+            application/json:
+              data:
+                id: '1'
+                type: agreement_template
+                attributes:
+                  name: Agreement Template 1
+                  content: Content 1
+                  created_at: '2020-07-02T10:47:04.147Z'
+                  updated_at: '2020-07-02T10:47:04.147Z'
+        '401':
+          description: Unauthorized
+  "/admin/api/agreements":
+    get:
+      summary: Get Agreements
+      tags:
+      - Agreements
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        type: string
+        required: true
+        description: Use a JWT auth_token which returns after sign in
+      - name: query
+        in: query
+        type: string
+        description: Elasticsearch query string. See https://github.com/ankane/searchkick
+          for more details.
+      - name: match
+        in: query
+        type: string
+        description: 'Elasticsearch match option, variants: word, word_start, word_middle,
+          word_end, text_start, text_middle, text_end. See https://github.com/ankane/searchkick
+          for more details.'
+      - name: order_by
+        in: query
+        type: string
+        description: 'Elasticsearch order_by option, example: id. See https://github.com/ankane/searchkick
+          for more details.'
+      - name: order
+        in: query
+        type: string
+        description: 'Elasticsearch order option, variants: asc, desc. See https://github.com/ankane/searchkick
+          for more details.'
+      - name: page
+        in: query
+        type: integer
+        description: 'Elasticsearch pagination page number, example: 1. See https://github.com/ankane/searchkick
+          for more details.'
+      - name: per
+        in: query
+        type: integer
+        description: 'Elasticsearch pagination per page number, example: 20. See https://github.com/ankane/searchkick
+          for more details.'
+      - name: where
+        in: query
+        type: object
+        description: 'Elasticsearch where object, example: { created_at: { gte: Time.now
+          } }. See https://github.com/ankane/searchkick for more details.'
+      responses:
+        '200':
+          description: Success
+          examples:
+            application/json:
+              data:
+              - id: '1'
+                type: agreement
+                attributes:
+                  name: Agreement 1
+                  content: Content 1
+                  created_at: '2020-07-02T10:47:04.147Z'
+                  updated_at: '2020-07-02T10:47:04.147Z'
+                  file: http://localhost:3000/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6723a13852bd9f682435002737d382f766627241/Check%20mark.png
+                  admin_user:
+                    data:
+                      id: '2'
+                      type: admin_user
+                      attributes:
+                        first_name: Test
+                        last_name: Mediator
+                  case:
+                    data:
+                      id: '1'
+                      type: case
+                      attributes:
+                        name: Case 1
+        '401':
+          description: Unauthorized
+    post:
+      summary: Create Agreement
+      tags:
+      - Agreements
+      consumes:
+      - multipart/form-data
+      parameters:
+      - name: Authorization
+        in: header
+        type: string
+        required: true
+        description: Use a JWT auth_token which returns after sign in
+      - name: agreement[case_id]
+        in: formData
+        type: integer
+        required: true
+      - name: agreement[agreement_template_id]
+        in: formData
+        type: integer
+      - name: agreement[name]
+        in: formData
+        type: string
+        required: true
+      - name: agreement[content]
+        in: formData
+        type: string
+      responses:
+        '201':
+          description: Success
+          examples:
+            application/json:
+              data:
+                id: '1'
+                type: agreement
+                attributes:
+                  name: Agreement 1
+                  content: Content 1
+                  created_at: '2020-07-02T10:47:04.147Z'
+                  updated_at: '2020-07-02T10:47:04.147Z'
+                  file: http://localhost:3000/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6723a13852bd9f682435002737d382f766627241/Check%20mark.png
+                  admin_user:
+                    data:
+                      id: '2'
+                      type: admin_user
+                      attributes:
+                        first_name: Test
+                        last_name: Mediator
+                  case:
+                    data:
+                      id: '1'
+                      type: case
+                      attributes:
+                        name: Case 1
+        '401':
+          description: Unauthorized
+        '422':
+          description: Failed
+  "/admin/api/agreements/{id}":
+    get:
+      summary: Get Agreement
+      tags:
+      - Agreements
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        type: string
+        required: true
+        description: Use a JWT auth_token which returns after sign in
+      - name: id
+        in: path
+        type: integer
+        required: true
+      responses:
+        '200':
+          description: Success
+          examples:
+            application/json:
+              data:
+                id: '1'
+                type: agreement
+                attributes:
+                  name: Agreement 1
+                  content: Content 1
+                  created_at: '2020-07-02T10:47:04.147Z'
+                  updated_at: '2020-07-02T10:47:04.147Z'
+                  file: http://localhost:3000/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6723a13852bd9f682435002737d382f766627241/Check%20mark.png
+                  admin_user:
+                    data:
+                      id: '2'
+                      type: admin_user
+                      attributes:
+                        first_name: Test
+                        last_name: Mediator
+                  case:
+                    data:
+                      id: '1'
+                      type: case
+                      attributes:
+                        name: Case 1
+        '401':
+          description: Unauthorized
+    put:
+      summary: Update Agreement
+      tags:
+      - Agreements
+      consumes:
+      - multipart/form-data
+      parameters:
+      - name: Authorization
+        in: header
+        type: string
+        required: true
+      - name: id
+        in: path
+        type: integer
+        required: true
+      - name: agreement[case_id]
+        in: formData
+        type: integer
+      - name: agreement[agreement_template_id]
+        in: formData
+        type: integer
+      - name: agreement[name]
+        in: formData
+        type: string
+      - name: agreement[content]
+        in: formData
+        type: string
+      responses:
+        '204':
+          description: Updated
+        '401':
+          description: Unauthorized
+        '422':
+          description: Failed
+    delete:
+      summary: Destroy Agreement
+      tags:
+      - Agreements
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        type: string
+        required: true
+      - name: id
+        in: path
+        type: integer
+        required: true
+      responses:
+        '204':
+          description: Success
+        '401':
+          description: Unauthorized
+  "/admin/api/agreements/{id}/send_document":
+    post:
+      summary: Send Agreement Document
+      tags:
+      - Agreements
+      consumes:
+      - multipart/form-data
+      parameters:
+      - name: Authorization
+        in: header
+        type: string
+        required: true
+        description: Use a JWT auth_token which returns after sign in
+      - name: id
+        in: path
+        type: integer
+        required: true
+      responses:
+        '200':
+          description: Success
+        '401':
+          description: Unauthorized
+  "/admin/api/sign_in":
+    post:
+      summary: Sign in User
+      tags:
+      - Authentication
+      consumes:
+      - multipart/form-data
+      parameters:
+      - name: admin_user[email]
+        in: formData
+        type: string
+        required: true
+      - name: admin_user[password]
+        in: formData
+        type: string
+        required: true
+      responses:
+        '200':
+          description: Sign in success
+          schema:
+            type: object
+            properties:
+              auth_token:
+                type: string
+              admin_user:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  email:
+                    type: string
+            required:
+            - auth_token
+            - admin_user
+        '401':
+          description: Sign up error
+  "/admin/api/sign_up":
+    post:
+      summary: Sign up User
+      tags:
+      - Authentication
+      consumes:
+      - multipart/form-data
+      parameters:
+      - name: admin_user[email]
+        in: formData
+        type: string
+        required: true
+      - name: admin_user[password]
+        in: formData
+        type: string
+        required: true
+      - name: admin_user[password_confirmation]
+        in: formData
+        type: string
+        required: true
+      responses:
+        '201':
+          description: Sign up success
+          schema:
+            type: object
+            properties:
+              auth_token:
+                type: string
+              admin_user:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  email:
+                    type: string
+            required:
+            - auth_token
+            - admin_user
+        '401':
+          description: Sign up error
+  "/admin/api/password_forgot":
+    post:
+      summary: Password Forgot
+      tags:
+      - Authentication
+      consumes:
+      - multipart/form-data
+      parameters:
+      - name: admin_user[email]
+        in: formData
+        type: string
+        required: true
+      responses:
+        '200':
+          description: Password Forgot Success
+        '404':
+          description: Password Forgot No Found
+  "/admin/api/password_reset":
+    post:
+      summary: Password Reset
+      tags:
+      - Authentication
+      consumes:
+      - multipart/form-data
+      parameters:
+      - name: token
+        in: header
+        type: string
+        required: true
+        description: Use token from a path
+      - name: admin_user[password]
+        in: formData
+        type: string
+        required: true
+      - name: admin_user[password_confirmation]
+        in: formData
+        type: string
+        required: true
+      responses:
+        '200':
+          description: Password Reset Success
+        '404':
+          description: Password Reset No Found
+  "/admin/api/cases":
+    get:
+      summary: Get Cases
+      tags:
+      - Cases
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        type: string
+        required: true
+        description: Use a JWT auth_token which returns after sign in
+      - name: query
+        in: query
+        type: string
+        description: Elasticsearch query string. See https://github.com/ankane/searchkick
+          for more details.
+      - name: match
+        in: query
+        type: string
+        description: 'Elasticsearch match option, variants: word, word_start, word_middle,
+          word_end, text_start, text_middle, text_end. See https://github.com/ankane/searchkick
+          for more details.'
+      - name: order_by
+        in: query
+        type: string
+        description: 'Elasticsearch order_by option, example: id. See https://github.com/ankane/searchkick
+          for more details.'
+      - name: order
+        in: query
+        type: string
+        description: 'Elasticsearch order option, variants: asc, desc. See https://github.com/ankane/searchkick
+          for more details.'
+      - name: page
+        in: query
+        type: integer
+        description: 'Elasticsearch pagination page number, example: 1. See https://github.com/ankane/searchkick
+          for more details.'
+      - name: per
+        in: query
+        type: integer
+        description: 'Elasticsearch pagination per page number, example: 20. See https://github.com/ankane/searchkick
+          for more details.'
+      - name: where
+        in: query
+        type: object
+        description: 'Elasticsearch where object, example: { created_at: { gte: Time.now
+          } }. See https://github.com/ankane/searchkick for more details.'
+      responses:
+        '200':
+          description: Success
+          examples:
+            application/json:
+              data:
+              - id: '14'
+                type: case
+                attributes:
+                  program: Program 14
+                  name: Case 14
+                  description: Case description 14
+                  tags:
+                  - Tag 1
+                  - Tag 2
+                  status: Active
+                  created_at: '2020-07-02T10:46:45.058Z'
+                  updated_at: '2020-07-02T10:46:45.058Z'
+                  admin_user:
+                    data:
+                      id: '2'
+                      type: admin_user
+                      attributes:
+                        first_name: Test
+                        last_name: Mediator
+                  parties:
+                    data:
+                    - id: '32'
+                      type: party
+                      attributes:
+                        first_name: Igor
+                        last_name: Pavlov
+        '401':
+          description: Unauthorized
+    post:
+      summary: Create Case
+      tags:
+      - Cases
+      consumes:
+      - multipart/form-data
+      parameters:
+      - name: Authorization
+        in: header
+        type: string
+        required: true
+        description: Use a JWT auth_token which returns after sign in
+      - name: case[name]
+        in: formData
+        type: string
+        required: true
+      - name: case[program]
+        in: formData
+        type: string
+      - name: case[description]
+        in: formData
+        type: string
+      - name: case[tags][0]
+        in: formData
+        type: string
+        description: 'Example: ''cat'''
+      - name: case[tags][1]
+        in: formData
+        type: string
+        description: 'Example: ''dog'''
+      - name: case[status]
+        in: formData
+        enum:
+        - Active
+        - Not Active
+      responses:
+        '201':
+          description: Success
+          examples:
+            application/json:
+              data:
+                id: '1'
+                type: case
+                attributes:
+                  program: Program 1
+                  name: Case 1
+                  description: Case description 1
+                  tags:
+                  - Tag 1
+                  - Tag 2
+                  status: Active
+                  created_at: '2020-07-02T10:46:44.679Z'
+                  updated_at: '2020-07-02T10:46:44.679Z'
+                  admin_user:
+                    data:
+                      id: '2'
+                      type: admin_user
+                      attributes:
+                        first_name: Test
+                        last_name: Mediator
+                  parties:
+                    data:
+                    - id: '32'
+                      type: party
+                      attributes:
+                        first_name: Igor
+                        last_name: Pavlov
+        '401':
+          description: Unauthorized
+        '422':
+          description: Failed
+  "/admin/api/cases/{id}":
+    get:
+      summary: Get Case
+      tags:
+      - Cases
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        type: string
+        required: true
+        description: Use a JWT auth_token which returns after sign in
+      - name: id
+        in: path
+        type: integer
+        required: true
+      responses:
+        '200':
+          description: Success
+          examples:
+            application/json:
+              data:
+                id: '1'
+                type: case
+                attributes:
+                  program: Program 1
+                  name: Case 1
+                  description: Case description 1
+                  tags:
+                  - Tag 1
+                  - Tag 2
+                  status: Active
+                  created_at: '2020-07-02T10:46:44.679Z'
+                  updated_at: '2020-07-02T10:46:44.679Z'
+                  admin_user:
+                    data:
+                      id: '2'
+                      type: admin_user
+                      attributes:
+                        first_name: Test
+                        last_name: Mediator
+                  parties:
+                    data:
+                    - id: '32'
+                      type: party
+                      attributes:
+                        first_name: Igor
+                        last_name: Pavlov
+                relationships:
+                  admin_user:
+                    data:
+                      id: '2'
+                      type: admin_user
+        '401':
+          description: Unauthorized
+    put:
+      summary: Update Case
+      tags:
+      - Cases
+      consumes:
+      - multipart/form-data
+      parameters:
+      - name: Authorization
+        in: header
+        type: string
+        required: true
+        description: Use a JWT auth_token which returns after sign in
+      - name: id
+        in: path
+        type: integer
+        required: true
+      - name: case[name]
+        in: formData
+        type: string
+      - name: case[program]
+        in: formData
+        type: string
+      - name: case[description]
+        in: formData
+        type: string
+      - name: case[tags][0]
+        in: formData
+        type: string
+        description: 'Example: ''cat'''
+      - name: case[tags][1]
+        in: formData
+        type: string
+        description: 'Example: ''dog'''
+      - name: case[status]
+        in: formData
+        enum:
+        - Active
+        - Not Active
+      responses:
+        '204':
+          description: Updated
+        '401':
+          description: Unauthorized
+        '422':
+          description: Failed
+    delete:
+      summary: Destroy Case
+      tags:
+      - Cases
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        type: string
+        required: true
+        description: Use a JWT auth_token which returns after sign in
+      - name: id
+        in: path
+        type: integer
+        required: true
+      responses:
+        '204':
+          description: Success
+        '401':
+          description: Unauthorized
+  "/admin/api/contacts":
+    get:
+      summary: Get Contacts
+      tags:
+      - Contacts
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        type: string
+        required: true
+        description: Use a JWT auth_token which returns after sign in
+      - name: query
+        in: query
+        type: string
+        description: Elasticsearch query string. See https://github.com/ankane/searchkick
+          for more details.
+      - name: match
+        in: query
+        type: string
+        description: 'Elasticsearch match option, variants: word, word_start, word_middle,
+          word_end, text_start, text_middle, text_end. See https://github.com/ankane/searchkick
+          for more details.'
+      - name: order_by
+        in: query
+        type: string
+        description: 'Elasticsearch order_by option, example: id. See https://github.com/ankane/searchkick
+          for more details.'
+      - name: order
+        in: query
+        type: string
+        description: 'Elasticsearch order option, variants: asc, desc. See https://github.com/ankane/searchkick
+          for more details.'
+      - name: page
+        in: query
+        type: integer
+        description: 'Elasticsearch pagination page number, example: 1. See https://github.com/ankane/searchkick
+          for more details.'
+      - name: per
+        in: query
+        type: integer
+        description: 'Elasticsearch pagination per page number, example: 20. See https://github.com/ankane/searchkick
+          for more details.'
+      - name: where
+        in: query
+        type: object
+        description: 'Elasticsearch where object, example: { created_at: { gte: Time.now
+          } }. See https://github.com/ankane/searchkick for more details.'
+      responses:
+        '200':
+          description: Success
+          examples:
+            application/json:
+              data:
+              - id: '14'
+                type: contact
+                attributes:
+                  first_name: John 14
+                  last_name: Doe 14
+                  contact_type: Third Person 14
+                  email: contact14@example.com
+                  title: Contact 14
+                  company: Company 14
+                  phone: '0000000000'
+                  address: Address 14
+                  notes: Notes 14
+                  street: Street 14
+                  city: City 14
+                  state: State 14
+                  zip_code: '00000014'
+                  country: USA
+                  tags:
+                  - Tag 1
+                  - Tag 2
+                  created_at: '2020-07-02T10:46:49.040Z'
+                  updated_at: '2020-07-02T10:46:49.040Z'
+                  admin_user:
+                    data:
+                      id: '2'
+                      type: admin_user
+                      attributes:
+                        first_name: Test
+                        last_name: Mediator
+                  cases:
+                    data:
+                    - id: '2'
+                      type: case
+                      attributes:
+                        name: Case 2
+                    - id: '4'
+                      type: case
+                      attributes:
+                        name: Case 4
+                  parties:
+                    data:
+                    - id: '2'
+                      type: party
+                      attributes:
+                        first_name: John 2
+                        last_name: Doe 2
+                    - id: '4'
+                      type: party
+                      attributes:
+                        first_name: John 4
+                        last_name: Doe 4
+        '401':
+          description: Unauthorized
+    post:
+      summary: Create Contact
+      tags:
+      - Contacts
+      consumes:
+      - multipart/form-data
+      parameters:
+      - name: Authorization
+        in: header
+        type: string
+        required: true
+        description: Use a JWT auth_token which returns after sign in
+      - name: contact[case_ids][0]
+        in: formData
+        type: integer
+        required: true
+      - name: contact[case_ids][1]
+        in: formData
+        type: integer
+        required: true
+      - name: contact[party_ids][0]
+        in: formData
+        type: integer
+        required: true
+      - name: contact[party_ids][1]
+        in: formData
+        type: integer
+        required: true
+      - name: contact[first_name]
+        in: formData
+        type: string
+        required: true
+      - name: contact[last_name]
+        in: formData
+        type: string
+        required: true
+      - name: contact[contact_type]
+        in: formData
+        type: string
+      - name: contact[email]
+        in: formData
+        type: string
+      - name: contact[title]
+        in: formData
+        type: string
+      - name: contact[company]
+        in: formData
+        type: string
+      - name: contact[phone]
+        in: formData
+        type: string
+      - name: contact[address]
+        in: formData
+        type: string
+      - name: contact[notes]
+        in: formData
+        type: string
+      - name: contact[street]
+        in: formData
+        type: string
+      - name: contact[city]
+        in: formData
+        type: string
+      - name: contact[state]
+        in: formData
+        type: string
+      - name: contact[zip_code]
+        in: formData
+        type: string
+      - name: contact[country]
+        in: formData
+        type: string
+      - name: contact[tags][0]
+        in: formData
+        type: string
+        description: 'Example: ''cat'''
+      - name: contact[tags][1]
+        in: formData
+        type: string
+        description: 'Example: ''dog'''
+      responses:
+        '201':
+          description: Success
+          examples:
+            application/json:
+              data:
+                id: '14'
+                type: contact
+                attributes:
+                  first_name: John 14
+                  last_name: Doe 14
+                  contact_type: Third Person 14
+                  email: contact14@example.com
+                  title: Contact 14
+                  company: Company 14
+                  phone: '0000000000'
+                  address: Address 14
+                  notes: Notes 14
+                  street: Street 14
+                  city: City 14
+                  state: State 14
+                  zip_code: '00000014'
+                  country: USA
+                  tags:
+                  - Tag 1
+                  - Tag 2
+                  created_at: '2020-07-02T10:46:49.040Z'
+                  updated_at: '2020-07-02T10:46:49.040Z'
+                  admin_user:
+                    data:
+                      id: '2'
+                      type: admin_user
+                      attributes:
+                        first_name: Test
+                        last_name: Mediator
+                  cases:
+                    data:
+                    - id: '2'
+                      type: case
+                      attributes:
+                        name: Case 2
+                    - id: '4'
+                      type: case
+                      attributes:
+                        name: Case 4
+                  parties:
+                    data:
+                    - id: '2'
+                      type: party
+                      attributes:
+                        first_name: John 2
+                        last_name: Doe 2
+                    - id: '4'
+                      type: party
+                      attributes:
+                        first_name: John 4
+                        last_name: Doe 4
+        '401':
+          description: Unauthorized
+        '422':
+          description: Failed
+  "/admin/api/contacts/{id}":
+    get:
+      summary: Get Contact
+      tags:
+      - Contacts
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        type: string
+        required: true
+        description: Use a JWT auth_token which returns after sign in
+      - name: id
+        in: path
+        type: integer
+        required: true
+      responses:
+        '200':
+          description: Success
+          examples:
+            application/json:
+              data:
+                id: '14'
+                type: contact
+                attributes:
+                  first_name: John 14
+                  last_name: Doe 14
+                  contact_type: Third Person 14
+                  email: contact14@example.com
+                  title: Contact 14
+                  company: Company 14
+                  phone: '0000000000'
+                  address: Address 14
+                  notes: Notes 14
+                  street: Street 14
+                  city: City 14
+                  state: State 14
+                  zip_code: '00000014'
+                  country: USA
+                  tags:
+                  - Tag 1
+                  - Tag 2
+                  created_at: '2020-07-02T10:46:49.040Z'
+                  updated_at: '2020-07-02T10:46:49.040Z'
+                  case_name: Case 14
+                  party_name: Party 14
+                  admin_user:
+                    data:
+                      id: '2'
+                      type: admin_user
+                      attributes:
+                        first_name: Test
+                        last_name: Mediator
+                  cases:
+                    data:
+                    - id: '2'
+                      type: case
+                      attributes:
+                        name: Case 2
+                    - id: '4'
+                      type: case
+                      attributes:
+                        name: Case 4
+                  parties:
+                    data:
+                    - id: '2'
+                      type: party
+                      attributes:
+                        first_name: John 2
+                        last_name: Doe 2
+                    - id: '4'
+                      type: party
+                      attributes:
+                        first_name: John 4
+                        last_name: Doe 4
+        '401':
+          description: Unauthorized
+    put:
+      summary: Update Contact
+      tags:
+      - Contacts
+      consumes:
+      - multipart/form-data
+      parameters:
+      - name: Authorization
+        in: header
+        type: string
+        required: true
+        description: Use a JWT auth_token which returns after sign in
+      - name: id
+        in: path
+        type: integer
+        required: true
+      - name: contact[case_ids][0]
+        in: formData
+        type: integer
+      - name: contact[case_ids][1]
+        in: formData
+        type: integer
+      - name: contact[party_ids][0]
+        in: formData
+        type: integer
+      - name: contact[party_ids][1]
+        in: formData
+        type: integer
+      - name: contact[first_name]
+        in: formData
+        type: string
+      - name: contact[last_name]
+        in: formData
+        type: string
+      - name: contact[contact_type]
+        in: formData
+        type: string
+      - name: contact[email]
+        in: formData
+        type: string
+      - name: contact[title]
+        in: formData
+        type: string
+      - name: contact[company]
+        in: formData
+        type: string
+      - name: contact[phone]
+        in: formData
+        type: string
+      - name: contact[address]
+        in: formData
+        type: string
+      - name: contact[notes]
+        in: formData
+        type: string
+      - name: contact[street]
+        in: formData
+        type: string
+      - name: contact[city]
+        in: formData
+        type: string
+      - name: contact[state]
+        in: formData
+        type: string
+      - name: contact[zip_code]
+        in: formData
+        type: string
+      - name: contact[country]
+        in: formData
+        type: string
+      - name: contact[tags][0]
+        in: formData
+        type: string
+        description: 'Example: ''cat'''
+      - name: contact[tags][1]
+        in: formData
+        type: string
+        description: 'Example: ''dog'''
+      responses:
+        '204':
+          description: Updated
+        '401':
+          description: Unauthorized
+        '422':
+          description: Failed
+    delete:
+      summary: Destroy Contact
+      tags:
+      - Contacts
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        type: string
+        required: true
+        description: Use a JWT auth_token which returns after sign in
+      - name: id
+        in: path
+        type: integer
+        required: true
+      responses:
+        '204':
+          description: Success
+        '401':
+          description: Unauthorized
+  "/admin/api/documents":
+    get:
+      summary: Get Documents
+      tags:
+      - Documents
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        type: string
+        required: true
+        description: Use a JWT auth_token which returns after sign in
+      - name: query
+        in: query
+        type: string
+        description: Elasticsearch query string. See https://github.com/ankane/searchkick
+          for more details.
+      - name: match
+        in: query
+        type: string
+        description: 'Elasticsearch match option, variants: word, word_start, word_middle,
+          word_end, text_start, text_middle, text_end. See https://github.com/ankane/searchkick
+          for more details.'
+      - name: order_by
+        in: query
+        type: string
+        description: 'Elasticsearch order_by option, example: id. See https://github.com/ankane/searchkick
+          for more details.'
+      - name: order
+        in: query
+        type: string
+        description: 'Elasticsearch order option, variants: asc, desc. See https://github.com/ankane/searchkick
+          for more details.'
+      - name: page
+        in: query
+        type: integer
+        description: 'Elasticsearch pagination page number, example: 1. See https://github.com/ankane/searchkick
+          for more details.'
+      - name: per
+        in: query
+        type: integer
+        description: 'Elasticsearch pagination per page number, example: 20. See https://github.com/ankane/searchkick
+          for more details.'
+      - name: where
+        in: query
+        type: object
+        description: 'Elasticsearch where object, example: { created_at: { gte: Time.now
+          } }. See https://github.com/ankane/searchkick for more details.'
+      responses:
+        '200':
+          description: Success
+          examples:
+            application/json:
+              data:
+              - id: '14'
+                type: document
+                attributes:
+                  file_name: File Name 14
+                  description: Description 14
+                  date: '2020-07-02'
+                  author: Author 14
+                  created_at: '2020-07-02T10:46:48.188Z'
+                  updated_at: '2020-07-02T10:46:48.188Z'
+                  admin_user:
+                    data:
+                      id: '2'
+                      type: admin_user
+                      attributes:
+                        first_name: Test
+                        last_name: Mediator
+                  case:
+                    data:
+                      id: '1'
+                      type: case
+                      attributes:
+                        name: Case 1
+                  file: http://localhost:3000/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6723a13852bd9f682435002737d382f766627241/Check%20mark.png
+        '401':
+          description: Unauthorized
+    post:
+      summary: Create Document
+      tags:
+      - Documents
+      consumes:
+      - multipart/form-data
+      parameters:
+      - name: Authorization
+        in: header
+        type: string
+        required: true
+        description: Use a JWT auth_token which returns after sign in
+      - name: document[case_id]
+        in: formData
+        type: integer
+        required: true
+      - name: document[file_name]
+        in: formData
+        type: string
+        required: true
+      - name: document[description]
+        in: formData
+        type: string
+      - name: document[date]
+        in: formData
+        type: string
+      - name: document[author]
+        in: formData
+        type: string
+      - name: document[file]
+        in: formData
+        type: file
+      responses:
+        '201':
+          description: Success
+          examples:
+            application/json:
+              data:
+                id: '14'
+                type: document
+                attributes:
+                  file_name: File Name 14
+                  description: Description 14
+                  date: '2020-07-02'
+                  author: Author 14
+                  created_at: '2020-07-02T10:46:48.188Z'
+                  updated_at: '2020-07-02T10:46:48.188Z'
+                  admin_user:
+                    data:
+                      id: '2'
+                      type: admin_user
+                      attributes:
+                        first_name: Test
+                        last_name: Mediator
+                  case:
+                    data:
+                      id: '1'
+                      type: case
+                      attributes:
+                        name: Case 1
+                  file: http://localhost:3000/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6723a13852bd9f682435002737d382f766627241/Check%20mark.png
+        '401':
+          description: Unauthorized
+        '422':
+          description: Failed
+  "/admin/api/documents/{id}":
+    get:
+      summary: Get Document
+      tags:
+      - Documents
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        type: string
+        required: true
+        description: Use a JWT auth_token which returns after sign in
+      - name: id
+        in: path
+        type: integer
+        required: true
+      responses:
+        '200':
+          description: Success
+          examples:
+            application/json:
+              data:
+                id: '14'
+                type: document
+                attributes:
+                  file_name: File Name 14
+                  description: Description 14
+                  date: '2020-07-02'
+                  author: Author 14
+                  created_at: '2020-07-02T10:46:48.188Z'
+                  updated_at: '2020-07-02T10:46:48.188Z'
+                  admin_user:
+                    data:
+                      id: '2'
+                      type: admin_user
+                      attributes:
+                        first_name: Test
+                        last_name: Mediator
+                  case:
+                    data:
+                      id: '1'
+                      type: case
+                      attributes:
+                        name: Case 1
+                  file: http://localhost:3000/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6723a13852bd9f682435002737d382f766627241/Check%20mark.png
+        '401':
+          description: Unauthorized
+    put:
+      summary: Update Document
+      tags:
+      - Documents
+      consumes:
+      - multipart/form-data
+      parameters:
+      - name: Authorization
+        in: header
+        type: string
+        required: true
+        description: Use a JWT auth_token which returns after sign in
+      - name: id
+        in: path
+        type: integer
+        required: true
+      - name: document[case_id]
+        in: formData
+        type: integer
+      - name: document[file_name]
+        in: formData
+        type: string
+      - name: document[description]
+        in: formData
+        type: string
+      - name: document[date]
+        in: formData
+        type: string
+      - name: document[author]
+        in: formData
+        type: string
+      - name: document[file]
+        in: formData
+        type: file
+      responses:
+        '204':
+          description: Updated
+        '401':
+          description: Unauthorized
+        '422':
+          description: Failed
+    delete:
+      summary: Destroy Document
+      tags:
+      - Documents
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        type: string
+        required: true
+        description: Use a JWT auth_token which returns after sign in
+      - name: id
+        in: path
+        type: integer
+        required: true
+      responses:
+        '204':
+          description: Success
+        '401':
+          description: Unauthorized
+  "/admin/api/invoices":
+    get:
+      summary: Get Invoices
+      tags:
+      - Invoices
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        type: string
+        required: true
+        description: Use a JWT auth_token which returns after sign in
+      - name: query
+        in: query
+        type: string
+        description: Elasticsearch query string. See https://github.com/ankane/searchkick
+          for more details.
+      - name: match
+        in: query
+        type: string
+        description: 'Elasticsearch match option, variants: word, word_start, word_middle,
+          word_end, text_start, text_middle, text_end. See https://github.com/ankane/searchkick
+          for more details.'
+      - name: order_by
+        in: query
+        type: string
+        description: 'Elasticsearch order_by option, example: id. See https://github.com/ankane/searchkick
+          for more details.'
+      - name: order
+        in: query
+        type: string
+        description: 'Elasticsearch order option, variants: asc, desc. See https://github.com/ankane/searchkick
+          for more details.'
+      - name: page
+        in: query
+        type: integer
+        description: 'Elasticsearch pagination page number, example: 1. See https://github.com/ankane/searchkick
+          for more details.'
+      - name: per
+        in: query
+        type: integer
+        description: 'Elasticsearch pagination per page number, example: 20. See https://github.com/ankane/searchkick
+          for more details.'
+      - name: where
+        in: query
+        type: object
+        description: 'Elasticsearch where object, example: { created_at: { gte: Time.now
+          } }. See https://github.com/ankane/searchkick for more details.'
+      responses:
+        '200':
+          description: Success
+          examples:
+            application/json:
+              data:
+              - id: '14'
+                type: invoice
+                attributes:
+                  name: Invoice 14
+                  time: 30
+                  amount: 10000
+                  date: '2020-07-02'
+                  due_date: '2020-07-02'
+                  status: Created
+                  created_at: '2020-07-02T10:46:55.437Z'
+                  updated_at: '2020-07-02T10:46:55.437Z'
+                  admin_user:
+                    data:
+                      id: '2'
+                      type: admin_user
+                      attributes:
+                        first_name: Test
+                        last_name: Mediator
+                  case:
+                    data:
+                      id: '1'
+                      type: case
+                      attributes:
+                        name: Case 1
+                  party:
+                    data:
+                      id: '1'
+                      type: party
+                      attributes:
+                        first_name: John 1
+                        last_name: Doe 1
+        '401':
+          description: Unauthorized
+    post:
+      summary: Create Invoice
+      tags:
+      - Invoices
+      consumes:
+      - multipart/form-data
+      parameters:
+      - name: Authorization
+        in: header
+        type: string
+        required: true
+        description: Use a JWT auth_token which returns after sign in
+      - name: invoice[case_id]
+        in: formData
+        type: integer
+        required: true
+      - name: invoice[party_id]
+        in: formData
+        type: integer
+        required: true
+      - name: invoice[name]
+        in: formData
+        type: string
+        required: true
+      - name: invoice[amount]
+        in: formData
+        type: integer
+        required: true
+      - name: invoice[time]
+        in: formData
+        type: string
+      - name: invoice[date]
+        in: formData
+        type: string
+      - name: invoice[due_date]
+        in: formData
+        type: string
+      responses:
+        '201':
+          description: Success
+          examples:
+            application/json:
+              data:
+                id: '14'
+                type: invoice
+                attributes:
+                  name: Invoice 14
+                  time: 30
+                  amount: 10000
+                  date: '2020-07-02'
+                  due_date: '2020-07-02'
+                  status: Created
+                  created_at: '2020-07-02T10:46:55.437Z'
+                  updated_at: '2020-07-02T10:46:55.437Z'
+                  admin_user:
+                    data:
+                      id: '2'
+                      type: admin_user
+                      attributes:
+                        first_name: Test
+                        last_name: Mediator
+                  case:
+                    data:
+                      id: '1'
+                      type: case
+                      attributes:
+                        name: Case 1
+                  party:
+                    data:
+                      id: '1'
+                      type: party
+                      attributes:
+                        first_name: John 1
+                        last_name: Doe 1
+        '401':
+          description: Unauthorized
+        '422':
+          description: Failed
+  "/admin/api/invoices/{id}":
+    get:
+      summary: Get Invoice
+      tags:
+      - Invoices
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        type: string
+        required: true
+        description: Use a JWT auth_token which returns after sign in
+      - name: id
+        in: path
+        type: integer
+        required: true
+      responses:
+        '200':
+          description: Success
+          examples:
+            application/json:
+              data:
+                id: '14'
+                type: invoice
+                attributes:
+                  name: Invoice 14
+                  time: 30
+                  amount: 10000
+                  date: '2020-07-02'
+                  due_date: '2020-07-02'
+                  status: Created
+                  created_at: '2020-07-02T10:46:55.437Z'
+                  updated_at: '2020-07-02T10:46:55.437Z'
+                  admin_user:
+                    data:
+                      id: '2'
+                      type: admin_user
+                      attributes:
+                        first_name: Test
+                        last_name: Mediator
+                  case:
+                    data:
+                      id: '1'
+                      type: case
+                      attributes:
+                        name: Case 1
+                  party:
+                    data:
+                      id: '1'
+                      type: party
+                      attributes:
+                        first_name: John 1
+                        last_name: Doe 1
+        '401':
+          description: Unauthorized
+    put:
+      summary: Update Invoice
+      tags:
+      - Invoices
+      consumes:
+      - multipart/form-data
+      parameters:
+      - name: Authorization
+        in: header
+        type: string
+        required: true
+        description: Use a JWT auth_token which returns after sign in
+      - name: id
+        in: path
+        type: integer
+        required: true
+      - name: invoice[case_id]
+        in: formData
+        type: integer
+      - name: invoice[party_id]
+        in: formData
+        type: integer
+      - name: invoice[name]
+        in: formData
+        type: string
+      - name: invoice[amount]
+        in: formData
+        type: integer
+      - name: invoice[time]
+        in: formData
+        type: string
+      - name: invoice[date]
+        in: formData
+        type: string
+      - name: invoice[due_date]
+        in: formData
+        type: string
+      responses:
+        '204':
+          description: Updated
+        '401':
+          description: Unauthorized
+        '422':
+          description: Failed
+    delete:
+      summary: Destroy Invoice
+      tags:
+      - Invoices
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        type: string
+        required: true
+        description: Use a JWT auth_token which returns after sign in
+      - name: id
+        in: path
+        type: integer
+        required: true
+      responses:
+        '204':
+          description: Success
+        '401':
+          description: Unauthorized
+  "/admin/api/invoices/secret":
+    get:
+      summary: Get Secret
+      tags:
+      - Invoices
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: token
+        in: header
+        type: string
+        required: true
+        description: Use an invoice token
+      responses:
+        '200':
+          description: Success
+          examples:
+            application/json:
+              secret: pi_1H0bldJDA0jmlwUvtQLGcCBa_secret_0uDyfsgFhsjZ7H4pjDzXGAvcK
+        '401':
+          description: Unauthorized
+  "/admin/api/issues":
+    get:
+      summary: Get Issues
+      tags:
+      - Issues
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        type: string
+        required: true
+        description: Use a JWT auth_token which returns after sign in
+      - name: query
+        in: query
+        type: string
+        description: Elasticsearch query string. See https://github.com/ankane/searchkick
+          for more details.
+      - name: match
+        in: query
+        type: string
+        description: 'Elasticsearch match option, variants: word, word_start, word_middle,
+          word_end, text_start, text_middle, text_end. See https://github.com/ankane/searchkick
+          for more details.'
+      - name: order_by
+        in: query
+        type: string
+        description: 'Elasticsearch order_by option, example: id. See https://github.com/ankane/searchkick
+          for more details.'
+      - name: order
+        in: query
+        type: string
+        description: 'Elasticsearch order option, variants: asc, desc. See https://github.com/ankane/searchkick
+          for more details.'
+      - name: page
+        in: query
+        type: integer
+        description: 'Elasticsearch pagination page number, example: 1. See https://github.com/ankane/searchkick
+          for more details.'
+      - name: per
+        in: query
+        type: integer
+        description: 'Elasticsearch pagination per page number, example: 20. See https://github.com/ankane/searchkick
+          for more details.'
+      - name: where
+        in: query
+        type: object
+        description: 'Elasticsearch where object, example: { created_at: { gte: Time.now
+          } }. See https://github.com/ankane/searchkick for more details.'
+      responses:
+        '200':
+          description: Success
+          examples:
+            application/json:
+              data:
+              - id: '14'
+                type: issue
+                attributes:
+                  title: Issue 14
+                  description: Description 14
+                  resolution_title: Resolution 14
+                  resolution_description: Resolution Description 14
+                  mediators_notes_title: Notes 14
+                  mediators_notes_description: Notes Description 14
+                  admin_user:
+                    data:
+                      id: '2'
+                      type: admin_user
+                      attributes:
+                        first_name: Test
+                        last_name: Mediator
+                  case:
+                    data:
+                      id: '1'
+                      type: case
+                      attributes:
+                        name: Case 1
+                  party:
+                    data:
+                      id: '1'
+                      type: party
+                      attributes:
+                        first_name: John 1
+                        last_name: Doe 1
+        '401':
+          description: Unauthorized
+    post:
+      summary: Create Issue
+      tags:
+      - Issues
+      consumes:
+      - multipart/form-data
+      parameters:
+      - name: Authorization
+        in: header
+        type: string
+        required: true
+        description: Use a JWT auth_token which returns after sign in
+      - name: issue[case_id]
+        in: formData
+        type: integer
+        required: true
+      - name: issue[party_id]
+        in: formData
+        type: integer
+        required: true
+      - name: issue[title]
+        in: formData
+        type: string
+        required: true
+      - name: issue[description]
+        in: formData
+        type: string
+      - name: issue[resolution_title]
+        in: formData
+        type: string
+      - name: issue[resolution_description]
+        in: formData
+        type: string
+      - name: issue[mediators_notes_title]
+        in: formData
+        type: string
+      - name: issue[mediators_notes_description]
+        in: formData
+        type: string
+      - name: issue[agreement]
+        in: formData
+        type: string
+      responses:
+        '201':
+          description: Success
+          examples:
+            application/json:
+              data:
+                id: '14'
+                type: issue
+                attributes:
+                  title: Issue 14
+                  description: Description 14
+                  resolution_title: Resolution 14
+                  resolution_description: Resolution Description 14
+                  mediators_notes_title: Notes 14
+                  mediators_notes_description: Notes Description 14
+                  admin_user:
+                    data:
+                      id: '2'
+                      type: admin_user
+                      attributes:
+                        first_name: Test
+                        last_name: Mediator
+                  case:
+                    data:
+                      id: '1'
+                      type: case
+                      attributes:
+                        name: Case 1
+                  party:
+                    data:
+                      id: '1'
+                      type: party
+                      attributes:
+                        first_name: John 1
+                        last_name: Doe 1
+        '401':
+          description: Unauthorized
+        '422':
+          description: Failed
+  "/admin/api/issues/{id}":
+    get:
+      summary: Get Issue
+      tags:
+      - Issues
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        type: string
+        required: true
+        description: Use a JWT auth_token which returns after sign in
+      - name: id
+        in: path
+        type: integer
+        required: true
+      responses:
+        '200':
+          description: Success
+          examples:
+            application/json:
+              data:
+                id: '14'
+                type: issue
+                attributes:
+                  title: Issue 14
+                  description: Description 14
+                  resolution_title: Resolution 14
+                  resolution_description: Resolution Description 14
+                  mediators_notes_title: Notes 14
+                  mediators_notes_description: Notes Description 14
+                  admin_user:
+                    data:
+                      id: '2'
+                      type: admin_user
+                      attributes:
+                        first_name: Test
+                        last_name: Mediator
+                  case:
+                    data:
+                      id: '1'
+                      type: case
+                      attributes:
+                        name: Case 1
+                  party:
+                    data:
+                      id: '1'
+                      type: party
+                      attributes:
+                        first_name: John 1
+                        last_name: Doe 1
+        '401':
+          description: Unauthorized
+    put:
+      summary: Update Issue
+      tags:
+      - Issues
+      consumes:
+      - multipart/form-data
+      parameters:
+      - name: Authorization
+        in: header
+        type: string
+        required: true
+        description: Use a JWT auth_token which returns after sign in
+      - name: id
+        in: path
+        type: integer
+        required: true
+      - name: issue[case_id]
+        in: formData
+        type: integer
+      - name: issue[party_id]
+        in: formData
+        type: integer
+      - name: issue[title]
+        in: formData
+        type: string
+      - name: issue[description]
+        in: formData
+        type: string
+      - name: issue[resolution_title]
+        in: formData
+        type: string
+      - name: issue[resolution_description]
+        in: formData
+        type: string
+      - name: issue[mediators_notes_title]
+        in: formData
+        type: string
+      - name: issue[mediators_notes_description]
+        in: formData
+        type: string
+      - name: issue[agreement]
+        in: formData
+        type: string
+      responses:
+        '204':
+          description: Updated
+        '401':
+          description: Unauthorized
+        '422':
+          description: Failed
+    delete:
+      summary: Destroy Issue
+      tags:
+      - Issues
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        type: string
+        required: true
+        description: Use a JWT auth_token which returns after sign in
+      - name: id
+        in: path
+        type: integer
+        required: true
+      responses:
+        '204':
+          description: Success
+        '401':
+          description: Unauthorized
+  "/admin/api/messages":
+    get:
+      summary: Get Messages
+      tags:
+      - Messages
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        type: string
+        required: true
+        description: Use a JWT auth_token which returns after sign in
+      - name: query
+        in: query
+        type: string
+        description: Elasticsearch query string. See https://github.com/ankane/searchkick
+          for more details.
+      - name: match
+        in: query
+        type: string
+        description: 'Elasticsearch match option, variants: word, word_start, word_middle,
+          word_end, text_start, text_middle, text_end. See https://github.com/ankane/searchkick
+          for more details.'
+      - name: order_by
+        in: query
+        type: string
+        description: 'Elasticsearch order_by option, example: id. See https://github.com/ankane/searchkick
+          for more details.'
+      - name: order
+        in: query
+        type: string
+        description: 'Elasticsearch order option, variants: asc, desc. See https://github.com/ankane/searchkick
+          for more details.'
+      - name: page
+        in: query
+        type: integer
+        description: 'Elasticsearch pagination page number, example: 1. See https://github.com/ankane/searchkick
+          for more details.'
+      - name: per
+        in: query
+        type: integer
+        description: 'Elasticsearch pagination per page number, example: 20. See https://github.com/ankane/searchkick
+          for more details.'
+      - name: where
+        in: query
+        type: object
+        description: 'Elasticsearch where object, example: { created_at: { gte: Time.now
+          } }. See https://github.com/ankane/searchkick for more details.'
+      responses:
+        '200':
+          description: Success
+          examples:
+            application/json:
+              data:
+              - id: '14'
+                type: message
+                attributes:
+                  subject: Subject 14
+                  sent_at: '2020-07-02'
+                  content: Content 14
+                  from: From 14
+                  to: To 14
+                  admin_user:
+                    data:
+                      id: '2'
+                      type: admin_user
+                      attributes:
+                        first_name: Test
+                        last_name: Mediator
+                  case:
+                    data:
+                      id: '1'
+                      type: case
+                      attributes:
+                        name: Case 1
+                  party:
+                    data:
+                      id: '1'
+                      type: party
+                      attributes:
+                        first_name: John 1
+                        last_name: Doe 1
+        '401':
+          description: Unauthorized
+    post:
+      summary: Create Message
+      tags:
+      - Messages
+      consumes:
+      - multipart/form-data
+      parameters:
+      - name: Authorization
+        in: header
+        type: string
+        required: true
+        description: Use a JWT auth_token which returns after sign in
+      - name: message[case_id]
+        in: formData
+        type: integer
+        required: true
+      - name: message[party_id]
+        in: formData
+        type: integer
+        required: true
+      - name: message[content]
+        in: formData
+        type: string
+      responses:
+        '201':
+          description: Success
+          examples:
+            application/json:
+              data:
+                id: '14'
+                type: message
+                attributes:
+                  subject: Subject 14
+                  sent_at: '2020-07-02'
+                  content: Content 14
+                  from: From 14
+                  to: To 14
+                  admin_user:
+                    data:
+                      id: '2'
+                      type: admin_user
+                      attributes:
+                        first_name: Test
+                        last_name: Mediator
+                  case:
+                    data:
+                      id: '1'
+                      type: case
+                      attributes:
+                        name: Case 1
+                  party:
+                    data:
+                      id: '1'
+                      type: party
+                      attributes:
+                        first_name: John 1
+                        last_name: Doe 1
+        '401':
+          description: Unauthorized
+        '422':
+          description: Failed
+  "/admin/api/messages/{id}":
+    get:
+      summary: Get Message
+      tags:
+      - Messages
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        type: string
+        required: true
+        description: Use a JWT auth_token which returns after sign in
+      - name: id
+        in: path
+        type: integer
+        required: true
+      responses:
+        '200':
+          description: Success
+          examples:
+            application/json:
+              data:
+                id: '14'
+                type: message
+                attributes:
+                  subject: Subject 14
+                  sent_at: '2020-07-02'
+                  content: Content 14
+                  from: From 14
+                  to: To 14
+                  admin_user:
+                    data:
+                      id: '2'
+                      type: admin_user
+                      attributes:
+                        first_name: Test
+                        last_name: Mediator
+                  case:
+                    data:
+                      id: '1'
+                      type: case
+                      attributes:
+                        name: Case 1
+                  party:
+                    data:
+                      id: '1'
+                      type: party
+                      attributes:
+                        first_name: John 1
+                        last_name: Doe 1
+        '401':
+          description: Unauthorized
+  "/admin/api/parties":
+    get:
+      summary: Get Parties
+      tags:
+      - Parties
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        type: string
+        required: true
+        description: Use a JWT auth_token which returns after sign in
+      - name: query
+        in: query
+        type: string
+        description: Elasticsearch query string. See https://github.com/ankane/searchkick
+          for more details.
+      - name: match
+        in: query
+        type: string
+        description: 'Elasticsearch match option, variants: word, word_start, word_middle,
+          word_end, text_start, text_middle, text_end. See https://github.com/ankane/searchkick
+          for more details.'
+      - name: order_by
+        in: query
+        type: string
+        description: 'Elasticsearch order_by option, example: id. See https://github.com/ankane/searchkick
+          for more details.'
+      - name: order
+        in: query
+        type: string
+        description: 'Elasticsearch order option, variants: asc, desc. See https://github.com/ankane/searchkick
+          for more details.'
+      - name: page
+        in: query
+        type: integer
+        description: 'Elasticsearch pagination page number, example: 1. See https://github.com/ankane/searchkick
+          for more details.'
+      - name: per
+        in: query
+        type: integer
+        description: 'Elasticsearch pagination per page number, example: 20. See https://github.com/ankane/searchkick
+          for more details.'
+      - name: where
+        in: query
+        type: object
+        description: 'Elasticsearch where object, example: { created_at: { gte: Time.now
+          } }. See https://github.com/ankane/searchkick for more details.'
+      responses:
+        '200':
+          description: Success
+          examples:
+            application/json:
+              data:
+              - id: '14'
+                type: party
+                attributes:
+                  first_name: John 14
+                  last_name: Doe 14
+                  title: Party 14
+                  company: Company 14
+                  address: Address 14
+                  notes: Notes 14
+                  email: party14@example.com
+                  phone: '00000000014'
+                  street: Street 14
+                  city: City 14
+                  state: State 14
+                  zip_code: '0000014'
+                  country: Country 14
+                  tags:
+                  - Tag 1
+                  - Tag 2
+                  admin_user:
+                    data:
+                      id: '2'
+                      type: admin_user
+                      attributes:
+                        first_name: Test
+                        last_name: Mediator
+                  case:
+                    data:
+                      id: '1'
+                      type: case
+                      attributes:
+                        name: Case 1
+                  contacts:
+                    data:
+                    - id: '31'
+                      type: contact
+                      attributes:
+                        first_name: John 1
+                        last_name: Doe 1
+                        contact_type: Third Party 1
+        '401':
+          description: Unauthorized
+    post:
+      summary: Create Party
+      tags:
+      - Parties
+      consumes:
+      - multipart/form-data
+      parameters:
+      - name: Authorization
+        in: header
+        type: string
+        required: true
+        description: Use a JWT auth_token which returns after sign in
+      - name: party[case_id]
+        in: formData
+        type: integer
+        required: true
+      - name: party[email]
+        in: formData
+        type: string
+        required: true
+      - name: party[first_name]
+        in: formData
+        type: string
+        required: true
+      - name: party[last_name]
+        in: formData
+        type: string
+        required: true
+      - name: party[title]
+        in: formData
+        type: string
+      - name: party[company]
+        in: formData
+        type: string
+      - name: party[address]
+        in: formData
+        type: string
+      - name: party[notes]
+        in: formData
+        type: string
+      - name: party[phone]
+        in: formData
+        type: string
+      - name: party[street]
+        in: formData
+        type: string
+      - name: party[city]
+        in: formData
+        type: string
+      - name: party[state]
+        in: formData
+        type: string
+      - name: party[zip_code]
+        in: formData
+        type: string
+      - name: party[country]
+        in: formData
+        type: string
+      - name: party[tags][0]
+        in: formData
+        type: string
+        description: 'Example: ''cat'''
+      - name: party[tags][1]
+        in: formData
+        type: string
+        description: 'Example: ''dog'''
+      responses:
+        '201':
+          description: Success
+          examples:
+            application/json:
+              data:
+                id: '14'
+                type: party
+                attributes:
+                  first_name: John 14
+                  last_name: Doe 14
+                  title: Party 14
+                  company: Company 14
+                  address: Address 14
+                  notes: Notes 14
+                  email: party14@example.com
+                  phone: '00000000014'
+                  street: Street 14
+                  city: City 14
+                  state: State 14
+                  zip_code: '0000014'
+                  country: Country 14
+                  tags:
+                  - Tag 1
+                  - Tag 2
+                  admin_user:
+                    data:
+                      id: '2'
+                      type: admin_user
+                      attributes:
+                        first_name: Test
+                        last_name: Mediator
+                  case:
+                    data:
+                      id: '1'
+                      type: case
+                      attributes:
+                        name: Case 1
+                  contacts:
+                    data:
+                    - id: '31'
+                      type: contact
+                      attributes:
+                        first_name: John 1
+                        last_name: Doe 1
+                        contact_type: Third Party 1
+        '401':
+          description: Unauthorized
+        '422':
+          description: Failed
+  "/admin/api/parties/{id}":
+    get:
+      summary: Get Party
+      tags:
+      - Parties
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        type: string
+        required: true
+        description: Use a JWT auth_token which returns after sign in
+      - name: id
+        in: path
+        type: integer
+        required: true
+      responses:
+        '200':
+          description: Success
+          examples:
+            application/json:
+              data:
+                id: '14'
+                type: party
+                attributes:
+                  first_name: John 14
+                  last_name: Doe 14
+                  title: Party 14
+                  company: Company 14
+                  address: Address 14
+                  notes: Notes 14
+                  email: party14@example.com
+                  phone: '00000000014'
+                  street: Street 14
+                  city: City 14
+                  state: State 14
+                  zip_code: '0000014'
+                  country: Country 14
+                  tags:
+                  - Tag 1
+                  - Tag 2
+                  admin_user:
+                    data:
+                      id: '2'
+                      type: admin_user
+                      attributes:
+                        first_name: Test
+                        last_name: Mediator
+                  case:
+                    data:
+                      id: '1'
+                      type: case
+                      attributes:
+                        name: Case 1
+                  contacts:
+                    data:
+                    - id: '31'
+                      type: contact
+                      attributes:
+                        first_name: John 1
+                        last_name: Doe 1
+                        contact_type: Third Party 1
+        '401':
+          description: Unauthorized
+    put:
+      summary: Update Party
+      tags:
+      - Parties
+      consumes:
+      - multipart/form-data
+      parameters:
+      - name: Authorization
+        in: header
+        type: string
+        required: true
+        description: Use a JWT auth_token which returns after sign in
+      - name: id
+        in: path
+        type: integer
+        required: true
+      - name: party[case_id]
+        in: formData
+        type: integer
+      - name: party[first_name]
+        in: formData
+        type: string
+      - name: party[last_name]
+        in: formData
+        type: string
+      - name: party[title]
+        in: formData
+        type: string
+      - name: party[company]
+        in: formData
+        type: string
+      - name: party[address]
+        in: formData
+        type: string
+      - name: party[notes]
+        in: formData
+        type: string
+      - name: party[email]
+        in: formData
+        type: string
+      - name: party[phone]
+        in: formData
+        type: string
+      - name: party[street]
+        in: formData
+        type: string
+      - name: party[city]
+        in: formData
+        type: string
+      - name: party[state]
+        in: formData
+        type: string
+      - name: party[zip_code]
+        in: formData
+        type: string
+      - name: party[country]
+        in: formData
+        type: string
+      - name: party[tags][0]
+        in: formData
+        type: string
+        description: 'Example: ''cat'''
+      - name: party[tags][1]
+        in: formData
+        type: string
+        description: 'Example: ''dog'''
+      responses:
+        '204':
+          description: Updated
+        '401':
+          description: Unauthorized
+        '422':
+          description: Failed
+    delete:
+      summary: Destroy Party
+      tags:
+      - Parties
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        type: string
+        required: true
+        description: Use a JWT auth_token which returns after sign in
+      - name: id
+        in: path
+        type: integer
+        required: true
+      responses:
+        '204':
+          description: Success
+        '401':
+          description: Unauthorized
+  "/admin/api/parties/{id}/send_signature_request":
+    post:
+      summary: Send Signature Request
+      tags:
+      - Parties
+      consumes:
+      - multipart/form-data
+      parameters:
+      - name: Authorization
+        in: header
+        type: string
+        required: true
+        description: Use a JWT auth_token which returns after sign in
+      - name: id
+        in: path
+        type: integer
+        required: true
+      responses:
+        '200':
+          description: Success
+        '401':
+          description: Unauthorized
+  "/admin/api/reminders":
+    get:
+      summary: Get Reminders
+      tags:
+      - Reminders
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        type: string
+        required: true
+        description: Use a JWT auth_token which returns after sign in
+      - name: query
+        in: query
+        type: string
+        description: Elasticsearch query string. See https://github.com/ankane/searchkick
+          for more details.
+      - name: match
+        in: query
+        type: string
+        description: 'Elasticsearch match option, variants: word, word_start, word_middle,
+          word_end, text_start, text_middle, text_end. See https://github.com/ankane/searchkick
+          for more details.'
+      - name: order_by
+        in: query
+        type: string
+        description: 'Elasticsearch order_by option, example: id. See https://github.com/ankane/searchkick
+          for more details.'
+      - name: order
+        in: query
+        type: string
+        description: 'Elasticsearch order option, variants: asc, desc. See https://github.com/ankane/searchkick
+          for more details.'
+      - name: page
+        in: query
+        type: integer
+        description: 'Elasticsearch pagination page number, example: 1. See https://github.com/ankane/searchkick
+          for more details.'
+      - name: per
+        in: query
+        type: integer
+        description: 'Elasticsearch pagination per page number, example: 20. See https://github.com/ankane/searchkick
+          for more details.'
+      - name: where
+        in: query
+        type: object
+        description: 'Elasticsearch where object, example: { created_at: { gte: Time.now
+          } }. See https://github.com/ankane/searchkick for more details.'
+      responses:
+        '200':
+          description: Success
+          examples:
+            application/json:
+              data:
+              - id: '14'
+                type: reminder
+                attributes:
+                  name: Reminder 14
+                  description: Description 14
+                  priority: Important
+                  due_date: '2020-07-03'
+                  status: Active
+                  admin_user:
+                    data:
+                      id: '2'
+                      type: admin_user
+                      attributes:
+                        first_name: Test
+                        last_name: Mediator
+                  case:
+                    data:
+                      id: '1'
+                      type: case
+                      attributes:
+                        name: Case 1
+                  party:
+                    data:
+                      id: '1'
+                      type: party
+                      attributes:
+                        first_name: John 1
+                        last_name: Doe 1
+                  contact:
+                    data:
+                      id: '1'
+                      type: contact
+                      attributes:
+                        first_name: John 1
+                        last_name: Doe 1
+        '401':
+          description: Unauthorized
+    post:
+      summary: Create Reminder
+      tags:
+      - Reminders
+      consumes:
+      - multipart/form-data
+      parameters:
+      - name: Authorization
+        in: header
+        type: string
+        required: true
+        description: Use a JWT auth_token which returns after sign in
+      - name: reminder[case_id]
+        in: formData
+        type: integer
+        required: true
+      - name: reminder[party_id]
+        in: formData
+        type: integer
+        required: true
+      - name: reminder[contact_id]
+        in: formData
+        type: integer
+      - name: reminder[name]
+        in: formData
+        type: string
+        required: true
+      - name: reminder[description]
+        in: formData
+        type: string
+      - name: reminder[due_date]
+        in: formData
+        type: string
+      - name: reminder[priority]
+        in: formData
+        enum:
+        - Important
+        - No Matter
+      - name: reminder[status]
+        in: formData
+        enum:
+        - Active
+        - Archive
+      responses:
+        '201':
+          description: Success
+          examples:
+            application/json:
+              data:
+                id: '14'
+                type: reminder
+                attributes:
+                  name: Reminder 14
+                  description: Description 14
+                  priority: Important
+                  due_date: '2020-07-03'
+                  status: Active
+                  admin_user:
+                    data:
+                      id: '2'
+                      type: admin_user
+                      attributes:
+                        first_name: Test
+                        last_name: Mediator
+                  case:
+                    data:
+                      id: '1'
+                      type: case
+                      attributes:
+                        name: Case 1
+                  party:
+                    data:
+                      id: '1'
+                      type: party
+                      attributes:
+                        first_name: John 1
+                        last_name: Doe 1
+                  contact:
+                    data:
+                      id: '1'
+                      type: contact
+                      attributes:
+                        first_name: John 1
+                        last_name: Doe 1
+        '401':
+          description: Unauthorized
+        '422':
+          description: Failed
+  "/admin/api/reminders/{id}":
+    get:
+      summary: Get Reminder
+      tags:
+      - Reminders
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        type: string
+        required: true
+        description: Use a JWT auth_token which returns after sign in
+      - name: id
+        in: path
+        type: integer
+        required: true
+      responses:
+        '200':
+          description: Success
+          examples:
+            application/json:
+              data:
+                id: '14'
+                type: reminder
+                attributes:
+                  name: Reminder 14
+                  description: Description 14
+                  priority: Important
+                  due_date: '2020-07-03'
+                  status: Active
+                  admin_user:
+                    data:
+                      id: '2'
+                      type: admin_user
+                      attributes:
+                        first_name: Test
+                        last_name: Mediator
+                  case:
+                    data:
+                      id: '1'
+                      type: case
+                      attributes:
+                        name: Case 1
+                  party:
+                    data:
+                      id: '1'
+                      type: party
+                      attributes:
+                        first_name: John 1
+                        last_name: Doe 1
+                  contact:
+                    data:
+                      id: '1'
+                      type: contact
+                      attributes:
+                        first_name: John 1
+                        last_name: Doe 1
+        '401':
+          description: Unauthorized
+    put:
+      summary: Update Reminder
+      tags:
+      - Reminders
+      consumes:
+      - multipart/form-data
+      parameters:
+      - name: Authorization
+        in: header
+        type: string
+        required: true
+        description: Use a JWT auth_token which returns after sign in
+      - name: id
+        in: path
+        type: integer
+        required: true
+      - name: reminder[case_id]
+        in: formData
+        type: integer
+      - name: reminder[party_id]
+        in: formData
+        type: integer
+      - name: reminder[contact_id]
+        in: formData
+        type: integer
+      - name: reminder[name]
+        in: formData
+        type: string
+      - name: reminder[description]
+        in: formData
+        type: string
+      - name: reminder[due_date]
+        in: formData
+        type: string
+      - name: reminder[priority]
+        in: formData
+        enum:
+        - Important
+        - No Matter
+      - name: reminder[status]
+        in: formData
+        enum:
+        - Active
+        - Archive
+      responses:
+        '204':
+          description: Updated
+        '401':
+          description: Unauthorized
+        '422':
+          description: Failed
+    delete:
+      summary: Destroy Reminder
+      tags:
+      - Reminders
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        type: string
+        required: true
+        description: Use a JWT auth_token which returns after sign in
+      - name: id
+        in: path
+        type: integer
+        required: true
+      responses:
+        '204':
+          description: Success
+        '401':
+          description: Unauthorized
+  "/admin/api/sessions":
+    get:
+      summary: Get Sessions
+      tags:
+      - Sessions
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        type: string
+        required: true
+        description: Use a JWT auth_token which returns after sign in
+      - name: query
+        in: query
+        type: string
+        description: Elasticsearch query string. See https://github.com/ankane/searchkick
+          for more details.
+      - name: match
+        in: query
+        type: string
+        description: 'Elasticsearch match option, variants: word, word_start, word_middle,
+          word_end, text_start, text_middle, text_end. See https://github.com/ankane/searchkick
+          for more details.'
+      - name: order_by
+        in: query
+        type: string
+        description: 'Elasticsearch order_by option, example: id. See https://github.com/ankane/searchkick
+          for more details.'
+      - name: order
+        in: query
+        type: string
+        description: 'Elasticsearch order option, variants: asc, desc. See https://github.com/ankane/searchkick
+          for more details.'
+      - name: page
+        in: query
+        type: integer
+        description: 'Elasticsearch pagination page number, example: 1. See https://github.com/ankane/searchkick
+          for more details.'
+      - name: per
+        in: query
+        type: integer
+        description: 'Elasticsearch pagination per page number, example: 20. See https://github.com/ankane/searchkick
+          for more details.'
+      - name: where
+        in: query
+        type: object
+        description: 'Elasticsearch where object, example: { created_at: { gte: Time.now
+          } }. See https://github.com/ankane/searchkick for more details.'
+      responses:
+        '200':
+          description: Success
+          examples:
+            application/json:
+              data:
+              - id: '14'
+                type: session
+                attributes:
+                  name: Session 14
+                  due_date: '2020-07-03'
+                  time_start: '2000-01-01T13:46:00.000Z'
+                  time_finish: '2000-01-01T13:46:00.000Z'
+                  session_type: Online
+                  location: Location 14
+                  tags:
+                  - Tag 1
+                  - Tag 2
+                  rate_type: Hourly
+                  rate: 1000
+                  admin_user:
+                    data:
+                      id: '2'
+                      type: admin_user
+                      attributes:
+                        first_name: Test
+                        last_name: Mediator
+                  case:
+                    data:
+                      id: '1'
+                      type: case
+                      attributes:
+                        name: Case 1
+                  party:
+                    data:
+                      id: '1'
+                      type: party
+                      attributes:
+                        first_name: John 1
+                        last_name: Doe 1
+        '401':
+          description: Unauthorized
+    post:
+      summary: Create Session
+      tags:
+      - Sessions
+      consumes:
+      - multipart/form-data
+      parameters:
+      - name: Authorization
+        in: header
+        type: string
+        required: true
+        description: Use a JWT auth_token which returns after sign in
+      - name: session[case_id]
+        in: formData
+        type: integer
+        required: true
+      - name: session[party_id]
+        in: formData
+        type: integer
+        required: true
+      - name: session[name]
+        in: formData
+        type: string
+        required: true
+      - name: session[due_date]
+        in: formData
+        type: string
+        required: true
+      - name: session[time_start]
+        in: formData
+        type: string
+        required: true
+      - name: session[time_finish]
+        in: formData
+        type: string
+        required: true
+      - name: session[session_type]
+        in: formData
+        type: string
+        enum:
+        - Online
+        - Offline
+      - name: session[location]
+        in: formData
+        type: string
+      - name: session[tags]
+        in: formData
+        type: string
+        description: 'Example: [{''value'':''cat''}, {''value'':''dog''}]'
+      - name: session[rate_type]
+        in: formData
+        type: string
+        enum:
+        - Hourly
+        - Weekly
+      - name: session[rate]
+        in: formData
+        type: integer
+      responses:
+        '201':
+          description: Success
+          examples:
+            application/json:
+              data:
+                id: '14'
+                type: session
+                attributes:
+                  name: Session 14
+                  due_date: '2020-07-03'
+                  time_start: '2000-01-01T13:46:00.000Z'
+                  time_finish: '2000-01-01T13:46:00.000Z'
+                  session_type: Online
+                  location: Location 14
+                  tags:
+                  - Tag 1
+                  - Tag 2
+                  rate_type: Hourly
+                  rate: 1000
+                  admin_user:
+                    data:
+                      id: '2'
+                      type: admin_user
+                      attributes:
+                        first_name: Test
+                        last_name: Mediator
+                  case:
+                    data:
+                      id: '1'
+                      type: case
+                      attributes:
+                        name: Case 1
+                  party:
+                    data:
+                      id: '1'
+                      type: party
+                      attributes:
+                        first_name: John 1
+                        last_name: Doe 1
+        '401':
+          description: Unauthorized
+        '422':
+          description: Failed
+  "/admin/api/sessions/{id}":
+    get:
+      summary: Get Session
+      tags:
+      - Sessions
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        type: string
+        required: true
+        description: Use a JWT auth_token which returns after sign in
+      - name: id
+        in: path
+        type: integer
+        required: true
+      responses:
+        '200':
+          description: Success
+          examples:
+            application/json:
+              data:
+                id: '14'
+                type: session
+                attributes:
+                  name: Session 14
+                  due_date: '2020-07-03'
+                  time_start: '2000-01-01T13:46:00.000Z'
+                  time_finish: '2000-01-01T13:46:00.000Z'
+                  session_type: Online
+                  location: Location 14
+                  tags:
+                  - Tag 1
+                  - Tag 2
+                  rate_type: Hourly
+                  rate: 1000
+                  admin_user:
+                    data:
+                      id: '2'
+                      type: admin_user
+                      attributes:
+                        first_name: Test
+                        last_name: Mediator
+                  case:
+                    data:
+                      id: '1'
+                      type: case
+                      attributes:
+                        name: Case 1
+                  party:
+                    data:
+                      id: '1'
+                      type: party
+                      attributes:
+                        first_name: John 1
+                        last_name: Doe 1
+        '401':
+          description: Unauthorized
+    put:
+      summary: Update Session
+      tags:
+      - Sessions
+      consumes:
+      - multipart/form-data
+      parameters:
+      - name: Authorization
+        in: header
+        type: string
+        required: true
+        description: Use a JWT auth_token which returns after sign in
+      - name: id
+        in: path
+        type: integer
+        required: true
+      - name: session[case_id]
+        in: formData
+        type: integer
+      - name: session[party_id]
+        in: formData
+        type: integer
+      - name: session[name]
+        in: formData
+        type: string
+      - name: session[due_date]
+        in: formData
+        type: string
+      - name: session[time_start]
+        in: formData
+        type: string
+      - name: session[time_finish]
+        in: formData
+        type: string
+      - name: session[session_type]
+        in: formData
+        type: string
+        enum:
+        - Online
+        - Offline
+      - name: session[location]
+        in: formData
+        type: string
+      - name: session[tags]
+        in: formData
+        type: string
+        description: 'Example: [{''value'':''cat''}, {''value'':''dog''}]'
+      - name: session[rate_type]
+        in: formData
+        type: string
+        enum:
+        - Hourly
+        - Weekly
+      - name: session[rate]
+        in: formData
+        type: integer
+      responses:
+        '204':
+          description: Updated
+        '401':
+          description: Unauthorized
+        '422':
+          description: Failed
+    delete:
+      summary: Destroy Session
+      tags:
+      - Sessions
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        type: string
+        required: true
+        description: Use a JWT auth_token which returns after sign in
+      - name: id
+        in: path
+        type: integer
+        required: true
+      responses:
+        '204':
+          description: Success
+        '401':
+          description: Unauthorized
+  "/admin/api/subscriptions":
+    get:
+      summary: Get Subscriptions
+      tags:
+      - Subscriptions
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        type: string
+        required: true
+      responses:
+        '200':
+          description: Success
+          examples:
+            application/json:
+            - id: price_1GyG1yJDA0jmlwUvGf6WEo8H
+              object: plan
+              active: true
+              aggregate_usage: 
+              amount: 10000
+              amount_decimal: '10000'
+              billing_scheme: per_unit
+              created: 1593172062
+              currency: usd
+              interval: year
+              interval_count: 1
+              livemode: false
+              metadata: {}
+              name: Yearly Basic Plan
+              nickname: 
+              product: prod_HXKhzUid1c87CM
+              statement_descriptor: 
+              tiers: 
+              tiers_mode: 
+              transform_usage: 
+              trial_period_days: 
+              usage_type: licensed
+        '401':
+          description: Unauthorized
+    post:
+      summary: Create Subscription
+      tags:
+      - Subscriptions
+      consumes:
+      - multipart/form-data
+      parameters:
+      - name: Authorization
+        in: header
+        type: string
+        required: true
+      - name: plan_id
+        in: formData
+        type: string
+        required: true
+      - name: payment_method_id
+        in: formData
+        type: string
+        required: true
+      responses:
+        '200':
+          description: Success
+          examples:
+            application/json:
+              id: sub_HZlIwTz0aIyn7f
+              object: subscription
+              application_fee_percent: 
+              billing: charge_automatically
+              billing_cycle_anchor: 1593732272
+              billing_thresholds: 
+              cancel_at: 
+              cancel_at_period_end: false
+              canceled_at: 
+              collection_method: charge_automatically
+              created: 1593732272
+              current_period_end: 1625268272
+              current_period_start: 1593732272
+              customer: cus_HZZ4T8JCStoNd5
+              days_until_due: 
+              default_payment_method: 
+              default_source: 
+              default_tax_rates: []
+              discount: 
+              ended_at: 
+              invoice_customer_balance_settings:
+                consume_applied_balance_on_void: true
+              items:
+                object: list
+                data:
+                - id: si_HZlIRvMKgDiSGo
+                  object: subscription_item
+                  billing_thresholds: 
+                  created: 1593732273
+                  metadata: {}
+                  plan:
+                    id: price_1GyG1yJDA0jmlwUvGf6WEo8H
+                    object: plan
+                    active: true
+                    aggregate_usage: 
+                    amount: 10000
+                    amount_decimal: '10000'
+                    billing_scheme: per_unit
+                    created: 1593172062
+                    currency: usd
+                    interval: year
+                    interval_count: 1
+                    livemode: false
+                    metadata: {}
+                    name: Yearly Basic Plan
+                    nickname: 
+                    product: prod_HXKhzUid1c87CM
+                    statement_descriptor: 
+                    tiers: 
+                    tiers_mode: 
+                    transform_usage: 
+                    trial_period_days: 
+                    usage_type: licensed
+                  price:
+                    id: price_1GyG1yJDA0jmlwUvGf6WEo8H
+                    object: price
+                    active: true
+                    billing_scheme: per_unit
+                    created: 1593172062
+                    currency: usd
+                    livemode: false
+                    lookup_key: 
+                    metadata: {}
+                    nickname: 
+                    product: prod_HXKhzUid1c87CM
+                    recurring:
+                      aggregate_usage: 
+                      interval: year
+                      interval_count: 1
+                      trial_period_days: 
+                      usage_type: licensed
+                    tiers_mode: 
+                    transform_quantity: 
+                    type: recurring
+                    unit_amount: 10000
+                    unit_amount_decimal: '10000'
+                  quantity: 1
+                  subscription: sub_HZlIwTz0aIyn7f
+                  tax_rates: []
+                has_more: false
+                total_count: 1
+                url: "/v1/subscription_items?subscription=sub_HZlIwTz0aIyn7f"
+              latest_invoice:
+                id: in_1H0blcJDA0jmlwUvmIEnUhz1
+                object: invoice
+                account_country: US
+                account_name: 
+                amount_due: 10000
+                amount_paid: 10000
+                amount_remaining: 0
+                application_fee: 
+                attempt_count: 1
+                attempted: true
+                auto_advance: false
+                billing: charge_automatically
+                billing_reason: subscription_update
+                charge: ch_1H0bldJDA0jmlwUvh47tnngg
+                closed: true
+                collection_method: charge_automatically
+                created: 1593732272
+                currency: usd
+                custom_fields: 
+                customer: cus_HZZ4T8JCStoNd5
+                customer_address: 
+                customer_email: mediator@example.com
+                customer_name: 
+                customer_phone: 
+                customer_shipping: 
+                customer_tax_exempt: none
+                customer_tax_ids: []
+                date: 1593732272
+                default_payment_method: 
+                default_source: 
+                default_tax_rates: []
+                description: 
+                discount: 
+                due_date: 
+                ending_balance: 0
+                finalized_at: 1593732272
+                footer: 
+                forgiven: false
+                hosted_invoice_url: https://pay.stripe.com/invoice/acct_1AFjyCJDA0jmlwUv/invst_HZlIlFNum4WFA2RzCo1WeW7HsKgGH89
+                invoice_pdf: https://pay.stripe.com/invoice/acct_1AFjyCJDA0jmlwUv/invst_HZlIlFNum4WFA2RzCo1WeW7HsKgGH89/pdf
+                lines:
+                  object: list
+                  data:
+                  - id: sub_HZlIwTz0aIyn7f
+                    object: line_item
+                    amount: 10000
+                    currency: usd
+                    description: 
+                    discountable: true
+                    livemode: false
+                    metadata: {}
+                    period:
+                      end: 1625268272
+                      start: 1593732272
+                    plan:
+                      id: price_1GyG1yJDA0jmlwUvGf6WEo8H
+                      object: plan
+                      active: true
+                      aggregate_usage: 
+                      amount: 10000
+                      amount_decimal: '10000'
+                      billing_scheme: per_unit
+                      created: 1593172062
+                      currency: usd
+                      interval: year
+                      interval_count: 1
+                      livemode: false
+                      metadata: {}
+                      name: Yearly Basic Plan
+                      nickname: 
+                      product: prod_HXKhzUid1c87CM
+                      statement_descriptor: 
+                      tiers: 
+                      tiers_mode: 
+                      transform_usage: 
+                      trial_period_days: 
+                      usage_type: licensed
+                    price:
+                      id: price_1GyG1yJDA0jmlwUvGf6WEo8H
+                      object: price
+                      active: true
+                      billing_scheme: per_unit
+                      created: 1593172062
+                      currency: usd
+                      livemode: false
+                      lookup_key: 
+                      metadata: {}
+                      nickname: 
+                      product: prod_HXKhzUid1c87CM
+                      recurring:
+                        aggregate_usage: 
+                        interval: year
+                        interval_count: 1
+                        trial_period_days: 
+                        usage_type: licensed
+                      tiers_mode: 
+                      transform_quantity: 
+                      type: recurring
+                      unit_amount: 10000
+                      unit_amount_decimal: '10000'
+                    proration: false
+                    quantity: 1
+                    subscription: 
+                    subscription_item: si_HZlIRvMKgDiSGo
+                    tax_amounts: []
+                    tax_rates: []
+                    type: subscription
+                    unique_id: il_1H0blcJDA0jmlwUvgHv5omwo
+                    unique_line_item_id: sli_2db3636606d041
+                  has_more: false
+                  total_count: 1
+                  url: "/v1/invoices/in_1H0blcJDA0jmlwUvmIEnUhz1/lines"
+                livemode: false
+                metadata: {}
+                next_payment_attempt: 
+                number: 75996E90-0001
+                paid: true
+                payment_intent:
+                  id: pi_1H0bldJDA0jmlwUvtQLGcCBa
+                  object: payment_intent
+                  allowed_source_types:
+                  - card
+                  amount: 10000
+                  amount_capturable: 0
+                  amount_received: 10000
+                  application: 
+                  application_fee_amount: 
+                  canceled_at: 
+                  cancellation_reason: 
+                  capture_method: automatic
+                  charges:
+                    object: list
+                    data:
+                    - id: ch_1H0bldJDA0jmlwUvh47tnngg
+                      object: charge
+                      amount: 10000
+                      amount_refunded: 0
+                      application: 
+                      application_fee: 
+                      application_fee_amount: 
+                      balance_transaction: txn_1H0bldJDA0jmlwUvR1E9QqhY
+                      billing_details:
+                        address:
+                          city: 
+                          country: 
+                          line1: 
+                          line2: 
+                          postal_code: 
+                          state: 
+                        email: 
+                        name: 
+                        phone: 
+                      calculated_statement_descriptor: Stripe
+                      captured: true
+                      created: 1593732273
+                      currency: usd
+                      customer: cus_HZZ4T8JCStoNd5
+                      description: Subscription creation
+                      destination: 
+                      dispute: 
+                      disputed: false
+                      failure_code: 
+                      failure_message: 
+                      fraud_details: {}
+                      invoice: in_1H0blcJDA0jmlwUvmIEnUhz1
+                      livemode: false
+                      metadata: {}
+                      on_behalf_of: 
+                      order: 
+                      outcome:
+                        network_status: approved_by_network
+                        reason: 
+                        risk_level: normal
+                        risk_score: 11
+                        seller_message: Payment complete.
+                        type: authorized
+                      paid: true
+                      payment_intent: pi_1H0bldJDA0jmlwUvtQLGcCBa
+                      payment_method: pm_1H0blbJDA0jmlwUvHAaTCBWS
+                      payment_method_details:
+                        card:
+                          brand: visa
+                          checks:
+                            address_line1_check: 
+                            address_postal_code_check: 
+                            cvc_check: 
+                          country: US
+                          exp_month: 7
+                          exp_year: 2021
+                          fingerprint: QaK6KeL4D3qcQ3sw
+                          funding: credit
+                          installments: 
+                          last4: '4242'
+                          network: visa
+                          three_d_secure: 
+                          wallet: 
+                        type: card
+                      receipt_email: 
+                      receipt_number: 
+                      receipt_url: https://pay.stripe.com/receipts/acct_1AFjyCJDA0jmlwUv/ch_1H0bldJDA0jmlwUvh47tnngg/rcpt_HZlIc9R8EjmWh0QFXSNHT6Q6zEituLE
+                      refunded: false
+                      refunds:
+                        object: list
+                        data: []
+                        has_more: false
+                        total_count: 0
+                        url: "/v1/charges/ch_1H0bldJDA0jmlwUvh47tnngg/refunds"
+                      review: 
+                      shipping: 
+                      source: 
+                      source_transfer: 
+                      statement_descriptor: 
+                      statement_descriptor_suffix: 
+                      status: succeeded
+                      transfer_data: 
+                      transfer_group: 
+                    has_more: false
+                    total_count: 1
+                    url: "/v1/charges?payment_intent=pi_1H0bldJDA0jmlwUvtQLGcCBa"
+                  client_secret: pi_1H0bldJDA0jmlwUvtQLGcCBa_secret_0uDyfsgFhsjZ7H4pjDzXGAvcK
+                  confirmation_method: automatic
+                  created: 1593732273
+                  currency: usd
+                  customer: cus_HZZ4T8JCStoNd5
+                  description: Subscription creation
+                  invoice: in_1H0blcJDA0jmlwUvmIEnUhz1
+                  last_payment_error: 
+                  livemode: false
+                  metadata: {}
+                  next_action: 
+                  next_source_action: 
+                  on_behalf_of: 
+                  payment_method: pm_1H0blbJDA0jmlwUvHAaTCBWS
+                  payment_method_options:
+                    card:
+                      installments: 
+                      network: 
+                      request_three_d_secure: automatic
+                  payment_method_types:
+                  - card
+                  receipt_email: 
+                  review: 
+                  setup_future_usage: off_session
+                  shipping: 
+                  source: 
+                  statement_descriptor: 
+                  statement_descriptor_suffix: 
+                  status: succeeded
+                  transfer_data: 
+                  transfer_group: 
+                period_end: 1593732272
+                period_start: 1593732272
+                post_payment_credit_notes_amount: 0
+                pre_payment_credit_notes_amount: 0
+                receipt_number: 
+                starting_balance: 0
+                statement_descriptor: 
+                status: paid
+                status_transitions:
+                  finalized_at: 1593732272
+                  marked_uncollectible_at: 
+                  paid_at: 1593732272
+                  voided_at: 
+                subscription: sub_HZlIwTz0aIyn7f
+                subtotal: 10000
+                tax: 
+                tax_percent: 
+                total: 10000
+                total_tax_amounts: []
+                transfer_data: 
+                webhooks_delivered_at: 
+              livemode: false
+              metadata: {}
+              next_pending_invoice_item_invoice: 
+              pause_collection: 
+              pending_invoice_item_interval: 
+              pending_setup_intent: 
+              pending_update: 
+              plan:
+                id: price_1GyG1yJDA0jmlwUvGf6WEo8H
+                object: plan
+                active: true
+                aggregate_usage: 
+                amount: 10000
+                amount_decimal: '10000'
+                billing_scheme: per_unit
+                created: 1593172062
+                currency: usd
+                interval: year
+                interval_count: 1
+                livemode: false
+                metadata: {}
+                name: Yearly Basic Plan
+                nickname: 
+                product: prod_HXKhzUid1c87CM
+                statement_descriptor: 
+                tiers: 
+                tiers_mode: 
+                transform_usage: 
+                trial_period_days: 
+                usage_type: licensed
+              quantity: 1
+              schedule: 
+              start: 1593732272
+              start_date: 1593732272
+              status: active
+              tax_percent: 
+              transfer_data: 
+              trial_end: 
+              trial_start: 
+        '401':
+          description: Unauthorized
+  "/admin/api/subscriptions/show_payment_method":
+    get:
+      summary: Show Payment Method Info
+      tags:
+      - Subscriptions
+      consumes:
+      - multipart/form-data
+      parameters:
+      - name: Authorization
+        in: header
+        type: string
+        required: true
+      responses:
+        '200':
+          description: Success
+          examples:
+            application/json:
+              id: pm_1H0blbJDA0jmlwUvHAaTCBWS
+              object: payment_method
+              billing_details:
+                address:
+                  city: 
+                  country: 
+                  line1: 
+                  line2: 
+                  postal_code: 
+                  state: 
+                email: 
+                name: 
+                phone: 
+              card:
+                brand: visa
+                checks:
+                  address_line1_check: 
+                  address_postal_code_check: 
+                  cvc_check: 
+                country: US
+                exp_month: 7
+                exp_year: 2021
+                fingerprint: QaK6KeL4D3qcQ3sw
+                funding: credit
+                generated_from: 
+                last4: '4242'
+                networks:
+                  available:
+                  - visa
+                  preferred: 
+                three_d_secure_usage:
+                  supported: true
+                wallet: 
+              created: 1593732271
+              customer: cus_HZZ4T8JCStoNd5
+              livemode: false
+              metadata: {}
+              type: card
+        '401':
+          description: Unauthorized
+  "/admin/api/subscriptions/retry":
+    post:
+      summary: Retry
+      tags:
+      - Subscriptions
+      consumes:
+      - multipart/form-data
+      parameters:
+      - name: Authorization
+        in: header
+        type: string
+        required: true
+      - name: payment_method_id
+        in: formData
+        type: string
+        required: true
+      responses:
+        '200':
+          description: Success
+          examples:
+            application/json:
+              id: in_1H0blcJDA0jmlwUvmIEnUhz1
+              object: invoice
+              account_country: US
+              account_name: 
+              amount_due: 10000
+              amount_paid: 10000
+              amount_remaining: 0
+              application_fee: 
+              attempt_count: 1
+              attempted: true
+              auto_advance: false
+              billing: charge_automatically
+              billing_reason: subscription_update
+              charge: ch_1H0bldJDA0jmlwUvh47tnngg
+              closed: true
+              collection_method: charge_automatically
+              created: 1593732272
+              currency: usd
+              custom_fields: 
+              customer: cus_HZZ4T8JCStoNd5
+              customer_address: 
+              customer_email: mediator@example.com
+              customer_name: 
+              customer_phone: 
+              customer_shipping: 
+              customer_tax_exempt: none
+              customer_tax_ids: []
+              date: 1593732272
+              default_payment_method: 
+              default_source: 
+              default_tax_rates: []
+              description: 
+              discount: 
+              due_date: 
+              ending_balance: 0
+              finalized_at: 1593732272
+              footer: 
+              forgiven: false
+              hosted_invoice_url: https://pay.stripe.com/invoice/acct_1AFjyCJDA0jmlwUv/invst_HZlIlFNum4WFA2RzCo1WeW7HsKgGH89
+              invoice_pdf: https://pay.stripe.com/invoice/acct_1AFjyCJDA0jmlwUv/invst_HZlIlFNum4WFA2RzCo1WeW7HsKgGH89/pdf
+              lines:
+                object: list
+                data:
+                - id: sub_HZlIwTz0aIyn7f
+                  object: line_item
+                  amount: 10000
+                  currency: usd
+                  description: 
+                  discountable: true
+                  livemode: false
+                  metadata: {}
+                  period:
+                    end: 1625268272
+                    start: 1593732272
+                  plan:
+                    id: price_1GyG1yJDA0jmlwUvGf6WEo8H
+                    object: plan
+                    active: true
+                    aggregate_usage: 
+                    amount: 10000
+                    amount_decimal: '10000'
+                    billing_scheme: per_unit
+                    created: 1593172062
+                    currency: usd
+                    interval: year
+                    interval_count: 1
+                    livemode: false
+                    metadata: {}
+                    name: Yearly Basic Plan
+                    nickname: 
+                    product: prod_HXKhzUid1c87CM
+                    statement_descriptor: 
+                    tiers: 
+                    tiers_mode: 
+                    transform_usage: 
+                    trial_period_days: 
+                    usage_type: licensed
+                  price:
+                    id: price_1GyG1yJDA0jmlwUvGf6WEo8H
+                    object: price
+                    active: true
+                    billing_scheme: per_unit
+                    created: 1593172062
+                    currency: usd
+                    livemode: false
+                    lookup_key: 
+                    metadata: {}
+                    nickname: 
+                    product: prod_HXKhzUid1c87CM
+                    recurring:
+                      aggregate_usage: 
+                      interval: year
+                      interval_count: 1
+                      trial_period_days: 
+                      usage_type: licensed
+                    tiers_mode: 
+                    transform_quantity: 
+                    type: recurring
+                    unit_amount: 10000
+                    unit_amount_decimal: '10000'
+                  proration: false
+                  quantity: 1
+                  subscription: 
+                  subscription_item: si_HZlIRvMKgDiSGo
+                  tax_amounts: []
+                  tax_rates: []
+                  type: subscription
+                  unique_id: il_1H0blcJDA0jmlwUvgHv5omwo
+                  unique_line_item_id: sli_2db3636606d041
+                has_more: false
+                total_count: 1
+                url: "/v1/invoices/in_1H0blcJDA0jmlwUvmIEnUhz1/lines"
+              livemode: false
+              metadata: {}
+              next_payment_attempt: 
+              number: 75996E90-0001
+              paid: true
+              payment_intent:
+                id: pi_1H0bldJDA0jmlwUvtQLGcCBa
+                object: payment_intent
+                allowed_source_types:
+                - card
+                amount: 10000
+                amount_capturable: 0
+                amount_received: 10000
+                application: 
+                application_fee_amount: 
+                canceled_at: 
+                cancellation_reason: 
+                capture_method: automatic
+                charges:
+                  object: list
+                  data:
+                  - id: ch_1H0bldJDA0jmlwUvh47tnngg
+                    object: charge
+                    amount: 10000
+                    amount_refunded: 0
+                    application: 
+                    application_fee: 
+                    application_fee_amount: 
+                    balance_transaction: txn_1H0bldJDA0jmlwUvR1E9QqhY
+                    billing_details:
+                      address:
+                        city: 
+                        country: 
+                        line1: 
+                        line2: 
+                        postal_code: 
+                        state: 
+                      email: 
+                      name: 
+                      phone: 
+                    calculated_statement_descriptor: Stripe
+                    captured: true
+                    created: 1593732273
+                    currency: usd
+                    customer: cus_HZZ4T8JCStoNd5
+                    description: Subscription creation
+                    destination: 
+                    dispute: 
+                    disputed: false
+                    failure_code: 
+                    failure_message: 
+                    fraud_details: {}
+                    invoice: in_1H0blcJDA0jmlwUvmIEnUhz1
+                    livemode: false
+                    metadata: {}
+                    on_behalf_of: 
+                    order: 
+                    outcome:
+                      network_status: approved_by_network
+                      reason: 
+                      risk_level: normal
+                      risk_score: 11
+                      seller_message: Payment complete.
+                      type: authorized
+                    paid: true
+                    payment_intent: pi_1H0bldJDA0jmlwUvtQLGcCBa
+                    payment_method: pm_1H0blbJDA0jmlwUvHAaTCBWS
+                    payment_method_details:
+                      card:
+                        brand: visa
+                        checks:
+                          address_line1_check: 
+                          address_postal_code_check: 
+                          cvc_check: 
+                        country: US
+                        exp_month: 7
+                        exp_year: 2021
+                        fingerprint: QaK6KeL4D3qcQ3sw
+                        funding: credit
+                        installments: 
+                        last4: '4242'
+                        network: visa
+                        three_d_secure: 
+                        wallet: 
+                      type: card
+                    receipt_email: 
+                    receipt_number: 
+                    receipt_url: https://pay.stripe.com/receipts/acct_1AFjyCJDA0jmlwUv/ch_1H0bldJDA0jmlwUvh47tnngg/rcpt_HZlIc9R8EjmWh0QFXSNHT6Q6zEituLE
+                    refunded: false
+                    refunds:
+                      object: list
+                      data: []
+                      has_more: false
+                      total_count: 0
+                      url: "/v1/charges/ch_1H0bldJDA0jmlwUvh47tnngg/refunds"
+                    review: 
+                    shipping: 
+                    source: 
+                    source_transfer: 
+                    statement_descriptor: 
+                    statement_descriptor_suffix: 
+                    status: succeeded
+                    transfer_data: 
+                    transfer_group: 
+                  has_more: false
+                  total_count: 1
+                  url: "/v1/charges?payment_intent=pi_1H0bldJDA0jmlwUvtQLGcCBa"
+                client_secret: pi_1H0bldJDA0jmlwUvtQLGcCBa_secret_0uDyfsgFhsjZ7H4pjDzXGAvcK
+                confirmation_method: automatic
+                created: 1593732273
+                currency: usd
+                customer: cus_HZZ4T8JCStoNd5
+                description: Subscription creation
+                invoice: in_1H0blcJDA0jmlwUvmIEnUhz1
+                last_payment_error: 
+                livemode: false
+                metadata: {}
+                next_action: 
+                next_source_action: 
+                on_behalf_of: 
+                payment_method: pm_1H0blbJDA0jmlwUvHAaTCBWS
+                payment_method_options:
+                  card:
+                    installments: 
+                    network: 
+                    request_three_d_secure: automatic
+                payment_method_types:
+                - card
+                receipt_email: 
+                review: 
+                setup_future_usage: off_session
+                shipping: 
+                source: 
+                statement_descriptor: 
+                statement_descriptor_suffix: 
+                status: succeeded
+                transfer_data: 
+                transfer_group: 
+              period_end: 1593732272
+              period_start: 1593732272
+              post_payment_credit_notes_amount: 0
+              pre_payment_credit_notes_amount: 0
+              receipt_number: 
+              starting_balance: 0
+              statement_descriptor: 
+              status: paid
+              status_transitions:
+                finalized_at: 1593732272
+                marked_uncollectible_at: 
+                paid_at: 1593732272
+                voided_at: 
+              subscription: sub_HZlIwTz0aIyn7f
+              subtotal: 10000
+              tax: 
+              tax_percent: 
+              total: 10000
+              total_tax_amounts: []
+              transfer_data: 
+              webhooks_delivered_at: 1593732275
+        '401':
+          description: Unauthorized
+  "/admin/api/subscriptions/unsubscribe":
+    post:
+      summary: Unsubscribe
+      tags:
+      - Subscriptions
+      consumes:
+      - multipart/form-data
+      parameters:
+      - name: Authorization
+        in: header
+        type: string
+        required: true
+      responses:
+        '200':
+          description: Success
+          examples:
+            application/json:
+              id: sub_HZlIwTz0aIyn7f
+              object: subscription
+              application_fee_percent: 
+              billing: charge_automatically
+              billing_cycle_anchor: 1593732272
+              billing_thresholds: 
+              cancel_at: 
+              cancel_at_period_end: false
+              canceled_at: 1593732617
+              collection_method: charge_automatically
+              created: 1593732272
+              current_period_end: 1625268272
+              current_period_start: 1593732272
+              customer: cus_HZZ4T8JCStoNd5
+              days_until_due: 
+              default_payment_method: 
+              default_source: 
+              default_tax_rates: []
+              discount: 
+              ended_at: 1593732617
+              invoice_customer_balance_settings:
+                consume_applied_balance_on_void: true
+              items:
+                object: list
+                data:
+                - id: si_HZlIRvMKgDiSGo
+                  object: subscription_item
+                  billing_thresholds: 
+                  created: 1593732273
+                  metadata: {}
+                  plan:
+                    id: price_1GyG1yJDA0jmlwUvGf6WEo8H
+                    object: plan
+                    active: true
+                    aggregate_usage: 
+                    amount: 10000
+                    amount_decimal: '10000'
+                    billing_scheme: per_unit
+                    created: 1593172062
+                    currency: usd
+                    interval: year
+                    interval_count: 1
+                    livemode: false
+                    metadata: {}
+                    name: Yearly Basic Plan
+                    nickname: 
+                    product: prod_HXKhzUid1c87CM
+                    statement_descriptor: 
+                    tiers: 
+                    tiers_mode: 
+                    transform_usage: 
+                    trial_period_days: 
+                    usage_type: licensed
+                  price:
+                    id: price_1GyG1yJDA0jmlwUvGf6WEo8H
+                    object: price
+                    active: true
+                    billing_scheme: per_unit
+                    created: 1593172062
+                    currency: usd
+                    livemode: false
+                    lookup_key: 
+                    metadata: {}
+                    nickname: 
+                    product: prod_HXKhzUid1c87CM
+                    recurring:
+                      aggregate_usage: 
+                      interval: year
+                      interval_count: 1
+                      trial_period_days: 
+                      usage_type: licensed
+                    tiers_mode: 
+                    transform_quantity: 
+                    type: recurring
+                    unit_amount: 10000
+                    unit_amount_decimal: '10000'
+                  quantity: 1
+                  subscription: sub_HZlIwTz0aIyn7f
+                  tax_rates: []
+                has_more: false
+                total_count: 1
+                url: "/v1/subscription_items?subscription=sub_HZlIwTz0aIyn7f"
+              latest_invoice: in_1H0blcJDA0jmlwUvmIEnUhz1
+              livemode: false
+              metadata: {}
+              next_pending_invoice_item_invoice: 
+              pause_collection: 
+              pending_invoice_item_interval: 
+              pending_setup_intent: 
+              pending_update: 
+              plan:
+                id: price_1GyG1yJDA0jmlwUvGf6WEo8H
+                object: plan
+                active: true
+                aggregate_usage: 
+                amount: 10000
+                amount_decimal: '10000'
+                billing_scheme: per_unit
+                created: 1593172062
+                currency: usd
+                interval: year
+                interval_count: 1
+                livemode: false
+                metadata: {}
+                name: Yearly Basic Plan
+                nickname: 
+                product: prod_HXKhzUid1c87CM
+                statement_descriptor: 
+                tiers: 
+                tiers_mode: 
+                transform_usage: 
+                trial_period_days: 
+                usage_type: licensed
+              quantity: 1
+              schedule: 
+              start: 1593732272
+              start_date: 1593732272
+              status: canceled
+              tax_percent: 
+              transfer_data: 
+              trial_end: 
+              trial_start: 
+        '401':
+          description: Unauthorized
+  "/admin/api/subscriptions/update_plan":
+    post:
+      summary: Update Plan
+      tags:
+      - Subscriptions
+      consumes:
+      - multipart/form-data
+      parameters:
+      - name: Authorization
+        in: header
+        type: string
+        required: true
+      - name: plan_id
+        in: formData
+        type: string
+        required: true
+      responses:
+        '200':
+          description: Success
+          examples:
+            application/json:
+              id: sub_HZlSATwjUD9aHJ
+              object: subscription
+              application_fee_percent: 
+              billing: charge_automatically
+              billing_cycle_anchor: 1593732923
+              billing_thresholds: 
+              cancel_at: 
+              cancel_at_period_end: false
+              canceled_at: 
+              collection_method: charge_automatically
+              created: 1593732893
+              current_period_end: 1596411323
+              current_period_start: 1593732923
+              customer: cus_HZZ4T8JCStoNd5
+              days_until_due: 
+              default_payment_method: 
+              default_source: 
+              default_tax_rates: []
+              discount: 
+              ended_at: 
+              invoice_customer_balance_settings:
+                consume_applied_balance_on_void: true
+              items:
+                object: list
+                data:
+                - id: si_HZlSHIThNUU3yn
+                  object: subscription_item
+                  billing_thresholds: 
+                  created: 1593732893
+                  metadata: {}
+                  plan:
+                    id: price_1GyG1DJDA0jmlwUvoANKGVmZ
+                    object: plan
+                    active: true
+                    aggregate_usage: 
+                    amount: 3000
+                    amount_decimal: '3000'
+                    billing_scheme: per_unit
+                    created: 1593172015
+                    currency: usd
+                    interval: month
+                    interval_count: 1
+                    livemode: false
+                    metadata: {}
+                    name: Premium Plan
+                    nickname: 
+                    product: prod_HXKg4fgDdqwE3M
+                    statement_descriptor: 
+                    tiers: 
+                    tiers_mode: 
+                    transform_usage: 
+                    trial_period_days: 
+                    usage_type: licensed
+                  price:
+                    id: price_1GyG1DJDA0jmlwUvoANKGVmZ
+                    object: price
+                    active: true
+                    billing_scheme: per_unit
+                    created: 1593172015
+                    currency: usd
+                    livemode: false
+                    lookup_key: 
+                    metadata: {}
+                    nickname: 
+                    product: prod_HXKg4fgDdqwE3M
+                    recurring:
+                      aggregate_usage: 
+                      interval: month
+                      interval_count: 1
+                      trial_period_days: 
+                      usage_type: licensed
+                    tiers_mode: 
+                    transform_quantity: 
+                    type: recurring
+                    unit_amount: 3000
+                    unit_amount_decimal: '3000'
+                  quantity: 1
+                  subscription: sub_HZlSATwjUD9aHJ
+                  tax_rates: []
+                has_more: false
+                total_count: 1
+                url: "/v1/subscription_items?subscription=sub_HZlSATwjUD9aHJ"
+              latest_invoice: in_1H0bw7JDA0jmlwUvWf91BXxs
+              livemode: false
+              metadata: {}
+              next_pending_invoice_item_invoice: 
+              pause_collection: 
+              pending_invoice_item_interval: 
+              pending_setup_intent: 
+              pending_update: 
+              plan:
+                id: price_1GyG1DJDA0jmlwUvoANKGVmZ
+                object: plan
+                active: true
+                aggregate_usage: 
+                amount: 3000
+                amount_decimal: '3000'
+                billing_scheme: per_unit
+                created: 1593172015
+                currency: usd
+                interval: month
+                interval_count: 1
+                livemode: false
+                metadata: {}
+                name: Premium Plan
+                nickname: 
+                product: prod_HXKg4fgDdqwE3M
+                statement_descriptor: 
+                tiers: 
+                tiers_mode: 
+                transform_usage: 
+                trial_period_days: 
+                usage_type: licensed
+              quantity: 1
+              schedule: 
+              start: 1593732923
+              start_date: 1593732893
+              status: active
+              tax_percent: 
+              transfer_data: 
+              trial_end: 
+              trial_start: 
+        '401':
+          description: Unauthorized
+  "/admin/api/subscriptions/history":
+    get:
+      summary: Get Customer Subscriptions invoices Hisory
+      tags:
+      - Subscriptions
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        type: string
+        required: true
+      responses:
+        '200':
+          description: Success
+          examples:
+            application/json:
+            - id: ii_1H0bw7JDA0jmlwUv2R1EeNSw
+              object: invoiceitem
+              amount: -10000
+              currency: usd
+              customer: cus_HZZ4T8JCStoNd5
+              date: 1593732923
+              description: Unused time on Yearly Basic Plan after 02 Jul 2020
+              discountable: false
+              invoice: in_1H0bw7JDA0jmlwUvWf91BXxs
+              livemode: false
+              metadata: {}
+              period:
+                end: 1625268893
+                start: 1593732923
+              plan:
+                id: price_1GyG1yJDA0jmlwUvGf6WEo8H
+                object: plan
+                active: true
+                aggregate_usage: 
+                amount: 10000
+                amount_decimal: '10000'
+                billing_scheme: per_unit
+                created: 1593172062
+                currency: usd
+                interval: year
+                interval_count: 1
+                livemode: false
+                metadata: {}
+                name: Yearly Basic Plan
+                nickname: 
+                product: prod_HXKhzUid1c87CM
+                statement_descriptor: 
+                tiers: 
+                tiers_mode: 
+                transform_usage: 
+                trial_period_days: 
+                usage_type: licensed
+              price:
+                id: price_1GyG1yJDA0jmlwUvGf6WEo8H
+                object: price
+                active: true
+                billing_scheme: per_unit
+                created: 1593172062
+                currency: usd
+                livemode: false
+                lookup_key: 
+                metadata: {}
+                nickname: 
+                product: prod_HXKhzUid1c87CM
+                recurring:
+                  aggregate_usage: 
+                  interval: year
+                  interval_count: 1
+                  trial_period_days: 
+                  usage_type: licensed
+                tiers_mode: 
+                transform_quantity: 
+                type: recurring
+                unit_amount: 10000
+                unit_amount_decimal: '10000'
+              proration: true
+              quantity: 1
+              subscription: sub_HZlSATwjUD9aHJ
+              subscription_item: si_HZlSHIThNUU3yn
+              tax_rates: []
+              unit_amount: -10000
+              unit_amount_decimal: "-10000"
+        '401':
+          description: Unauthorized

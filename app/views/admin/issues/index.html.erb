@@ -1,0 +1,24 @@
+<%= render Admin::Pages::AdminPageComponent.new(
+            breadcrumbs: Admin::Pages::Breadcrumbs::BreadcrumbComponent.new(),
+            actions: [
+              Admin::Pages::Subheaders::Actions::CreateButtonComponent.new(url: new_admin_issue_path)
+            ]) do %>
+
+  <%= render Admin::Catalogs::CatalogComponent.new(
+              url: search_admin_issues_path,
+              toolbar: Admin::Toolbars::ToolbarComponent.new(
+                query: Admin::Toolbars::Tools::QueryComponent.new
+              ),
+              container: Admin::Tables::SimpleTableComponent.new( headers: [
+                  [:sid, "ID", :sortable],
+                  [:admin_user_name, "Admin User"],
+                  [:case_id, "Case"],
+                  [:party_id, "Party"],
+                  [:title, "Title", :sortable],
+                  [:resolution_title, "Resolution Title"],
+                  [:mediators_notes_title, "Mediators Notes Title"],
+                ]
+              ),
+              pagination: Admin::Paginations::PaginationComponent.new) %>
+
+<% end %>

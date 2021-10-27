@@ -1,0 +1,118 @@
+<div class="row">
+  <div class="col-xl-8">
+    <%= render Admin::Forms::SimpleFormComponent.new(
+              title: title,
+              resource: resource,
+              alerts: flash[:errors],
+              fields: [
+                  Admin::Forms::Fields::SelectComponent.new(
+                    :admin_user_id,
+                    label: t('admin.page.contacts.form.admin_user_id.label'),
+                    values: AdminUser.all.map{ |u| [u.username, u.id] },
+                    include_blank: true,
+                    placeholder: t('admin.page.contacts.form.admin_user_id.placeholder')
+                  ),
+                  Admin::Forms::Fields::SelectComponent.new(
+                    :case_ids,
+                    label: t('admin.page.contacts.form.case_id.label'),
+                    values: Case.all.pluck(:name, :id),
+                    include_blank: true,
+                    multiple: true,
+                    placeholder: t('admin.page.contacts.form.case_id.placeholder')
+                  ),
+                  Admin::Forms::Fields::SelectComponent.new(
+                    :party_ids,
+                    label: t('admin.page.contacts.form.party_id.label'),
+                    values: Party.all.map{ |u| [u.to_s, u.id] },
+                    include_blank: true,
+                    multiple: true,
+                    placeholder: t('admin.page.contacts.form.party_id.placeholder')
+                  ),
+                  Admin::Forms::Fields::TextComponent.new(
+                    :first_name,
+                    label: t('admin.page.contacts.form.first_name.label'),
+                    placeholder: t('admin.page.contacts.form.first_name.placeholder')
+                  ),
+                  Admin::Forms::Fields::TextComponent.new(
+                    :last_name,
+                    label: t('admin.page.contacts.form.last_name.label'),
+                    placeholder: t('admin.page.contacts.form.last_name.placeholder')
+                  ),
+                  Admin::Forms::Fields::TextComponent.new(
+                    :contact_type,
+                    label: t('admin.page.contacts.form.contact_type.label'),
+                    placeholder: t('admin.page.contacts.form.contact_type.placeholder')
+                  ),
+                  Admin::Forms::Fields::TextComponent.new(
+                    :email,
+                    label: t('admin.page.contacts.form.email.label'),
+                    mask: 'email',
+                    placeholder: t('admin.page.contacts.form.email.placeholder')
+                  ),
+                  Admin::Forms::Fields::TextComponent.new(
+                    :title,
+                    label: t('admin.page.contacts.form.title.label'),
+                    placeholder: t('admin.page.contacts.form.title.placeholder')
+                  ),
+                  Admin::Forms::Fields::TextComponent.new(
+                    :company,
+                    label: t('admin.page.contacts.form.company.label'),
+                    placeholder: t('admin.page.contacts.form.company.placeholder')
+                  ),
+                  Admin::Forms::Fields::TextComponent.new(
+                    :phone,
+                    label: t('admin.page.contacts.form.phone.label'),
+                    mask: 'phone',
+                    placeholder: t('admin.page.contacts.form.phone.placeholder')
+                  ),
+                  Admin::Forms::Fields::TextComponent.new(
+                    :address,
+                    label: t('admin.page.contacts.form.address.label'),
+                    placeholder: t('admin.page.contacts.form.address.placeholder')
+                  ),
+                  Admin::Forms::Fields::AutosizeAreaComponent.new(
+                    :notes,
+                    label: t('admin.page.contacts.form.notes.label'),
+                    placeholder: t('admin.page.contacts.form.notes.placeholder')
+                  ),
+                  Admin::Forms::Fields::TextComponent.new(
+                    :street,
+                    label: t('admin.page.contacts.form.street.label'),
+                    placeholder: t('admin.page.contacts.form.street.placeholder')
+                  ),
+                  Admin::Forms::Fields::TextComponent.new(
+                    :city,
+                    label: t('admin.page.contacts.form.city.label'),
+                    placeholder: t('admin.page.contacts.form.city.placeholder')
+                  ),
+                  Admin::Forms::Fields::TextComponent.new(
+                    :state,
+                    label: t('admin.page.contacts.form.state.label'),
+                    placeholder: t('admin.page.contacts.form.state.placeholder')
+                  ),
+                  Admin::Forms::Fields::TextComponent.new(
+                    :zip_code,
+                    label: t('admin.page.contacts.form.zip_code.label'),
+                    placeholder: t('admin.page.contacts.form.zip_code.placeholder')
+                  ),
+                  Admin::Forms::Fields::TextComponent.new(
+                    :country,
+                    label: t('admin.page.contacts.form.country.label'),
+                    placeholder: t('admin.page.contacts.form.country.placeholder')
+                  ),
+                  Admin::Forms::Fields::TagifyComponent.new(
+                    :tags,
+                    label: t('admin.page.contacts.form.tags.label'),
+                    placeholder: t('admin.page.contacts.form.tags.placeholder')
+                  ),
+              ],
+              actions: [
+                Admin::Forms::Actions::ReturnButtonComponent.new(url: admin_contacts_path),
+                Admin::Forms::Actions::CancelButtonComponent.new,
+                Admin::Forms::Actions::SaveButtonComponent.new
+              ]) %>
+  </div>
+  <div class="col-4">
+
+  </div>
+</div>

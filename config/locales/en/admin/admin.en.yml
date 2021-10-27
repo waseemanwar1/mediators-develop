@@ -1,0 +1,23 @@
+en:
+  admin:
+    locale: English
+
+    aside:
+      items:
+        # Aside items start
+        home: Home
+        users: Users
+        tables: Tables
+        mediators: Mediators
+        cases: Cases
+        parties: Parties
+        sessions: Sessions
+        messages: Messages
+        documents: Documents
+        reminders: Reminders
+        contacts: Contacts
+        invoices: Invoices
+        issues: Issues
+        agreements: Agreements
+        agreement_templates: Agreement Templates
+        # Aside items end

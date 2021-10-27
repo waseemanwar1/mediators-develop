@@ -1,0 +1,21 @@
+development:
+  adapter: async
+
+test:
+  adapter: test
+
+production:
+  adapter: redis
+  url: <%= Equisettle::Application.credentials.redis_url %>
+  username: <%= Equisettle::Application.credentials.redis_username %>
+  password: <%= Equisettle::Application.credentials.redis_password %>
+  port: <%= Equisettle::Application.credentials.redis_port %>
+  channel_prefix: <%= Equisettle::Application.credentials.redis_channel_prefix %>
+
+staging:
+  adapter: redis
+  url: <%= Equisettle::Application.credentials.redis_url %>
+  username: <%= Equisettle::Application.credentials.redis_username %>
+  password: <%= Equisettle::Application.credentials.redis_password %>
+  port: <%= Equisettle::Application.credentials.redis_port %>
+  channel_prefix: <%= Equisettle::Application.credentials.redis_channel_prefix %>

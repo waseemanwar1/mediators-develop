@@ -1,0 +1,9 @@
+<div class="form-group <%= "row" if horizontal %>">
+  <label class="<%= "col-xl-3" if horizontal %> col-form-label"><%= label %></label>
+  <div class="<%= "col-xl-9" if horizontal %>">
+    <div class="custom-file kt-align-left">
+      <%= form.file_field field, options %>
+      <label class="custom-file-label" for="admin_user_last_name" style="text-align: left"><%= options[:placeholder] %></label>
+    </div>
+  </div>
+</div>

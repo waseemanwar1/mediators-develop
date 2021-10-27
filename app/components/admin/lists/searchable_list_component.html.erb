@@ -1,0 +1,43 @@
+<!--begin::Portlet-->
+<div class="kt-portlet" data-controller="admin--searchable-list" data-admin--searchable-list-url="<%= url %>">
+
+  <div class="kt-portlet__head">
+    <div class="kt-portlet__head-label">
+      <h3 class="kt-portlet__head-title">
+        <%= title %>
+      </h3>
+    </div>
+
+    <% if actions %>
+      <div class="kt-portlet__head-toolbar">
+        <div class="kt-portlet__head-group">
+          <div class="btn-group">
+            <button type="button" class="btn btn-clean btn-sm btn-icon btn-icon-md" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="flaticon-more-1"></i>
+            </button>
+            <div class="dropdown-menu dropdown-menu-right">
+              <% actions.each do |action| %>
+                <%= link_to action[:name], action[:url], class: "dropdown-item" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="kt-portlet__body">
+    <div class="kt-input-icon kt-input-icon--right kt-margin-b-10">
+      <input type="text" class="form-control form-control-sm" placeholder="" id="generalSearch" data-action="keyup->admin--searchable-list#search">
+      <span class="kt-input-icon__icon kt-input-icon__icon--right">
+        <span><i class="flaticon-search-1"></i></span>
+      </span>
+    </div>
+
+    <div class="searchable-list scrollable" data-target="admin--searchable-list.list">
+
+    </div>
+  </div>
+
+</div>
+<!--end::Portlet-->

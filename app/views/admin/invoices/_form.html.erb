@@ -1,0 +1,86 @@
+<div class="row">
+  <div class="col-xl-8">
+    <%= render Admin::Forms::SimpleFormComponent.new(
+              title: title,
+              resource: resource,
+              alerts: flash[:errors],
+              fields: [
+                  Admin::Forms::Fields::SelectComponent.new(
+                    :admin_user_id,
+                    label: t('admin.page.invoices.form.admin_user_id.label'),
+                    values: AdminUser.all.map{ |u| [u.username, u.id] },
+                    include_blank: true,
+                    placeholder: t('admin.page.invoices.form.admin_user_id.placeholder')
+                  ),
+                  Admin::Forms::Fields::SelectComponent.new(
+                    :case_id,
+                    label: t('admin.page.invoices.form.case_id.label'),
+                    values: Case.all.pluck(:name, :id),
+                    include_blank: true,
+                    placeholder: t('admin.page.invoices.form.case_id.placeholder')
+                  ),
+                  Admin::Forms::Fields::SelectComponent.new(
+                    :party_id,
+                    label: t('admin.page.invoices.form.party_id.label'),
+                    values: Party.all.map{ |u| [u.to_s, u.id] },
+                    include_blank: true,
+                    placeholder: t('admin.page.invoices.form.party_id.placeholder')
+                  ),
+                  Admin::Forms::Fields::TextComponent.new(
+                    :name,
+                    label: t('admin.page.invoices.form.name.label'),
+                    placeholder: t('admin.page.invoices.form.name.placeholder')
+                  ),
+                  Admin::Forms::Fields::TextComponent.new(
+                    :time,
+                    label: t('admin.page.invoices.form.time.label'),
+                    placeholder: t('admin.page.invoices.form.time.placeholder')
+                  ),
+                  Admin::Forms::Fields::TextComponent.new(
+                    :amount,
+                    label: t('admin.page.invoices.form.amount.label'),
+                    placeholder: t('admin.page.invoices.form.amount.placeholder')
+                  ),
+                  Admin::Forms::Fields::DatepickerComponent.new(
+                    :date,
+                    label: t('admin.page.invoices.form.date.label'),
+                    placeholder: t('admin.page.invoices.form.date.placeholder')
+                  ),
+                  Admin::Forms::Fields::DatepickerComponent.new(
+                    :due_date,
+                    label: t('admin.page.invoices.form.due_date.label'),
+                    placeholder: t('admin.page.invoices.form.due_date.placeholder')
+                  ),
+                  Admin::Forms::Fields::SelectComponent.new(
+                    :status,
+                    label: t('admin.page.invoices.form.status.label'),
+                    values: Invoice.statuses.keys,
+                    include_blank: true,
+                    placeholder: t('admin.page.invoices.form.status.placeholder')
+                  ),
+                  Admin::Forms::Fields::TextComponent.new(
+                    :stripe_payment_intent_id,
+                    label: t('admin.page.invoices.form.stripe_payment_intent_id.label'),
+                    placeholder: t('admin.page.invoices.form.stripe_payment_intent_id.placeholder')
+                  ),
+                  Admin::Forms::Fields::TextComponent.new(
+                    :stripe_client_secret,
+                    label: t('admin.page.invoices.form.stripe_client_secret.label'),
+                    placeholder: t('admin.page.invoices.form.stripe_client_secret.placeholder')
+                  ),
+                  Admin::Forms::Fields::TextComponent.new(
+                    :description,
+                    label: t('admin.page.invoices.form.description.label'),
+                    placeholder: t('admin.page.invoices.form.description.placeholder')
+                  ),
+            ],
+              actions: [
+                Admin::Forms::Actions::ReturnButtonComponent.new(url: admin_invoices_path),
+                Admin::Forms::Actions::CancelButtonComponent.new,
+                Admin::Forms::Actions::SaveButtonComponent.new
+              ]) %>
+  </div>
+  <div class="col-4">
+
+  </div>
+</div>

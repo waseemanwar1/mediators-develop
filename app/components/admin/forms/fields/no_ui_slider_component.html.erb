@@ -1,0 +1,7 @@
+<div class="form-group <%= "row" if horizontal %>" data-controller="admin--nouislider" data-min="<%= min %>" data-max="<%= max %>" data-step="<%= step %>" data-start="<%= start %>" data-decimals="<%= decimals %>">
+  <label class="<%= "col-xl-3" if horizontal %> col-form-label"><%= label %></label>
+  <div class="<%= "col-xl-9" if horizontal %>">
+    <%= form.text_field field, options %>
+    <div data-target="admin--nouislider.slider" class="nouislider nouislider--handle-danger mt-4"></div>
+  </div>
+</div>

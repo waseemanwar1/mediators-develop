@@ -1,0 +1,128 @@
+<div class="row">
+  <div class="col-xl-8">
+    <%= render Admin::Forms::SimpleFormComponent.new(
+              title: title,
+              resource: resource,
+              url: path,
+              alerts: flash[:errors],
+              fields: [
+                Admin::Forms::Fields::SwitchComponent.new(
+                  :active,
+                  label: t('admin.page.admin_users.form.active.label')),
+                Admin::Forms::Fields::AvatarComponent.new(
+                  :avatar,
+                  label: t('admin.page.admin_users.form.avatar.label')
+                ),
+                Admin::Forms::Fields::TextComponent.new(
+                  :email,
+                  label: t('admin.page.admin_users.form.email.label'),
+                  placeholder: t('admin.page.admin_users.form.email.placeholder'),
+                  mask: 'email'),
+                Admin::Forms::Fields::TextComponent.new(
+                  :first_name,
+                  label: t('admin.page.admin_users.form.first_name.label'),
+                  placeholder: t('admin.page.admin_users.form.first_name.placeholder')),
+                Admin::Forms::Fields::TextComponent.new(
+                  :last_name,
+                  label: t('admin.page.admin_users.form.last_name.label'),
+                  placeholder: t('admin.page.admin_users.form.last_name.placeholder')),
+                Admin::Forms::Fields::PasswordComponent.new(
+                  :password,
+                  label: t('admin.page.admin_users.form.password.label')),
+                Admin::Forms::Fields::PasswordComponent.new(
+                  :password_confirmation,
+                  label: t('admin.page.admin_users.form.password_confirmation.label')),
+                Admin::Forms::Fields::TextComponent.new(
+                  :hourly_rate,
+                  label: t('admin.page.admin_users.form.hourly_rate.label'),
+                  placeholder: t('admin.page.admin_users.form.hourly_rate.placeholder')),
+                Admin::Forms::Fields::TextComponent.new(
+                  :company_name,
+                  label: t('admin.page.admin_users.form.company_name.label'),
+                  placeholder: t('admin.page.admin_users.form.company_name.placeholder')),
+                Admin::Forms::Fields::TextComponent.new(
+                  :phone,
+                  label: t('admin.page.admin_users.form.phone.label'),
+                  placeholder: t('admin.page.admin_users.form.phone.placeholder')),
+                Admin::Forms::Fields::TextComponent.new(
+                  :company_website,
+                  label: t('admin.page.admin_users.form.company_website.label'),
+                  placeholder: t('admin.page.admin_users.form.company_website.placeholder')),
+                Admin::Forms::Fields::TextComponent.new(
+                  :address_line_1,
+                  label: t('admin.page.admin_users.form.address_line_1.label'),
+                  placeholder: t('admin.page.admin_users.form.address_line_1.placeholder')),
+                Admin::Forms::Fields::TextComponent.new(
+                  :address_line_2,
+                  label: t('admin.page.admin_users.form.address_line_2.label'),
+                  placeholder: t('admin.page.admin_users.form.address_line_2.placeholder')),
+                Admin::Forms::Fields::TextComponent.new(
+                  :postcode,
+                  label: t('admin.page.admin_users.form.postcode.label'),
+                  placeholder: t('admin.page.admin_users.form.postcode.placeholder')),
+                Admin::Forms::Fields::TextComponent.new(
+                  :city,
+                  label: t('admin.page.admin_users.form.city.label'),
+                  placeholder: t('admin.page.admin_users.form.city.placeholder')),
+                Admin::Forms::Fields::TextComponent.new(
+                  :state,
+                  label: t('admin.page.admin_users.form.state.label'),
+                  placeholder: t('admin.page.admin_users.form.state.placeholder')),
+                Admin::Forms::Fields::TextComponent.new(
+                  :country,
+                  label: t('admin.page.admin_users.form.country.label'),
+                  placeholder: t('admin.page.admin_users.form.country.placeholder')),
+                Admin::Forms::Fields::TextComponent.new(
+                  :billing_address_line_1,
+                  label: t('admin.page.admin_users.form.billing_address_line_1.label'),
+                  placeholder: t('admin.page.admin_users.form.billing_address_line_1.placeholder')),
+                Admin::Forms::Fields::TextComponent.new(
+                  :billing_address_line_2,
+                  label: t('admin.page.admin_users.form.billing_address_line_2.label'),
+                  placeholder: t('admin.page.admin_users.form.billing_address_line_2.placeholder')),
+                Admin::Forms::Fields::TextComponent.new(
+                  :billing_postcode,
+                  label: t('admin.page.admin_users.form.billing_postcode.label'),
+                  placeholder: t('admin.page.admin_users.form.billing_postcode.placeholder')),
+                Admin::Forms::Fields::TextComponent.new(
+                  :billing_city,
+                  label: t('admin.page.admin_users.form.billing_city.label'),
+                  placeholder: t('admin.page.admin_users.form.billing_city.placeholder')),
+                Admin::Forms::Fields::TextComponent.new(
+                  :billing_state,
+                  label: t('admin.page.admin_users.form.billing_state.label'),
+                  placeholder: t('admin.page.admin_users.form.billing_state.placeholder')),
+                Admin::Forms::Fields::TextComponent.new(
+                  :billing_country,
+                  label: t('admin.page.admin_users.form.billing_country.label'),
+                  placeholder: t('admin.page.admin_users.form.billing_country.placeholder')),
+                Admin::Forms::Fields::TextComponent.new(
+                  :stripe_customer_id,
+                  label: t('admin.page.admin_users.form.stripe_customer_id.label'),
+                  placeholder: t('admin.page.admin_users.form.stripe_customer_id.placeholder')),
+                Admin::Forms::Fields::CheckboxComponent.new(
+                  :subscription_paid,
+                  label: t('admin.page.admin_users.form.subscription_paid.label')),
+                Admin::Forms::Fields::TextComponent.new(
+                  :stripe_product_id,
+                  label: t('admin.page.admin_users.form.stripe_product_id.label'),
+                  placeholder: t('admin.page.admin_users.form.stripe_product_id.placeholder')),
+                Admin::Forms::Fields::TextComponent.new(
+                  :stripe_subscription_id,
+                  label: t('admin.page.admin_users.form.stripe_subscription_id.label'),
+                  placeholder: t('admin.page.admin_users.form.stripe_subscription_id.placeholder')),
+                Admin::Forms::Fields::TextComponent.new(
+                  :stripe_connected_account_id,
+                  label: t('admin.page.admin_users.form.stripe_connected_account_id.label'),
+                  placeholder: t('admin.page.admin_users.form.stripe_connected_account_id.placeholder')),
+              ],
+              actions: [
+                Admin::Forms::Actions::ReturnButtonComponent.new(url: admin_mediators_path),
+                Admin::Forms::Actions::CancelButtonComponent.new,
+                Admin::Forms::Actions::SaveButtonComponent.new
+              ]) %>
+  </div>
+  <div class="col-4">
+
+  </div>
+</div>

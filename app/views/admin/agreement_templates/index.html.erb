@@ -1,0 +1,20 @@
+<%= render Admin::Pages::AdminPageComponent.new(
+            breadcrumbs: Admin::Pages::Breadcrumbs::BreadcrumbComponent.new(),
+            actions: [
+              Admin::Pages::Subheaders::Actions::CreateButtonComponent.new(url: new_admin_agreement_template_path)
+            ]) do %>
+
+  <%= render Admin::Catalogs::CatalogComponent.new(
+              url: search_admin_agreement_templates_path,
+              toolbar: Admin::Toolbars::ToolbarComponent.new(
+                query: Admin::Toolbars::Tools::QueryComponent.new
+              ),
+              container: Admin::Tables::SimpleTableComponent.new( headers: [
+                  [:sid, "ID", :sortable],
+                  [:name, "Name", :sortable],
+                  [:public, "Public", :sortable],
+                ]
+              ),
+              pagination: Admin::Paginations::PaginationComponent.new) %>
+
+<% end %>

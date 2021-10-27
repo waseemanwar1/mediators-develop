@@ -1,0 +1,9 @@
+en:
+  admin:
+    mail:
+      reset_password:
+        hello: Hello
+        title: Someone has requested a link to change your password. You can do this through the link below.
+        link: Change my password
+        warning: If you didn't request this, please ignore this email.
+        warning_2: Your password won't change until you access the link above and create a new one.

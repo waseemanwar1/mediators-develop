@@ -1,0 +1,57 @@
+<%#= render Admin::Pages::Headers::MobileHeaderComponent %>
+
+<!-- begin:: Root -->
+<div class="kt-grid kt-grid--hor kt-grid--root">
+
+	<!-- begin:: Page -->
+	<div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver kt-page">
+
+    <%= render Admin::Pages::Asides::AsideComponent.new(
+								items: CurrentAdmin.aside_items,
+								actions: CurrentAdmin.aside_actions)%>
+
+		<!-- begin:: Wrapper -->
+		<div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-wrapper" id="kt_wrapper">
+
+      <%= render Admin::Pages::Headers::HeaderComponent.new(
+									menus: [],
+									items: [
+									Admin::Pages::Headers::TopbarItems::LanguageComponent.new,
+									Admin::Pages::Headers::TopbarItems::UserComponent.new(items: [
+							      Admin::Pages::Headers::Items::LinkComponent.new(url: my_admin_profile_path, icon: "flaticon2-calendar-3", text: t('admin.component.header_items.user_item.profile')),
+							      Admin::Pages::Headers::Items::LinkComponent.new(url: edit_admin_user_registration_path, icon: "flaticon2-lock", text: t('admin.component.header_items.user_item.change_password')),
+							      Admin::Pages::Headers::Items::LinkComponent.new(url: settings_admin_profile_path, icon: "flaticon2-gear", text: t('admin.component.header_items.user_item.settings'))
+							    ], actions: [
+							      Admin::Pages::Headers::Actions::SignOutButtonComponent.new
+							    ])
+			]) %>
+
+			<div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
+
+        <%= render Admin::Pages::Subheaders::SubheaderComponent.new(breadcrumbs: breadcrumbs, actions: actions) %>
+
+				<!-- begin:: Content -->
+				<div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
+          <%= content %>
+				</div>
+				<!-- end:: Content -->
+
+			</div>
+
+      <%= render Admin::Pages::Footers::FooterComponent.new(items: [
+				Admin::Pages::Footers::Items::LinkComponent.new(url: t('admin.component.footer.support.link'), text: t('admin.component.footer.support.text'))
+			]) %>
+
+		</div>
+		<!-- end:: Wrapper -->
+
+	</div>
+	<!-- end:: Page -->
+
+</div>
+<!-- end:: Root -->
+
+<%#= render Admin::Pages::Panels::QuickActionsComponent %>
+<%#= render Admin::Pages::Panels::QuickPanelComponent %>
+<%= render Admin::Pages::Scrolls::ScrollComponent.new %>
+<%= render Admin::Pages::Options::OptionComponent.new %>
